@@ -24,4 +24,5 @@ DCM is a full-stack web application designed to help educators and institutions 
 ```bash
 git clone https://github.com/YourUsername/DCM-Platform.git
 cd DCM-Platform
+
 npm install# DCM-Platform
