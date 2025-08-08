@@ -1,0 +1,550 @@
+{
+  "courses": [
+    {
+      "title": "Communication ",
+      "img": " /img/team-work-svgrepo-com.svg",
+      "description": "Master both front-end and back-end development using Java technologies. Learn Spring Boot, REST APIs, and database integration to build complete web applications.",
+      "path": "communication"
+    },
+    {
+      "title": "Web Development",
+      "img": "/img/web-development-svgrepo-com.svg",
+      "description": "Understand supervised and unsupervised learning, build predictive models, and apply algorithms like regression, decision trees, and neural networks.",
+      "path": "web-development"
+    },
+    {
+      "title": "UI/UX Design",
+      "img": "/img/ui-states-svgrepo-com (2).svg",
+      "description": "Learn to effectively clean, process, and visualize data using tools like Python, Excel, and Tableau. Analyze trends, create dashboards, and make data-driven decisions.",
+      "path": "/trainings/uiux-development"
+    },
+    {
+      "title": "Data Science ",
+      "img": "/img/data-analytics.svg",
+      "description": "Get hands-on with HTML, CSS, JavaScript, and modern frameworks to create responsive and dynamic websites from scratch.",
+      "path": "/trainings/data-science"
+    },
+    {
+      "title": "Cyber Security",
+      "img": "/img/worldwide-security-security-svgrepo-com.svg",
+      "description": "Understand supervised and unsupervised learning, build predictive models, and apply algorithms like regression, decision trees, and neural networks.",
+      "path": "/trainings/cybersecurity"
+    },
+    {
+      "title": "Manual Testing and Selenium ",
+      "img": "/img/automated-testing-svgrepo-com.svg",
+      "description": "Understand supervised and unsupervised learning, build predictive models, and apply algorithms like regression, decision trees, and neural networks.",
+      "path": "/trainings/testing"
+    }
+  ],
+  "testing": [
+    {
+      "title": "Manual Testing Fundamentals",
+      "description": "Learn the basics of manual testing, test case design, and bug reporting techniques. Master QA processes and defect tracking workflows.",
+      "img": "/img/manual-testing.svg",
+      "path": "/trainings/testing/manual-testing",
+      "syllabus": [
+        "Introduction to QA methodologies",
+        "Test case creation and execution",
+        "Bug life cycle and defect reporting",
+        "Test plan and documentation standards",
+        "Manual testing tools and workflows"
+      ]
+    },
+    {
+      "title": "Selenium WebDriver Automation",
+      "description": "Master web automation testing using Selenium WebDriver with Java and Python. Build robust test scripts and implement Page Object Model frameworks.",
+      "img": "/img/automated-testing.svg",
+      "path": "/trainings/testing/selenium-automation",
+      "syllabus": [
+        "Selenium architecture and WebDriver APIs",
+        "Writing test cases using Java/Python",
+        "Locators, waits, and browser actions",
+        "Page Object Model and reusable components",
+        "Framework design and automation reporting"
+      ]
+    },
+    {
+      "title": "API Testing with Postman",
+      "description": "Learn comprehensive API testing strategies using Postman and automation techniques. Master REST APIs, response validation, and CI/CD integration.",
+      "img": "/img/postman.svg",
+      "path": "/trainings/testing/api-testing",
+      "syllabus": [
+        "Understanding RESTful APIs and endpoints",
+        "Request types and parameterization",
+        "Response validation and chaining requests",
+        "Automated API tests and environments",
+        "Integrating API tests in CI/CD pipelines"
+      ]
+    },
+    {
+      "title": "Mobile App Testing",
+      "description": "Explore mobile testing methodologies for iOS and Android applications. Master device compatibility testing and mobile automation frameworks.",
+      "img": "/img/mobile-app.svg",
+      "path": "/trainings/testing/mobile-testing",
+      "syllabus": [
+        "Mobile testing platforms and emulators",
+        "iOS vs Android architecture differences",
+        "UI testing for various screen sizes",
+        "Device compatibility and performance testing",
+        "Mobile automation using Appium or Espresso"
+      ]
+    },
+    {
+      "title": "Performance Testing",
+      "description": "Master performance testing tools like JMeter and LoadRunner for scalable applications. Learn load testing, stress testing, and bottleneck analysis.",
+      "img": "/img/performance-testing.svg",
+      "path": "/trainings/testing/performance-testing",
+      "syllabus": [
+        "Principles of performance testing",
+        "Test strategy for scalability and stability",
+        "Using JMeter for load and stress tests",
+        "Interpreting results and bottleneck analysis",
+        "Integrating performance tests into CI workflows"
+      ]
+    },
+    {
+      "title": "Test Automation Framework",
+      "description": "Build robust test automation frameworks using industry best practices and design patterns. Master data-driven testing and CI/CD integration.",
+      "img": "/img/automation.svg",
+      "path": "/trainings/testing/automation-framework",
+      "syllabus": [
+        "Framework architecture and components",
+        "Keyword and data-driven testing design",
+        "Integrating test libraries and utilities",
+        "CI/CD tool integration with automation",
+        "Custom reporting and logging strategies"
+      ]
+    }
+  ],
+   
+  "cyberSecurity": [
+  {
+    "title": "Ethical Hacking Fundamentals",
+    "description": "Learn the basics of ethical hacking, penetration testing, and vulnerability assessment techniques.",
+    "img": "/img/cybersecurity/ethical-hacking.png",
+    "path": "/cybersecurity/ethical-hacking",
+    "syllabus": [
+      "Introduction to Ethical Hacking & Legal Frameworks",
+      "Footprinting and Reconnaissance Techniques",
+      "Scanning Networks and Enumeration",
+      "System Hacking and Privilege Escalation",
+      "Malware Types and Delivery Mechanisms",
+      "Sniffing, Spoofing, and Session Hijacking",
+      "Web Application Attacks (SQLi, XSS, CSRF)",
+      "Wireless Network Hacking Basics",
+      "Penetration Testing Methodologies",
+      "Reporting and Documentation Best Practices"
+    ]
+  },
+  {
+    "title": "Network Security",
+    "description": "Master network security protocols, firewalls, VPNs, and intrusion detection systems.",
+    "img": "/img/cybersecurity/network-security.png",
+    "path": "/cybersecurity/network-security",
+    "syllabus": [
+      "Network Architecture and Protocols (TCP/IP, DNS, DHCP)",
+      "Firewalls: Configuration and Management",
+      "VPNs and Secure Remote Access",
+      "Intrusion Detection and Prevention Systems (IDS/IPS)",
+      "Network Segmentation and Zero Trust Models",
+      "Secure Routing and Switching",
+      "Threats to Network Infrastructure (DDoS, MITM)",
+      "Network Monitoring and Traffic Analysis",
+      "Implementing Network Access Control (NAC)",
+      "Hands-on Labs with Wireshark and Nmap"
+    ]
+  },
+  {
+    "title": "Incident Response & Forensics",
+    "description": "Learn digital forensics, incident response procedures, and cyber crime investigation techniques.",
+    "img": "/img/cybersecurity/incident-response.png",
+    "path": "/cybersecurity/incident-response",
+    "syllabus": [
+      "Introduction to Incident Response Lifecycle",
+      "Identifying and Classifying Security Incidents",
+      "Evidence Collection and Chain of Custody",
+      "Disk and Memory Forensics",
+      "Log Analysis and Timeline Reconstruction",
+      "Malware Triage and Behavioral Analysis",
+      "Reporting and Communication Protocols",
+      "Legal and Regulatory Considerations",
+      "Hands-on Case Studies and Simulations",
+      "Tools: Autopsy, Volatility, FTK Imager"
+    ]
+  },
+  {
+    "title": "Security Risk Assessment",
+    "description": "Understand risk assessment methodologies, compliance frameworks, and security auditing practices.",
+    "img": "/img/cybersecurity/risk-assessment.png",
+    "path": "/cybersecurity/risk-assessment",
+    "syllabus": [
+      "Risk Management Fundamentals",
+      "Identifying Assets, Threats, and Vulnerabilities",
+      "Quantitative vs. Qualitative Risk Analysis",
+      "Security Controls and Mitigation Strategies",
+      "Compliance Frameworks (ISO 27001, NIST, GDPR)",
+      "Security Auditing Techniques",
+      "Business Impact Analysis (BIA)",
+      "Risk Reporting and Stakeholder Communication",
+      "Continuous Monitoring and Improvement",
+      "Case Studies: Real-world Risk Assessments"
+    ]
+  },
+  {
+    "title": "Malware Analysis",
+    "description": "Analyze malware behavior, reverse engineering techniques, and threat intelligence gathering.",
+    "img": "/img/cybersecurity/malware-analysis.png",
+    "path": "/cybersecurity/malware-analysis",
+    "syllabus": [
+      "Introduction to Malware Types and Behaviors",
+      "Static vs. Dynamic Analysis Techniques",
+      "Setting Up a Safe Malware Lab",
+      "Reverse Engineering with Ghidra and IDA Pro",
+      "Behavioral Analysis with Cuckoo Sandbox",
+      "Obfuscation and Anti-analysis Techniques",
+      "Indicators of Compromise (IOCs)",
+      "Threat Intelligence Platforms and Feeds",
+      "Malware Attribution and Campaign Tracking",
+      "Hands-on Analysis of Real Malware Samples"
+    ]
+  },
+  {
+    "title": "Cloud Security",
+    "description": "Secure cloud infrastructure, implement cloud security best practices, and manage cloud compliance.",
+    "img": "/img/cybersecurity/cloud-security.png",
+    "path": "/cybersecurity/cloud-security",
+    "syllabus": [
+      "Cloud Computing Models (IaaS, PaaS, SaaS)",
+      "Shared Responsibility Model",
+      "Identity and Access Management (IAM) in Cloud",
+      "Securing Cloud Storage and Databases",
+      "Cloud Network Security and Monitoring",
+      "Encryption and Key Management in Cloud",
+      "Cloud Compliance Standards (SOC 2, HIPAA, PCI-DSS)",
+      "Incident Response in Cloud Environments",
+      "Cloud Security Posture Management (CSPM)",
+      "Hands-on Labs with AWS, Azure, and GCP"
+    ]
+  }
+],
+ 
+"Communication": [
+  {
+    "title": "Strategic Group Discussion Mastery",
+    "img": "/img/communication-consulting-concept-svgrepo-com.svg",
+    "description": "Learn techniques to effectively participate in group discussions. Improve clarity, confidence, and critical thinking to stand out in competitive environments.",
+    "path": "/trainings/communication/Strategic Group Discussion Mastery",
+    "syllabus": [
+      "Understanding the purpose and format of group discussions",
+      "Techniques for initiating and sustaining conversation",
+      "Critical thinking and logical reasoning in discussions",
+      "Handling interruptions and disagreements diplomatically",
+      "Body language and non-verbal cues",
+      "Time management and concise expression",
+      "Role-play and mock group discussions",
+      "Feedback and self-assessment strategies"
+    ]
+  },
+  {
+    "title": "Advanced Vocabulary & Expression Builder",
+    "img": "/img/student-reading-svgrepo-com.svg",
+    "description": "Enhance your word power with daily vocabulary, idioms, and phrases. Strengthen your communication and comprehension skills for academic and professional success.",
+    "path": "/trainings/communication/Advanced Vocabulary & Expression Builder",
+    "syllabus": [
+      "Daily vocabulary enrichment exercises",
+      "Common idioms and their usage",
+      "Phrasal verbs and contextual meanings",
+      "Synonyms, antonyms, and word families",
+      "Roots, prefixes, and suffixes for decoding unfamiliar words",
+      "Vocabulary for academic writing and professional settings",
+      "Interactive quizzes and flashcards",
+      "Application through storytelling and conversation"
+    ]
+  },
+  {
+    "title": "Impactful Presentation & Storytelling Skills",
+    "img": "/img/data-analytics.svg",
+    "description": "Master the art of delivering professional presentations. Learn to use visuals, storytelling, and audience engagement to make your ideas memorable.",
+    "path": "/trainings/communication/Impactful Presentation & Storytelling Skills",
+    "syllabus": [
+      "Structuring a compelling presentation",
+      "Designing effective visual aids (slides, charts, infographics)",
+      "Storytelling techniques for engagement",
+      "Voice modulation and pacing",
+      "Audience analysis and interaction",
+      "Handling Q&A sessions with confidence",
+      "Presentation rehearsal and feedback",
+      "Recording and reviewing performance"
+    ]
+  },
+  {
+    "title": "Pro Interview Techniques & Confidence Building",
+    "img": "/img/reunion-interview-svgrepo-com.svg",
+    "description": "Prepare for job interviews with confidence. Learn body language, mock interview techniques, and strategies to answer technical and HR questions effectively.",
+    "path": "/trainings/communication/Pro Interview Techniques & Confidence Building",
+    "syllabus": [
+      "Understanding interview formats and expectations",
+      "Crafting impactful self-introductions",
+      "Answering common HR and behavioral questions",
+      "Strategies for technical and situational questions",
+      "Body language and professional etiquette",
+      "Mock interviews and role-play scenarios",
+      "Handling stress and building confidence",
+      "Post-interview follow-up and communication"
+    ]
+  }
+],
+  "webDevelopment": [
+    {
+      "title": "Java Full Stack",
+      "img": "/img/java-svgrepo-com.svg",
+      "description": "Master front-end and back-end development using Java. Learn Spring Boot, RESTful APIs, JSP, and database integration to build scalable web applications.",
+      "path": "/trainings/web-development/java-fullstack",
+      "syllabus": [
+        "Java Fundamentals and OOP",
+        "HTML/CSS/JS Basics",
+        "Spring Boot Framework",
+        "RESTful APIs with Spring",
+        "JSP and Servlet Integration",
+        "Database Connectivity (JDBC/MySQL)",
+        "Deploying Java Apps to the Web"
+      ]
+    },
+    {
+      "title": "Python Full Stack",
+      "img": "/img/python-svgrepo-com.svg",
+      "description": "Learn Python for web development, data analysis, and automation. Build applications using Django or Flask and explore database and REST API integrations.",
+      "path": "/trainings/web-development/python",
+      "syllabus": [
+        "Python Syntax and Data Types",
+        "Working with APIs",
+        "Flask Framework Basics",
+        "Django MVC Structure",
+        "Database Models and ORM",
+        "Authentication and Authorization",
+        "Deploying Python Web Apps"
+      ]
+    },
+    {
+      "title": ".NET Full Stack",
+      "img": "/img/dotnet-svgrepo-com.svg",
+      "description": "Build dynamic applications with ASP.NET Core, C#, and SQL Server. Develop robust front-end interfaces using Blazor or JavaScript frameworks.",
+      "path": "/trainings/web-development/dotnet",
+      "syllabus": [
+        "C# Basics and OOP",
+        "ASP.NET Core Architecture",
+        "Entity Framework for Data Access",
+        "RESTful APIs in .NET",
+        "SQL Server Integration",
+        "Blazor and Razor Components",
+        "Unit Testing and Deployment"
+      ]
+    },
+    {
+      "title": "MERN Stack",
+      "img": "/img/react-svgrepo-com.svg",
+      "description": "Become proficient in MongoDB, Express.js, React, and Node.js. Learn to build full-stack JavaScript applications from the ground up to advance.",
+      "path": "/trainings/web-development/mern",
+      "syllabus": [
+        "JavaScript ES6+ Syntax",
+        "Node.js Backend Fundamentals",
+        "Express.js Routing and Middleware",
+        "MongoDB CRUD and Mongoose",
+        "React Components and Hooks",
+        "API Integration with Axios",
+        "Full-stack Deployment with Heroku"
+      ]
+    },
+    {
+      "title": "MEAN Stack",
+      "img": "/img/angular-icon-svgrepo-com.svg",
+      "description": "Learn how to create full-stack web applications using MongoDB, Express.js, Angular, and Node.js with real-time data handling and dynamic UI.",
+      "path": "/trainings/web-development/mean",
+      "syllabus": [
+        "Node.js and Express Setup",
+        "Angular Architecture and Modules",
+        "MongoDB with Mongoose",
+        "Angular Components and Services",
+        "Reactive Forms and Observables",
+        "Express API Design",
+        "Real-time Data with Socket.io"
+      ]
+    },
+    {
+      "title": "Flutter",
+      "img": "/img/flutter-svgrepo-com (1).svg",
+      "description": "Build beautiful native mobile apps using Flutter and Dart. Learn to develop cross-platform applications with expressive UIs and strong back-end integration.",
+      "path": "/trainings/web-development/flutter",
+      "syllabus": [
+        "Dart Basics and Data Structures",
+        "Flutter Widgets and Layouts",
+        "State Management with Provider",
+        "Navigation and Routing",
+        "Firebase Integration",
+        "REST API Consumption",
+        "Building & Publishing Apps"
+      ]
+    }
+  ],
+  "uiuxDevelopment": [
+    {
+      "title": "Graphic Design",
+      "img": "/img/arrange-graphic-design-graphic-tool-svgrepo-com.svg",
+      "description": "Master the visual side of design with tools like Photoshop, Illustrator, and Canva. Learn color theory, typography, branding, and layout skills.",
+      "path": "/trainings/uiux-development/graphic-design",
+      "syllabus": [
+        "Introduction to visual design principles",
+        "Color theory and composition",
+        "Typography and font psychology",
+        "Creating assets using Photoshop and Illustrator",
+        "Branding and logo creation with Canva"
+      ]
+    },
+    {
+      "title": "Design Tools Mastery",
+      "img": "/img/web-design-svgrepo-com.svg",
+      "description": "Get hands-on experience with tools like Figma, Adobe XD, and Sketch. Learn to design high-fidelity prototypes and collaborate with developers.",
+      "path": "/trainings/uiux-development/design-tools-mastery",
+      "syllabus": [
+        "UI basics and atomic design in Figma",
+        "Wireframing and prototyping in Adobe XD",
+        "Responsive layout techniques with Sketch",
+        "Design handoff workflow to developers",
+        "Version control and collaboration in design tools"
+      ]
+    },
+    {
+      "title": "Interaction Design",
+      "img": "/img/touch-svgrepo-com.svg",
+      "description": "Understand how users interact with interfaces. Focus on animations, transitions, microinteractions, and behavior-based design patterns and layouts skills.",
+      "path": "/trainings/uiux-development/interaction-design",
+      "syllabus": [
+        "Principles of interaction and behavior-based UX",
+        "Animation theory and motion guidelines",
+        "Microinteractions: design and intent",
+        "Page transitions and feedback design",
+        "User testing and refinement"
+      ]
+    }
+  ],
+ 
+  "dataScience": [
+    {
+      "title": "Machine Learning",
+      "description": "Learn to build models that predict outcomes using supervised, unsupervised, and reinforcement learning techniques.",
+      "img": "/img/machine learning.png",
+      "path": "/trainings/data-science/machine-learning",
+      "syllabus": [
+        "Introduction to supervised and unsupervised learning",
+        "Model training and evaluation techniques",
+        "Overfitting, regularization, and bias-variance tradeoff",
+        "Feature selection and engineering",
+        "Introduction to reinforcement learning and its applications"
+      ]
+    },
+    {
+      "title": "Artificial Intelligence",
+      "description": "Create systems that mimic human intelligence, covering NLP, robotics, and expert system development.",
+      "img": "/img/artificialintelligence.png",
+      "path": "/trainings/data-science/artificial-intelligence",
+      "syllabus": [
+        "Fundamentals of AI and intelligent agents",
+        "Natural Language Processing basics",
+        "Rule-based and expert systems",
+        "AI in robotics and automation",
+        "Ethical implications of artificial intelligence"
+      ]
+    },
+    {
+      "title": "Data Visualization",
+      "description": "Turn data into visual insights using tools like Tableau, Power BI, and D3.js for clear storytelling.",
+      "img": "/img/datavisualization.png",
+      "path": "/trainings/data-science/data-visualization",
+      "syllabus": [
+        "Principles of data storytelling",
+        "Working with Tableau dashboards",
+        "Interactive charts and maps in Power BI",
+        "Custom visualizations with D3.js",
+        "Best practices for visual integrity and clarity"
+      ]
+    },
+    {
+      "title": "Big Data",
+      "description": "Handle massive datasets with Hadoop and Spark to uncover patterns and enable real-time analytics.",
+      "img": "/img/bigdata.png",
+      "path": "/trainings/data-science/big-data",
+      "syllabus": [
+        "Understanding big data challenges and characteristics",
+        "Introduction to Hadoop ecosystem",
+        "Real-time data processing with Apache Spark",
+        "Distributed storage and computation strategies",
+        "Big data use cases and architecture design"
+      ]
+    },
+    {
+      "title": "Deep Learning",
+      "description": "Use neural networks like CNNs and RNNs to solve tasks in image recognition and natural language processing.",
+      "img": "/img/deeplearning.png",
+      "path": "/trainings/data-science/deep-learning",
+      "syllabus": [
+        "Neural network fundamentals",
+        "CNNs for image classification",
+        "RNNs and sequence modeling",
+        "Transfer learning and pre-trained models",
+        "Deep learning frameworks: TensorFlow and PyTorch"
+      ]
+    },
+    {
+      "title": "Data Analytics",
+      "description": "Analyze structured and unstructured data with statistical and business intelligence methods for insights.",
+      "img": "/img/dataanalytics.png",
+      "path": "/trainings/data-science/data-analytics",
+      "syllabus": [
+        "Exploratory data analysis (EDA)",
+        "Data wrangling and cleaning techniques",
+        "Statistical analysis and hypothesis testing",
+        "BI tools for dashboard creation",
+        "Deriving insights from qualitative and quantitative data"
+      ]
+    }
+  ],
+
+  
+   "testimonials": [
+    {
+      "name": "Naveen ",
+      "role": "Software Engineer",
+      "feedback": "The training was comprehensive and the instructors were very knowledgeable."
+    },
+    {
+      "name": "Mani Kiran",
+      "role": "Data Scientist",
+      "feedback": "I learned so much about data analytics and machine learning. Highly recommend!"
+    },
+    {
+      "name": "Keerthi",
+      "role": "Web Developer",
+      "feedback": "The React JS course helped me build my first full-stack application. Great experience!"
+    }
+  ],
+  "workProcess": [
+    {
+      "title": "First-Class Business Solutions",
+      "description": "We deliver strategic solutions that enhance organizational performance and productivity. From leadership development to workflow optimization, our services are built to meet modern business challenges."
+    },
+    {
+      "title": "Corporate Training Programs",
+      "description": "We design training programs that develop both technical skills and leadership qualities. Our goal is to help your teams stay competitive and confident in a rapidly changing business landscape."
+    },
+    {
+      "title": "Consulting for Growth",
+      "description": "Our consultants bring real-world expertise to help companies streamline operations, improve decision-making, and build scalable business models."
+    },
+    {
+      "title": "Manpower Support Services",
+      "description": "We help organizations find, retain, and manage top talent. Whether you need contract staffing, permanent hires, or project-based support, DCM delivers workforce solutions that work."
+    }
+  ]
+
+}
