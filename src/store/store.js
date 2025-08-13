@@ -7,6 +7,7 @@ import { authApi } from "../Services/authService"; // Assuming authApi is export
 import { batchAssignApi } from "../Services/admin/batchAssignServices"; // Assuming batchAssignApi is exported from batchAssignServices.js
 import { courseApi } from "../Services/admin/coursesService";
 import { batchDetailsApi } from "../Services/admin/batchdetailsService";
+import { enrollCourseApi  } from "../Services/admin/enrollFormServices";
 
 const Store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ const Store = configureStore({
         [authApi.reducerPath]: authApi.reducer, // Assuming authApi is imported from Auth
         [batchAssignApi.reducerPath]: batchAssignApi.reducer,   // Assuming batchAssignApi is imported from batchAssignServices.js
         [courseApi.reducerPath]:courseApi.reducer,
-        [batchDetailsApi.reducerPath]:batchDetailsApi.reducer
+        [batchDetailsApi.reducerPath]:batchDetailsApi.reducer,
+        [enrollCourseApi.reducerPath]:enrollCourseApi.reducer
 
     },
     middleware: (getDefaultMiddleware) =>
@@ -22,7 +24,8 @@ const Store = configureStore({
                                     authApi.middleware,
                                     batchAssignApi.middleware,
                                     courseApi.middleware,
-                                    batchDetailsApi.middleware
+                                    batchDetailsApi.middleware,
+                                    enrollCourseApi.middleware
                                 ), // Assuming batchAssignApi is imported from batchAssignServices.js
 
 });

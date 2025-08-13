@@ -17,6 +17,7 @@ const authSlice = createSlice({
       console.log('Login action payload:', action.payload);
 
       const { user, token, batchList,courseNames } = action.payload;
+      console.log('coursenames',courseNames)
 
       state.user = user;
       state.token = token;

@@ -4,8 +4,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://localhost:7777",
-    baseUrl: "https://serverfordcm.onrender.com/",
+    baseUrl: "http://localhost:7777",
+    // baseUrl: "https://serverfordcm.onrender.com/",
+    
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('authToken');
       if (token) {

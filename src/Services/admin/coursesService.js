@@ -6,15 +6,15 @@ export const courseApi = createApi({
     
   reducerPath: 'ADcourseApi',
   baseQuery: fetchBaseQuery({
-    //  baseUrl: 'http://localhost:7777/admin/courses',
-      baseUrl: "https://serverfordcm.onrender.com/admin/courses",
+     baseUrl: 'http://localhost:7777/admin/courses',
+      // baseUrl: "https://serverfordcm.onrender.com/admin/courses",
       prepareHeaders: (headers) => {
         const token = localStorage.getItem('authToken');
         console.log(token);
         if (token) {
             headers.set('Authorization', `Bearer ${token}`);
         }
-        return headers;
+        return headers; 
     },
 
 

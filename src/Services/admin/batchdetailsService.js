@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const batchDetailsApi = createApi({
   reducerPath: "batchDetailsApi",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://localhost:7777/admin/batchs",
-      baseUrl: "https://serverfordcm.onrender.com/admin/batchs",
+    baseUrl: "http://localhost:7777/admin/batchs",
+      // baseUrl: "https://serverfordcm.onrender.com/admin/batchs",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("authToken");
       if (token) {

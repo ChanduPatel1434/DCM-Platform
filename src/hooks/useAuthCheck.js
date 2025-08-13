@@ -9,45 +9,63 @@ import { useGetCoursesQuery } from '../Services/admin/coursesService';
 const useAuthCheck = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Capture current route
+  const location = useLocation();
   const [isChecking, setIsChecking] = useState(true);
 
-  const { data, error } = useVerifyTokenQuery();
-  const isAdmin = data?.user?.role === 'admin';
+  const { data: tokenData, error: tokenError } = useVerifyTokenQuery();
+  const isAdmin = tokenData?.user?.role === 'admin';
 
-  const { data: BatchNames } = useGetBatchNamesQuery(undefined, {
+  const {
+    data: batchNames,
+    isFetching: isFetchingBatches,
+  } = useGetBatchNamesQuery(undefined, {
     skip: !isAdmin,
   });
 
-  const { data: rawCourses } = useGetCoursesQuery();
-  const courseNames = rawCourses;
+  const {
+    data: courseNames,
+    isFetching: isFetchingCourses,
+  } = useGetCoursesQuery();
 
   useEffect(() => {
-    if (data?.verified) {
-      const batchList = isAdmin ? BatchNames : [];
+    const isTokenVerified = tokenData?.verified;
+    const hasCourses = courseNames !== undefined;
+    const hasBatchNames = !isAdmin || batchNames !== undefined;
+
+    if (isTokenVerified && hasCourses && hasBatchNames) {
+      const batchList = isAdmin ? batchNames : [];
 
       dispatch(
         login({
-          user: data.user,
-          token: data.token,
+          user: tokenData.user,
+          token: tokenData.token,
           batchList,
           courseNames,
         })
       );
 
-      // ✅ Navigate back to the original route or default to dashboard
-      const redirectPath = location.pathname !== '/' ? location.pathname : '/dashboard';
+      const redirectPath =
+        location.pathname !== '/' ? location.pathname : '/dashboard';
       navigate(redirectPath, { replace: true });
-    } else if (error) {
+      setIsChecking(false);
+    } else if (tokenError) {
       localStorage.removeItem('authToken');
       dispatch(logout());
       navigate('/login');
+      setIsChecking(false);
     }
-
-    setIsChecking(false);
-  }, [data, error, dispatch, navigate, BatchNames, isAdmin, location.pathname]);
+  }, [
+    tokenData,
+    tokenError,
+    dispatch,
+    navigate,
+    batchNames,
+    courseNames,
+    isAdmin,
+    location.pathname,
+  ]);
 
   return { isChecking };
 };
 
-export default useAuthCheck;  
+export default useAuthCheck;

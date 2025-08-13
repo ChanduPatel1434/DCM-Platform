@@ -6,21 +6,32 @@ import {
 } from "../../../Services/admin/batchAssignServices";
 import { useSelector } from "react-redux";
 import Loader from "../common/Loader";
+import { useLazyGetUnassignedEnrollmentsQuery } from "../../../Services/admin/enrollFormServices";
 
 const UnassignedStudents = () => {
   const [triggerAssign] = useAssignStudentsToBatchMutation();
 
 
+  // const [
+  //   triggerUnassigned,
+  //   {
+  //     data: unassignedData,
+  //     isLoading: isUnassignedLoading,
+  //     isError: isUnassignedError,
+  //     isSuccess: isUnassignedSuccess,
+  //     error: unassignedError,
+  //   },
+  // ] = useLazyUnassignedStudentsQuery();
   const [
-    triggerUnassigned,
+    triggerUnassignedEnrollments,
     {
       data: unassignedData,
       isLoading: isUnassignedLoading,
       isError: isUnassignedError,
       isSuccess: isUnassignedSuccess,
       error: unassignedError,
-    },
-  ] = useLazyUnassignedStudentsQuery();
+    
+  }]=useLazyGetUnassignedEnrollmentsQuery()
 
 
 
@@ -29,7 +40,7 @@ const UnassignedStudents = () => {
 
   useEffect(() => {
     // Fetch both unassigned students and courses in parallel
-    triggerUnassigned().unwrap()
+    triggerUnassignedEnrollments().unwrap()
       .then((res) => console.log("Unassigned students:", res))
       .catch((err) => console.error("Unassigned fetch failed:", err));
 
@@ -51,13 +62,13 @@ const UnassignedStudents = () => {
   if (isUnassignedError)
     return <p>Error: {(unassignedError)?.message}</p>;
 
-  if (isUnassignedSuccess && unassignedData.students.length === 0)
+  if (isUnassignedSuccess && unassignedData?.students?.length === 0)
     return <p>No unassigned students found.</p>;
 
   return (
     <div>
       <h2>Unassigned Students</h2>
-      {isUnassignedSuccess && (
+      {/* {isUnassignedSuccess && (
         <StudentTable
           students={unassignedData.students}
           availableCourses={courseNames}
@@ -66,7 +77,7 @@ const UnassignedStudents = () => {
           onAssignBatch={handleAssign}
           onRemove={(rows) => console.log("Remove:", rows)}
         />
-      )}
+      )} */}
     </div>
   );
 };
