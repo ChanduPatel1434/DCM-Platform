@@ -9,9 +9,7 @@ const Courses = () => {
         <li className="nav-item">
           <Link className="nav-link fs-4 " aria-current="page">Availabe Courses</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link fs-4 " to='addcourse' >Add Course</Link>
-        </li>
+       
       
         <hr />
        

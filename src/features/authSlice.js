@@ -16,18 +16,19 @@ const authSlice = createSlice({
     login: (state, action) => {
       console.log('Login action payload:', action.payload);
 
-      const { user, token, batchList,courseNames } = action.payload;
-      console.log('coursenames',courseNames)
-
+      const { user, token, batchLists,courses ,enrolledCourses} = action.payload;
+      console.log('coursenames',courses)
+      console.log("batches list from authSLice",batchLists)
+console.log(enrolledCourses,"enrolledData")
       state.user = user;
       state.token = token;
       state.loading = false;
       state.error = null;
-      state.courseNames=courseNames;
-      
+      state.courseNames=courses;
+      state.enrolledData=enrolledCourses
       
       if (user.role === 'admin') {
-        state.batchList = batchList;
+        state.batchList = batchLists;
       } else {
         return
       }

@@ -1,34 +1,41 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import authSliceReducer from "../features/authSlice"; // Assuming authSliceReducer is exported from authslice.js
-import { authApi } from "../Services/authService"; // Assuming authApi is exported from Auth
+import authSliceReducer from "../features/authSlice";
 
-import { batchAssignApi } from "../Services/admin/batchAssignServices"; // Assuming batchAssignApi is exported from batchAssignServices.js
+import { authApi } from "../Services/authService";
+import { batchAssignApi } from "../Services/admin/batchAssignServices";
 import { courseApi } from "../Services/admin/coursesService";
 import { batchDetailsApi } from "../Services/admin/batchdetailsService";
-import { enrollCourseApi  } from "../Services/admin/enrollFormServices";
+import { enrollCourseApi } from "../Services/student/enrollFormServices";
+import { assignApi } from "../Services/admin/assignService";
+
+import rtkLogger from "./rtkLogger";
+import { paymentsApi } from "../Services/paymentServices/paymentServices";
 
 const Store = configureStore({
-    reducer: {
-        auth: authSliceReducer, // Assuming authSliceReducer is imported from authslice.js
-        [authApi.reducerPath]: authApi.reducer, // Assuming authApi is imported from Auth
-        [batchAssignApi.reducerPath]: batchAssignApi.reducer,   // Assuming batchAssignApi is imported from batchAssignServices.js
-        [courseApi.reducerPath]:courseApi.reducer,
-        [batchDetailsApi.reducerPath]:batchDetailsApi.reducer,
-        [enrollCourseApi.reducerPath]:enrollCourseApi.reducer
-
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(
-                                    authApi.middleware,
-                                    batchAssignApi.middleware,
-                                    courseApi.middleware,
-                                    batchDetailsApi.middleware,
-                                    enrollCourseApi.middleware
-                                ), // Assuming batchAssignApi is imported from batchAssignServices.js
-
+  reducer: {
+    auth: authSliceReducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [batchAssignApi.reducerPath]: batchAssignApi.reducer,
+    [courseApi.reducerPath]: courseApi.reducer,
+    [batchDetailsApi.reducerPath]: batchDetailsApi.reducer,
+    [enrollCourseApi.reducerPath]: enrollCourseApi.reducer,
+    [assignApi.reducerPath]: assignApi.reducer,
+        [paymentsApi.reducerPath]: paymentsApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(
+      authApi.middleware,
+      batchAssignApi.middleware,
+      courseApi.middleware,
+      batchDetailsApi.middleware,
+      enrollCourseApi.middleware,
+      assignApi.middleware,
+      paymentsApi.middleware,
+      rtkLogger // ✅ logs rejected queries
+    ),
+  devTools: process.env.NODE_ENV !== 'production', // ✅ enables Redux DevTools
 });
 
-export default Store
+export default Store;
 setupListeners(Store.dispatch);

@@ -3,7 +3,7 @@ import { Formik, FieldArray, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Loader from '../common/Loader';
 import { useState } from 'react';
-import { useEnrollInCourseMutation } from '../../../Services/admin/enrollFormServices';
+import { useEnrollInCourseMutation } from '../../../Services/student/enrollFormServices';
 
 const EnrollForm = () => {
   const { courseNames, user } = useSelector(state => state.auth);
@@ -37,6 +37,7 @@ const EnrollForm = () => {
           availability: course.availability,
         })),
       };
+      console.log("enrollmenttt payload",payload)
 
       const response = await enrollFn(payload).unwrap();
       console.log('Enrollment successful:', response);

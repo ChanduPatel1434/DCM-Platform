@@ -1,83 +1,105 @@
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useAddCourseMutation } from '../../../../Services/admin/coursesService';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const AddCourseForm = () => {
-
-  const [addCourse] = useAddCourseMutation();
-
-
-  const initialValues = {
-    name: '',
-    description: '',
-    instructor: '',
-    duration: '',
-  };
-
+const CourseModal = ({ handleClose, initialValues, onSubmitFn, mode = 'add' }) => {
   const validationSchema = Yup.object({
     name: Yup.string().required('Course name is required'),
     description: Yup.string().required('Description is required'),
     instructor: Yup.string().required('Instructor is required'),
     duration: Yup.string().required('Duration is required'),
+    price: Yup.number()
+      .typeError('Price must be a number')
+      .positive('Price must be positive')
+      .required('Price is required'),
   });
 
-  const handleSubmit = async (values, { resetForm }) => {
-    console.log(values);
-    try {
-      // await axios.post('/api/courses', values);
-      await addCourse(values).then(res => console.log(res)).catch(err => console.log(err))
-      alert('Course added successfully!');
-      resetForm();
-    } catch (error) {
-      console.error('Error adding course:', error);
-      alert('Failed to add course.');
-    }
-  };
+  const modalTitle = mode === 'edit' ? '✏️ Edit Course' : '📝 Add New Course';
+  const submitLabel = mode === 'edit' ? '💾 Update Course' : '🚀 Add Course';
+  return (
+    <AnimatePresence>
 
-  return (<>
-    <div className='w-50 m-auto'>
-      <div className="container p-4  rounded-4 shadow">
-        <h4 className="mb-4">📘 Add New Course</h4>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {() => (
-            <Form>
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">Course Name</label>
-                <Field name="name" className="form-control" />
-                <ErrorMessage name="name" component="div" className="text-danger mt-1" />
-              </div>
+      <motion.div
+        className="modal fade show d-block"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
+      >
+        <div className="modal-dialog modal-dialog-scrollable modal-md modal-dialog-centered">
+          <div className="modal-content shadow-lg rounded-4" style={{ maxHeight: '100vh', overflow: 'hidden' }}>
+            <div className="modal-header">
+              <h5 className="modal-title text-primary text-center">{modalTitle}</h5>
+              <button type="button" className="btn-close" onClick={handleClose}></button>
+            </div>
+            <div className="modal-body" style={{ overflowY: 'auto', maxHeight: '80vh', paddingBottom: '1rem' }}>
+              <motion.div
+                className="container"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+              >
+                <div className="card shadow-sm border-0 rounded-4 p-3 mx-auto" style={{ maxWidth: '500px' }}>
+                  <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={async (values, actions) => {
+                      console.log(values,"from courseMOdal")
+                      console.log(mode)
+                      console.log(onSubmitFn)
+                      try {
+                        await onSubmitFn(values);
 
-              <div className="mb-3">
-                <label htmlFor="description" className="form-label">Description</label>
-                <Field name="description" as="textarea" className="form-control" rows="3" />
-                <ErrorMessage name="description" component="div" className="text-danger mt-1" />
-              </div>
+                        if (mode === 'add') {
+                          actions.resetForm(); // ✅ safely resets form only in add mode
+                        }
 
-              <div className="mb-3">
-                <label htmlFor="instructor" className="form-label">Instructor</label>
-                <Field name="instructor" className="form-control" />
-                <ErrorMessage name="instructor" component="div" className="text-danger mt-1" />
-              </div>
+                        handleClose();
+                      } catch (error) {
+                        console.error(`${mode === 'edit' ? 'Update' : 'Add'} failed:`, error);
+                        alert(`❌ Failed to ${mode === 'edit' ? 'update' : 'add'} course.`);
+                      }
+                    }}
+                  >
+                    {() => (
+                      <Form>
+                        {[
+                          { name: 'name', label: 'Course Name' },
+                          { name: 'description', label: 'Description', as: 'textarea', rows: 3 },
+                          { name: 'instructor', label: 'Instructor' },
+                          { name: 'duration', label: 'Duration' },
+                          { name: 'price', label: 'Price (₹)' },
+                        ].map(({ name, label, as, rows }) => (
+                          <div className="mb-2" key={name}>
+                            <label htmlFor={name} className="form-label fw-semibold">{label}</label>
+                            <Field
+                              name={name}
+                              as={as || 'input'}
+                              rows={rows}
+                              className="form-control border-primary-subtle"
+                            />
+                            <ErrorMessage name={name} component="div" className="text-danger mt-1" />
+                          </div>
+                        ))}
 
-              <div className="mb-3">
-                <label htmlFor="duration" className="form-label">Duration</label>
-                <Field name="duration" className="form-control" />
-                <ErrorMessage name="duration" component="div" className="text-danger mt-1" />
-              </div>
+                        <div className="d-grid mt-3">
+                          <button type="submit" className="btn btn-primary btn-lg">
+                            {submitLabel}
+                          </button>
+                        </div>
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
 
-              <button type="submit" className="btn btn-success">Add Course</button>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </div>
-  </>
+    </AnimatePresence>
   );
 };
 
-export default AddCourseForm;
+export default CourseModal;

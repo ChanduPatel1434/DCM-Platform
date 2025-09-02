@@ -1,20 +1,28 @@
-import { useEffect } from "react";
-import { useLazyGetassignedStudentsQuery } from "../../../Services/admin/batchAssignServices";
-import StudentTable from "./StudentTable";
+
 import { useSelector } from "react-redux";
 import Loader from "../common/Loader";
+import { useGetAssignedEnrollmentsQuery } from "../../../Services/admin/assignService";
+import GenericTable from "../Tables/GenericTable";
+import { flattenEnrollments } from "../../../utils/formatchange";
 
 
 const AssignedStudents = () => {
-  
-  const [trigger, { isLoading, isSuccess, data }] = useLazyGetassignedStudentsQuery();
 
-  useEffect(() => {
-    trigger()
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
-  }, [trigger]);
-  const {courseNames}=useSelector(state=>state.auth)
+const {
+  data: assignedData,
+  isLoading,
+  isSuccess,
+  refetch
+} = useGetAssignedEnrollmentsQuery(undefined, {
+  refetchOnMountOrArgChange: true
+}); 
+ console.log(assignedData, "hiknkjdfn")
+
+  
+ const results=flattenEnrollments(assignedData?.enrollments)
+ console.log("resultsssssss",results)
+
+
 
   return (
     <div>
@@ -22,20 +30,22 @@ const AssignedStudents = () => {
 
       {/* ⏳ Loading State */}
       {isLoading && <Loader message="Fetching assigned students..." />}
-      
+
 
       {/* ✅ Success & Data Loaded */}
-      {isSuccess && data?.students?.length > 0 && (
-        <StudentTable
-          students={data.students}
-          availableCourses={courseNames}
-          showAssignControls={false}
-          showBatchColumn={true}
-        />
-      )}
+      {/* <button onClick={() => refetch()}>Refresh</button> */}
+   {isSuccess && assignedData?.enrollments?.length > 0 && (
+<GenericTable
+  data={results}
+  showAssignControls={false}
+  showBatchColumn={true}
+  isAssignedView={true}
+/>
+
+)}
 
       {/* 📭 No Data Fallback */}
-      {isSuccess && data?.students?.length === 0 && (
+      {isSuccess && assignedData?.students?.length === 0 && (
         <p>No assigned students found.</p>
       )}
     </div>

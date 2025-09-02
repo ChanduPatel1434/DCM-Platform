@@ -25,13 +25,13 @@ export const batchAssignApi = createApi({
 
     // Endpoint to assign students to a batch
 
-    assignStudentsToBatch: builder.mutation({
-      query: (data) => ({
-        url: `/assign-to`,
-        method: "POST",
-        body: data,
-      }),
-    }),
+    // assignStudentsToBatch: builder.mutation({
+    //   query: (data) => ({
+    //     url: `/assign-to`,
+    //     method: "POST",
+    //     body: data,
+    //   }),
+    // }),
     getassignedStudents:builder.query({
       query:()=>({
         url:`/assigned`,

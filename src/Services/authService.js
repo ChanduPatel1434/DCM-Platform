@@ -46,6 +46,6 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useSignupMutation ,useVerifyTokenQuery} = authApi;
+export const { useLoginMutation, useSignupMutation ,useVerifyTokenQuery,useLazyVerifyTokenQuery} = authApi;
 
 

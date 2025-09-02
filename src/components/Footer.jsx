@@ -1,11 +1,17 @@
 
 const Footer = () => {
+  const socialLinks = [
+    { name: "Facebook", icon: "facebook", url: "https://facebook.com/aslok" },
+    { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/design_career_metrics?igsh=angzdzR4Zmcwa25q" },
+    { name: "Linkedin", icon: "linkedin", url: "https://www.linkedin.com/company/design-career-metrics-pvt-ltd" },
+    { name: "Google", icon: "google", url: "https://share.google/56SnWlJ1e4J7z5fF4" }
+  ];
   return (
     <>
       {/* Footer Section */}
       <footer className="footer-section">
         {/* Footer Top */}
-        <div className="footer-top bg-footer " >
+        <div className="footer-top gradient-bg">
           <div className="container">
             <div className="row">
               <div className="col-md-9">
@@ -30,8 +36,8 @@ const Footer = () => {
                 <div className="footer-nav-wrap text-white">
                   <h4 className="text-white">GET IN TOUCH</h4>
                   <ul className="get-in-touch-list">
-                    <li className="d-flex align-items-center py-2">
-                      <span className="fas fa-map-marker-alt mr-2"></span>Office #407 &409 4th Floor, Jain Sadguru Image's Capital Park, Madhapur,Hyderabad
+                    <li className="d-flex align-items-start  py-2">
+                      <span className="fas fa-map-marker-alt mr-2 mt-2"></span>Office #407 &409 4th Floor, Jain Sadguru Image's Capital Park, Madhapur,Hyderabad
                     </li>
                     <li className="d-flex align-items-center py-2">
                       <span className="fas fa-envelope mr-2"></span> hr@designcareermetrics.com
@@ -52,7 +58,7 @@ const Footer = () => {
             <div className="row align-items-center justify-content-between">
               <div className="col-md-5 col-lg-5">
                 <p className="copyright-text pb-0 mb-0">
-                  Copyrights © 2020. All rights reserved by{" "}
+                  Copyrights © 2025. All rights reserved by{" "}
                   <a href="https://designcareermetrics.com" target="_blank" rel="noreferrer">
                     DCM
                   </a>
@@ -60,12 +66,12 @@ const Footer = () => {
               </div>
               <div className="col-md-7 col-lg-6 d-none d-md-block d-lg-block">
                 <ul className="list-unstyled social-list text-right mb-0">
-                  {["facebook", "twitter", "linkedin", "dribbble"].map((platform, i) => (
+                  {socialLinks.map(({ name, icon, url }, i) => (
                     <li className="list-inline-item tooltip-hover" key={i}>
-                      <a href="https://designcareermetrics.com" className="rounded">
-                        <span className={`ti-${platform}`}></span>
+                      <a href={url} target="_blank" rel="noopener noreferrer" className="rounded">
+                        <span className={`ti-${icon}`}></span>
                       </a>
-                      <div className="tooltip-item">{platform.charAt(0).toUpperCase() + platform.slice(1)}</div>
+                      <div className="tooltip-item">{name}</div>
                     </li>
                   ))}
                 </ul>

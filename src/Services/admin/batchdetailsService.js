@@ -1,34 +1,27 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { createApiService } from "../../config/apiConfig";
 
 export const batchDetailsApi = createApi({
-  reducerPath: "batchDetailsApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:7777/admin/batchs",
-      // baseUrl: "https://serverfordcm.onrender.com/admin/batchs",
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem("authToken");
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
+  ...createApiService({
+    reducerPath: "batchDetailsApi",
+    baseUrl: "/admin/batchs",
+    tagTypes: ["Batch"],
   }),
-  tagTypes: ["Batch"],
   endpoints: (builder) => ({
-    getBatchNames: builder.query({
+    getIdAndBatchNames: builder.query({
       query: () => ({
-        url: "/batchNames",
+        url: "/allbatchNames",
         method: "GET",
       }),
       providesTags: ["Batch"],
       refetchOnMountOrArgChange: true,
     }),
     getBatchstudents: builder.query({
-      query: (batchname) => ({
-        url: `/${encodeURIComponent(batchname)}`,
+      query: (batchName) => ({
+        url: `/${encodeURIComponent(batchName)}`,
         method: "GET",
       }),
-      providesTags: (result, error, batchname) => [{ type: "Batch", id: batchname }],
+      providesTags: (result, error, batchName) => [{ type: "Batch", id: batchName }],
       refetchOnMountOrArgChange: true,
     }),
     addBatch: builder.mutation({
@@ -47,12 +40,23 @@ export const batchDetailsApi = createApi({
       }),
       invalidatesTags: (result, error, { batchId }) => [{ type: "Batch", id: batchId }],
     }),
+    deleteBatch: builder.mutation({
+      query: (batchId) => ({
+        url: `/deleteBatch/${batchId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, batchId) => [{ type: "Batch", id: batchId }],
+    }),
   }),
 });
 
 export const {
-  useGetBatchNamesQuery,
+  useGetIdAndBatchNamesQuery,
   useGetBatchstudentsQuery,
+  useLazyGetIdAndBatchNamesQuery,
+  useLazyGetBatchstudentsQuery,
   useAddBatchMutation,
   useUpdateBatchMutation,
+  useDeleteBatchMutation,
+  
 } = batchDetailsApi;
