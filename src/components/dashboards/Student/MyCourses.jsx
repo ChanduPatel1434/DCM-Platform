@@ -62,6 +62,7 @@ const Mycourses = () => {
       feedback: 'Pending',
       resources: ['Postman Collections', 'API Docs']
     }
+    
   ];
   return <div className="content-page bg-light">
         <div className="container py-4">
