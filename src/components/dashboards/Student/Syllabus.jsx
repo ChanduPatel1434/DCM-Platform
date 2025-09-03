@@ -1,103 +1,73 @@
-
-
-
-
+import syllabusData from '../../../data/syllabus.json';
+import { useState, useEffect } from 'react';
 
 const Syllabus = () => {
-    
-    return (
-        <>
-            <div className="content-page bg-light">
-                <div className="m-3">
-                    <div className="mb-4">
+  const [javaFullStack, setJavaFullStack] = useState(null);
 
-                    <h1>Syllabus</h1>
-                </div>
-                <div className="container-fluid">
-                    <div className="row ">
-                        <div className="col-xl-12 mt-2 col-lg-12 col-md-12  ">
-                            <div className="card">
+  useEffect(() => {
+    const javaFS = syllabusData.find(item => item.title === "Java Full Stack");
+    setJavaFullStack(javaFS);
+  }, []);
 
-                                <div className="card-header">
-                                    <h5 className="card-title mb-0">Accordion Example Flush</h5>
-                                </div>
-                                {/* <!-- end card header --> */}
+  if (!javaFullStack) return <p>Loading syllabus...</p>;
 
-                                <div className="card-body">
-                                    <div className="accordion accordion-flush" id="accordionFlushExample">
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseO" aria-expanded="false" aria-controls="flush-collapseO">
-                                                    Accordion Item #1
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseO" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion body.</div>
-                                            </div>
-                                        </div>
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    Accordion Item #1
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion body.</div>
-                                            </div>
-                                        </div>
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOnee " aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    Accordion Item #1
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseOnee" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion body.</div>
-                                            </div>
-                                        </div>
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOn" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    Accordion Item #1
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseOn" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the first item's accordion body.</div>
-                                            </div>
-                                        </div>
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                                    Accordion Item #2
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                                            </div>
-                                        </div>
-                                        <div className="accordion-item">
-                                            <h2 className="accordion-header">
-                                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                                    Accordion Item #3
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                                <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> className. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                {/* <!-- end card body --> */}
-                            </div>
-                            {/* <!-- end card --> */}
-                        </div>
-                       
-                        
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="content-page bg-light">
+      <div className="m-3">
+        <div className="mb-4">
+          <h1>{javaFullStack.title}</h1>
+          <p>{javaFullStack.description}</p>
         </div>
-    </>)
-}
-export default Syllabus
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xl-12 mt-2 col-lg-12 col-md-12">
+              <div className="card">
+                <div className="card-header">
+                  <h5 className="card-title mb-0">Course Syllabus</h5>
+                </div>
+                <div className="card-body">
+                  <div className="accordion accordion-flush" id="accordionFlushExample">
+                    {javaFullStack.syllabus.map((topic, idx) => (
+                      <div className="accordion-item" key={idx}>
+                        <h2 className="accordion-header" id={`flush-heading${idx}`}>
+                          <button1
+                            className="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target={`#flush-collapse${idx}`}
+                            aria-expanded="false"
+                            aria-controls={`flush-collapse${idx}`}
+                          >
+                            <span style={{
+                              background: '#4356e2',
+                              color: 'white',
+                              borderRadius: '50%',
+                              padding: '0.5em 1em',
+                              marginRight: '1em'
+                            }}>
+                              {idx + 1}
+                            </span>
+                            {topic.title}
+                          </button1>
+                        </h2>
+                        <div
+                          id={`flush-collapse${idx}`}
+                          className="accordion-collapse collapse"
+                          data-bs-parent="#accordionFlushExample"
+                        >
+                          <div className="accordion-body">{topic.description}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Syllabus;

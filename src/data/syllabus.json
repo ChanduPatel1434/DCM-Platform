@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Java Full Stack",
+    "description": "Master front-end and back-end development using Java. Learn Spring Boot, RESTful APIs, JSP, and database integration to build scalable web applications.",
+    "syllabus": [
+      {
+        "title": "Java Fundamentals and OOP",
+        "description": "Java Fundamentals cover the core principles and building blocks of Java, including its environment (JVM, JRE, JDK), syntax, variables, data types, operators, control structures (if, switch, loops), and basic input/output. These essentials enable you to write simple programs and understand how Java executes code, laying the groundwork for more advanced programming."
+      },
+      {
+        "title": "HTML/CSS/JS Basics",
+        "description": "Learn the foundational web technologies: HTML for structure, CSS for styling, and JavaScript for interactivity. This module covers responsive design, DOM manipulation, and basic scripting."
+      },
+      {
+        "title": "Spring Boot Framework",
+        "description": "Understand the Spring Boot framework for building enterprise-grade applications quickly and efficiently. Topics include dependency injection, auto-configuration, and creating REST APIs."
+      },
+      {
+        "title": "RESTful APIs with Spring",
+        "description": "Build RESTful web services using Spring, handle HTTP requests/responses, design endpoints, and integrate with front-end and mobile applications."
+      },
+      {
+        "title": "JSP and Servlet Integration",
+        "description": "Discover how to use JSP and Servlets for building dynamic web pages and handling server-side business logic in Java applications."
+      },
+      {
+        "title": "Database Connectivity (JDBC/MySQL)",
+        "description": "Learn how to connect Java applications to databases using JDBC, execute SQL queries, and interact with MySQL for persistent storage."
+      },
+      {
+        "title": "Deploying Java Apps to the Web",
+        "description": "Understand deployment best practices, packaging your app, and serving Java applications over the web using servers like Tomcat."
+      }
+    ]
+  }
+]
