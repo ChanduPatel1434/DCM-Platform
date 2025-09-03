@@ -4,12 +4,16 @@
     "name": "Sameer",
     "email": "sameer@example.com"
   },
+
   "classes": [
     {
       "id": "c101",
       "title": "React Basics",
       "instructor": "Anita Sharma",
-      "startTime": "2025-08-12T17:00:00+05:30",
+      "schedule": {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "time": "19:00"
+      },
       "zoomLink": "https://zoom.us/j/123456789",
       "recordingLink": "https://yourplatform.com/recordings/react-basics"
     },
@@ -17,7 +21,10 @@
       "id": "c102",
       "title": "Advanced Git Workflows",
       "instructor": "Rohit Mehta",
-      "startTime": "2025-07-11T17:30:00+05:30",
+      "schedule": {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "time": "08:00"
+      },
       "zoomLink": "https://zoom.us/j/987654321",
       "recordingLink": "https://yourplatform.com/recordings/git-workflows"
     },
@@ -25,9 +32,13 @@
       "id": "c103",
       "title": "Frontend Debugging Techniques",
       "instructor": "Priya Kapoor",
-      "startTime": "2025-08-07T18:30:00+05:30",
+      "schedule": {
+        "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "time": "10:00"
+      },
       "zoomLink": "https://zoom.us/j/192837465",
       "recordingLink": "https://yourplatform.com/recordings/frontend-debugging"
     }
   ]
+
 }

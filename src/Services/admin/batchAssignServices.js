@@ -3,8 +3,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const batchAssignApi = createApi({
   reducerPath: "batchAssignApi",
   baseQuery: fetchBaseQuery({
-    //  baseUrl: "http://localhost:7777/admin" ,
-      baseUrl: "https://serverfordcm.onrender.com/admin",
+     baseUrl: "http://localhost:7777/admin" ,
+      // baseUrl: "https://serverfordcm.onrender.com/admin",
      prepareHeaders: (headers) => {
       const token = localStorage.getItem('authToken');
       console.log(token);
@@ -25,13 +25,13 @@ export const batchAssignApi = createApi({
 
     // Endpoint to assign students to a batch
 
-    assignStudentsToBatch: builder.mutation({
-      query: (data) => ({
-        url: `/assign-to`,
-        method: "POST",
-        body: data,
-      }),
-    }),
+    // assignStudentsToBatch: builder.mutation({
+    //   query: (data) => ({
+    //     url: `/assign-to`,
+    //     method: "POST",
+    //     body: data,
+    //   }),
+    // }),
     getassignedStudents:builder.query({
       query:()=>({
         url:`/assigned`,

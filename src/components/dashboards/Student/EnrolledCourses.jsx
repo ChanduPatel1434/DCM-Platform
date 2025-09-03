@@ -2,6 +2,8 @@
 import React from 'react';
 
 const EnrolledCourses = () => {
+
+  
   const courses = [
     { name: 'React Fundamentals', progress: 78 },
     { name: 'UI/UX Design', progress: 42 },

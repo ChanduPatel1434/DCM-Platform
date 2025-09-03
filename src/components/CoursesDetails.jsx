@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import data from "../data/data.json";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "./Footer"
 import { useState } from "react";
 
 const CourseDetail = () => {
@@ -15,14 +15,7 @@ const CourseDetail = () => {
         setActiveIndex(activeIndex === idx ? null : idx);
     };
 
-    const overviews = [
-        "Introduction to core concepts and prerequisites.",
-        "In-depth exploration of foundational topics.",
-        "Practical applications and mini-projects.",
-        "Advanced techniques and optimization strategies.",
-        "Capstone project or final review."
-        // Add or adjust as needed!
-    ];
+
 
 
 
@@ -33,6 +26,7 @@ const CourseDetail = () => {
     console.log(category)
     console.log(subcategory)
     const normalizedCategory = category?.toLowerCase().replace(/-/g, '');
+    console.log(normalizedCategory)
 
     const categoryMap = {
         webdevelopment: data.webDevelopment,
@@ -40,9 +34,11 @@ const CourseDetail = () => {
         uiuxdevelopment: data.uiuxDevelopment,
         testing: data.testing,
         cybersecurity:data.cyberSecurity,
-        communication:data.Communication
+        communication:data.Communication,
+        appdevelopment:data.appDevelopment
     };
     const selectedCourses = categoryMap[normalizedCategory];
+    console.log(selectedCourses)
 
     const formatCategory = (str) =>
         str
@@ -51,10 +47,11 @@ const CourseDetail = () => {
     const selectedCourse = subcategory
         ? selectedCourses?.find(course => {
             const slug = course.path.split('/').pop().toLowerCase();
+            console.log(slug)
             return slug === subcategory;
         })
         : null;
-    
+    console.log(selectedCourse)
 
 
 
@@ -109,8 +106,8 @@ const CourseDetail = () => {
                                 {selectedCourses?.map((course, index) => (
                                     <div className="col-lg-4 col-md-6 col-sm-6 d-flex" key={index}>
                                         <div className="services-single animated-hover text-center p-5 my-md-3 my-lg-3 my-sm-0 shadow-sm white-bg rounded w-100">
-                                            <img src={course.img} alt={course?.title} width="80" className="mb-3" />
-                                            <h5>{course?.title}</h5>
+                                            <img src={course.img} alt={course.title} width="80" className="mb-3" />
+                                            <h5>{course.title}</h5>
                                             <p className="mb-2">{course.description}</p>
                                             <Link to={course.path} className="detail-link mt-4">
                                                 Get More Info <span className="ti-arrow-right"></span>
@@ -165,7 +162,7 @@ const CourseDetail = () => {
                                                 style={{ backgroundColor: '#fff', borderTop: '1px solid #ddd' }}
                                             >
                                                 <p className="mb-0 text-muted">
-                                                    {overviews[idx] || "Overview coming soon..."}
+                                                    {selectedCourse?.overview[idx] || "Overview coming soon..."}
                                                 </p>
                                             </div>
                                         )}

@@ -1,13 +1,6 @@
-import {
-  getCoreRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-} from '@tanstack/table-core';
+import {getCoreRowModel,getSortedRowModel,getPaginationRowModel,} from '@tanstack/table-core';
 
-import {
-  useReactTable,
-  flexRender,
-} from '@tanstack/react-table';
+import {useReactTable,flexRender,} from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 
 const StudentTable = ({
@@ -20,7 +13,7 @@ const StudentTable = ({
   onRemove,
 }) => {
   const [selectedCourse, setSelectedCourse] = useState('All');
-  const [selectedBatch, setSelectedBatch] = useState('');
+  const [selectedBatch, setSelectedBatch] = useState(''); 
   const [rowSelection, setRowSelection] = useState({});
 
   // Flatten and sanitize student data
