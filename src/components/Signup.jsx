@@ -1,3 +1,4 @@
+import OtpPage from "./Otppage";
 import SignupForm from "./SignupForm";
 
 

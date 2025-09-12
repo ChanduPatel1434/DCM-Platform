@@ -1,13 +1,18 @@
-import { useEffect, } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import Loader from "../common/Loader";
-import { useAssignStudentsToBatchMutation, useLazyGetUnassignedEnrollmentsQuery } from "../../../Services/admin/assignService";
+import { 
+  useAssignStudentsToBatchMutation, 
+  useLazyGetUnassignedEnrollmentsQuery 
+} from "../../../Services/admin/assignService";
 import GenericTable from "../Tables/GenericTable";
 import { flattenEnrollments, transformAssignmentPayload } from "../../../utils/formatchange";
-
+import { useCourses } from "../../../hooks/useCourses";
+import { useGetIdAndBatchNamesQuery } from "../../../Services/admin/batchdetailsService";
+import { toast } from "react-toastify";
 
 const UnassignedStudents = () => {
-  const [triggerAssign] = useAssignStudentsToBatchMutation();
+  const { courses = [], isLoading: isCoursesLoading } = useCourses();
+  const [triggerAssign, { isLoading: isAssigning }] = useAssignStudentsToBatchMutation();
 
   const [
     triggerUnassignedEnrollments,
@@ -17,76 +22,73 @@ const UnassignedStudents = () => {
       isError: isUnassignedError,
       isSuccess: isUnassignedSuccess,
       error: unassignedError,
+    }
+  ] = useLazyGetUnassignedEnrollmentsQuery();
 
-    }] = useLazyGetUnassignedEnrollmentsQuery()
+  const { data: batches = [], isLoading: isBatchesLoading } = useGetIdAndBatchNamesQuery();
 
-
-
-  const { courseNames, batchList } = useSelector(state => state.auth)
-  const FilteredCourses = courseNames.map((course) => ({
+  const FilteredCourses = courses.map(course => ({
     title: course.name,
     _id: course._id
-  }))
- 
-  const FilteredBatch = batchList.map(({batchName ,_id}) => ({ title: batchName, _id: _id }))
- 
+  }));
 
+  const FilteredBatch = batches.map(({ batchName, _id }) => ({
+    title: batchName,
+    _id
+  }));
 
   useEffect(() => {
-    // Fetch  unassigned students 
-    triggerUnassignedEnrollments().unwrap()
-      .then((res) => console.log("Unassigned students:", res))
-      .catch((err) => console.error("Unassigned fetch failed:", err));
-
-
-  }, []);
-
+    triggerUnassignedEnrollments()
+      .unwrap()
+      .catch(err => {
+        console.error("Unassigned fetch failed:", err);
+        toast.error("Failed to fetch unassigned students");
+      });
+  }, [triggerUnassignedEnrollments]);
 
   const handleAssign = async (payload) => {
     const transformedPayload = transformAssignmentPayload(payload);
-    console.log(transformedPayload);
     try {
-      const result = await triggerAssign(transformedPayload).unwrap();
-      console.log("Assigned data:", result);
+      await triggerAssign(transformedPayload).unwrap();
+      toast.success("Students assigned successfully");
+      triggerUnassignedEnrollments(); // refresh list
     } catch (err) {
       console.error("Failed to assign students:", err);
+      toast.error("Failed to assign students");
     }
   };
 
- 
- const results=flattenEnrollments(unassignedData?.enrollments)
- console.log("resultsssssss",results)
+  const results = flattenEnrollments(unassignedData?.enrollments || []);
 
+  // Combined loading state
+  if (isUnassignedLoading || isCoursesLoading || isBatchesLoading) {
+    return <Loader message="Loading data..." />;
+  }
 
-  if (isUnassignedLoading) return <Loader message="Fetching unassigned students..." />;
-  if (isUnassignedError)
-    return <p>Error: {(unassignedError)?.message}</p>;
+  if (isUnassignedError) {
+    return <p className="text-danger">Error: {unassignedError?.message || "Unknown error"}</p>;
+  }
 
-  if (isUnassignedSuccess && unassignedData?.enrollments?.length === 0)
+  if (isUnassignedSuccess && results.length === 0) {
     return <p>No unassigned students found.</p>;
+  }
 
   return (
     <div>
       <h2>Unassigned Students</h2>
-
-      {
-        isUnassignedSuccess && (
-          <GenericTable 
-            data={results}
-            availableCourses={FilteredCourses}
-            availableBatches={FilteredBatch}
-            showAssignControls={true}
-            showBatchColumn={true}
-            onAssignBatch={handleAssign}
-            isAssignedView={false}
-            onRemove={(values) => console.log(values)}
-
-
-          />
-
-        )
-      }
-
+      {isUnassignedSuccess && (
+        <GenericTable
+          data={results}
+          availableCourses={FilteredCourses}
+          availableBatches={FilteredBatch}
+          showAssignControls
+          showBatchColumn
+          onAssignBatch={handleAssign}
+          isAssignedView={false}
+          onRemove={(values) => console.log(values)}
+          isAssigning={isAssigning}
+        />
+      )}
     </div>
   );
 };

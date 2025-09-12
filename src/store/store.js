@@ -11,10 +11,16 @@ import { assignApi } from "../Services/admin/assignService";
 
 import rtkLogger from "./rtkLogger";
 import { paymentsApi } from "../Services/paymentServices/paymentServices";
-
+import { courseCategoryApi } from "../Services/admin/coursesCategoryServices";
+import { transactionApi } from "../Services/paymentServices/transactionServices";   
+import { cartApi } from "../Services/student/cartServices";
+import cartSliceReducer from "../features/cartSlice"
+import { cartPersistMiddleware } from "../middleware/cartPersistMiddleware";
+import { zoomApi } from "../Services/admin/zoomService";
 const Store = configureStore({
   reducer: {
     auth: authSliceReducer,
+    cart:cartSliceReducer,
     [authApi.reducerPath]: authApi.reducer,
     [batchAssignApi.reducerPath]: batchAssignApi.reducer,
     [courseApi.reducerPath]: courseApi.reducer,
@@ -22,6 +28,10 @@ const Store = configureStore({
     [enrollCourseApi.reducerPath]: enrollCourseApi.reducer,
     [assignApi.reducerPath]: assignApi.reducer,
         [paymentsApi.reducerPath]: paymentsApi.reducer,
+        [courseCategoryApi.reducerPath]:courseCategoryApi.reducer,
+        [transactionApi.reducerPath]:transactionApi.reducer,
+        [cartApi.reducerPath]:cartApi.reducer,
+        [zoomApi.reducerPath]:zoomApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -32,6 +42,11 @@ const Store = configureStore({
       enrollCourseApi.middleware,
       assignApi.middleware,
       paymentsApi.middleware,
+      courseCategoryApi.middleware,
+      transactionApi.middleware,
+      cartApi.middleware,
+      cartPersistMiddleware,
+      zoomApi.middleware,
       rtkLogger // ✅ logs rejected queries
     ),
   devTools: process.env.NODE_ENV !== 'production', // ✅ enables Redux DevTools

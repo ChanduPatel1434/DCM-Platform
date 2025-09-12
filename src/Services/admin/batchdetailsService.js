@@ -17,8 +17,8 @@ export const batchDetailsApi = createApi({
       refetchOnMountOrArgChange: true,
     }),
     getBatchstudents: builder.query({
-      query: (batchName) => ({
-        url: `/${encodeURIComponent(batchName)}`,
+      query: (id) => ({
+        url: `/${id}`,
         method: "GET",
       }),
       providesTags: (result, error, batchName) => [{ type: "Batch", id: batchName }],

@@ -8,6 +8,38 @@ import './student.css'; // Assuming you have a CSS file for styles
 
 const StudentCoursesDetails = () => {
     const paidCourses = data.paidCourses
+    const courseSlides = [
+  {
+    title: "MERN",
+    subtitle: "By Industry Experts",
+    description: "Learn MongoDB, Express, React, and Node.js to become a job-ready fullstack developer.",
+    badge: "New Batch: 25 August",
+    color: "#e67e22",
+    bg: "linear-gradient(135deg, #eaf4fe 0%, #dbd1f9 100%)",
+    feature: { title: "Live Projects", desc: "Hands-on real world applications" },
+    btnColor: "",
+  },
+  {
+    title: "MEAN",
+    subtitle: "By Expert Mentors",
+    description: "Master MongoDB, Angular, React, and Node.js for building enterprise-level applications.",
+    badge: "New Batch: 1 September",
+    color: "#0984e3",
+    bg: "linear-gradient(135deg, #dff9fb 0%, #c7ecee 100%)",
+    feature: { title: "Hybrid Projects", desc: "Angular + React based apps" },
+    btnColor: "#0984e3",
+  },
+  {
+    title: "Manual + Automation Testing",
+    subtitle: "By Testing Experts",
+    description: "Become a professional tester with expertise in Manual, Selenium, and Automation tools.",
+    badge: "New Batch: 10 September",
+    color: "#d63031",
+    bg: "linear-gradient(135deg, #ebc7fd 0%, #f290f5 100%)",
+    feature: { title: "Automation Labs", desc: "Hands-on Selenium & tools" },
+    btnColor: "#d63031",
+  },
+];
 
     useEffect(() => {
         // Initialize carousel after component mounts and Bootstrap is loaded
@@ -61,7 +93,85 @@ const StudentCoursesDetails = () => {
 
     return (
         <>
-            <Container className="mt-5">
+
+
+        <div className="container-fluid py-5">
+  <div id="courseCarousel" className="carousel slide" data-bs-ride="carousel">
+    
+    {/* Indicators */}
+    <div className="carousel-indicators">
+      {courseSlides.map((_, index) => (
+        <button
+          key={index}
+          type="button"
+          data-bs-target="#courseCarousel"
+          data-bs-slide-to={index}
+          className={index === 0 ? "active" : ""}
+          aria-current={index === 0 ? "true" : undefined}
+          aria-label={`Slide ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+
+    {/* Slides */}
+    <div className="carousel-inner">
+      {courseSlides.map((slide, index) => (
+        <div key={index} className={`carousel-item ${index === 0 ? "active" : ""}`}>
+          <div
+            className="course-slide p-4"
+            style={{ background: slide.bg, minHeight: "300px" }}
+          >
+            <div className="badge-notification">{slide.badge}</div>
+            <div className="row align-items-center text-center text-md-start">
+              <div className="col-md-6">
+                <h1 className="course-title" style={{ color: slide.color }}>
+                  {slide.title} <span className="text-secondary">Stack</span>
+                </h1>
+                <p className="course-subtitle">
+                  {slide.subtitle} <br />
+                  {slide.description}
+                </p>
+              </div>
+              <div className="col-md-3">
+                <div className="feature-card red-title">
+                  <div className="feature-title">{slide.feature.title}</div>
+                  <div className="feature-desc">{slide.feature.desc}</div>
+                </div>
+              </div>
+              <div className="col-md-3 d-flex justify-content-center justify-content-md-start">
+                <button
+                  className="enroll-btn"
+                  style={{ background: slide.btnColor || undefined }}
+                >
+                  Enroll Now →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Controls */}
+    <button
+      className="carousel-control-prev bg-transparent"
+      type="button"
+      data-bs-target="#courseCarousel"
+      data-bs-slide="prev"
+    >
+      <span className="visually-hidden">Previous</span>
+    </button>
+    <button
+      className="carousel-control-next bg-transparent"
+      type="button"
+      data-bs-target="#courseCarousel"
+      data-bs-slide="next"
+    >
+      <span className="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+            <Container >
                 <div className="container-fluid py-5">
                     <div id="courseCarousel" className="carousel slide" data-bs-ride="carousel">
                         {/* Indicators */}

@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Topbar from "./Topbar/Topbar";
 import useAuthCheck from "../../hooks/useAuthCheck";
 import Loader from "./common/Loader"; // Optional: your custom loader component
+import { ModalProvider } from "./Admin/Modals/ModalContext";
 
 const Dashboard = () => {
   const { isChecking } = useAuthCheck();
@@ -14,9 +15,11 @@ const Dashboard = () => {
     <div id="app-layout" className="dashboard-container">
       <Topbar />
       <Sidebar />
-      <main className="dashboard-content">
+      <main className="dashboard-content p-0 m-0">
         <Suspense fallback={<Loader message="Loading module..." />}>
-          <Outlet />
+          <ModalProvider>
+            <Outlet />
+          </ModalProvider>
         </Suspense>
       </main>
     </div>

@@ -65,15 +65,15 @@ const Mycourses = () => {
   //     resources: ['Postman Collections', 'API Docs']
   //   }
   // ];
-  const { enrolledData } = useSelector(state => state.auth)
-  console.log(enrolledData, 'inmycourse')
-  const courses = transformStudentEnrollmentData(enrolledData)
+  const ll = useSelector(state => state.auth)
+  console.log(ll, 'inmycourse')
+  // const courses = transformStudentEnrollmentData(enrolledData)
 
   return <div className="content-page bg-light">
     <div className="container py-4">
       <h4 className="mb-4 text-dark">📚 All Enrolled Courses</h4>
       <div className="row g-4">
-        {courses.map((course, idx) => (
+        {/* {courses?.map((course, idx) => (
           <div key={idx} className="col-md-6 col-lg-4">
 
             <CourseCard
@@ -82,7 +82,7 @@ const Mycourses = () => {
               onViewTasks={(id) => console.log("Viewing tasks for", id)}
             />
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   </div>

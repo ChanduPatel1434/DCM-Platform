@@ -10,8 +10,8 @@ const Maindashboard = () => {
 
   
 return (
-    <div className="content-page">
-        <div className="content">
+    <div className="content-page p-0 relx ">
+        <div className="content ">
             {
                 loading ? (
                     <div className="dashboard-loader">

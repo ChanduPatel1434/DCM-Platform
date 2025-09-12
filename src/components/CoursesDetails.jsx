@@ -3,6 +3,7 @@ import data from "../data/data.json";
 import { Link } from "react-router-dom";
 import Footer from "./Footer"
 import { useState } from "react";
+import CourseDetails from "./DeepCourseDetails";
 
 const CourseDetail = () => {
 
@@ -22,9 +23,9 @@ const CourseDetail = () => {
 
 
 
-    const { category, subcategory } = useParams();
+    const { category, courseId } = useParams();
     console.log(category)
-    console.log(subcategory)
+    console.log(courseId)
     const normalizedCategory = category?.toLowerCase().replace(/-/g, '');
     console.log(normalizedCategory)
 
@@ -44,11 +45,11 @@ const CourseDetail = () => {
         str
             ?.replace(/-/g, ' ')
             .replace(/\b\w/g, (char) => char.toUpperCase());
-    const selectedCourse = subcategory
+    const selectedCourse = courseId
         ? selectedCourses?.find(course => {
             const slug = course.path.split('/').pop().toLowerCase();
             console.log(slug)
-            return slug === subcategory;
+            return slug === courseId;
         })
         : null;
     console.log(selectedCourse)
@@ -62,6 +63,8 @@ const CourseDetail = () => {
         <>
             <div className="main">
 
+          {!selectedCourse && (    
+          <>
                 <section
                     className="hero-section ptb-100 gradient-overlay"
                     style={{
@@ -78,13 +81,13 @@ const CourseDetail = () => {
                         <div className="row justify-content-center">
                             <div className="col-md-8 col-lg-7">
                                 <div className="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">
-                                    {subcategory ? (<h1 className="text-white mb-0">{formatCategory(selectedCourse.title)} </h1>) : (<h1 className="text-white mb-0">{formatCategory(category)} </h1>)}
+                                    {courseId ? (<h1 className="text-white mb-0">{formatCategory(selectedCourse.title)} </h1>) : (<h1 className="text-white mb-0">{formatCategory(category)} </h1>)}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                {!selectedCourse && (
+              
 
 
 
@@ -117,14 +120,15 @@ const CourseDetail = () => {
                                 ))}
                             </div>
                         </div>
-                    </section>
+                    </section></>
 
                 )}
 
                 {selectedCourse && (
                     // Show syllabus or detailed view
                     <>
-                        <div className="container py-5">
+                    <CourseDetails/>
+                        {/* <div className="container py-5">
                             <h6 className="text-center mb-4">{selectedCourse.description}</h6>
                             <h4 className="text-center mb-5">Syllabus Roadmap</h4>
 
@@ -169,7 +173,7 @@ const CourseDetail = () => {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div> */}
 
                     </>
 

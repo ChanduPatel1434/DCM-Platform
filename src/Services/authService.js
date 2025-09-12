@@ -1,51 +1,88 @@
 
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import { createApi, } from "@reduxjs/toolkit/query/react";
+import { createApiService } from "../config/apiConfig";
 export const authApi = createApi({
-  reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:7777",
-    // baseUrl: "https://serverfordcm.onrender.com/",
-    
-    prepareHeaders: (headers) => {
-      const token = localStorage.getItem('authToken');
-      if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+
+    ...createApiService({
+          reducerPath: 'authApi',
+          baseUrl:'/auth',
+          tagTypes:["auth"]
+             }),
+
   endpoints: (builder) => ({
     Login: builder.mutation({
       query: (credentials) => ({
-        url: "auth/login",
+        url: "/login",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
       }),
+      invalidatesTags:['auth']
     }),
     Signup: builder.mutation({
       query: (credentials) => ({
-        url: "auth/signup",
+        url: "/signup",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
       }),
+      invalidatesTags:['auth']
     }),
     verifyToken: builder.query({
       query: () => ({
-        url: 'auth/verify',
+        url: '/verify',
         method: 'GET',
       }),
+      providesTags:['auth']
     }),
+    sendVerificationEmail: builder.mutation({
+      query: (body) => ({
+        url: '/send-verification-email',
+        method: 'POST',
+        body
+      }),
+       invalidatesTags:['auth']
+    }),
+      verifyEmail: builder.query({
+      query: ({ ivfm, id }) => ({
+        url: `/verify-email?ivfm=${ivfm}&id=${id}`,
+        method: 'GET'
+      }),
+       providesTags:['auth']
+    }),
+     forgotPassword: builder.mutation({
+      query: (email) => ({
+        url: '/forgot-password',
+        method: 'POST',
+        body: { email }
+      }),
+       invalidatesTags:['auth']
+
+    }),
+    resetPassword: builder.mutation({
+      query: ({ email, rspd, newPassword }) => ({
+        url: '/reset-password',
+        method: 'POST',
+        body: { email, rspd, newPassword }
+      }),
+      invalidatesTags:['auth']
+
+    })
+
+
+
 
   }),
 });
 
-export const { useLoginMutation, useSignupMutation ,useVerifyTokenQuery,useLazyVerifyTokenQuery} = authApi;
+export const { useLoginMutation, useSignupMutation ,useVerifyTokenQuery,
+  useSendVerificationEmailMutation,
+  useVerifyEmailQuery,
+  useForgotPasswordMutation, useResetPasswordMutation,
+  useLazyVerifyTokenQuery} = authApi;
 
 

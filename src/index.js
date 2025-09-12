@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+import './index.css'; // Tailwind here
+import './App.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Store from './store/store';
+import Navbar from "./components/Navbar";
+import LiveChatButton from "./components/LiveChatButton";
+import { Toaster } from 'react-hot-toast';
+import { NotificationProvider } from './components/dashboards/notifications/notificationContext';
+import { Outlet } from "react-router-dom";
 
 // Public Pages
 import HomePage from './components/HomePage';
@@ -28,29 +32,47 @@ import Mycourses from './components/dashboards/Student/MyCourses';
 import Setting from './components/dashboards/Student/Settings';
 import Syllabus from './components/dashboards/Student/Syllabus';
 import Calendar from './components/dashboards/Student/Calender';
-import EnrollForm from './components/dashboards/Student/EnrollForm';
 
 // Dashboard (Admin)
-
 import AssignStudents from './components/dashboards/Admin/AssignStudents';
 import UnassignedStudents from './components/dashboards/Admin/UnassignedStudents';
 import AssignedStudents from './components/dashboards/Admin/AssignedStudents';
-import AddCourseForm from './components/dashboards/Admin/Addcourse/AddCourse';
 import Courses from './components/dashboards/Admin/Addcourse/Courses';
-import CourseTable from './components/dashboards/Admin/Addcourse/CoursesTable';
-import Batch from './components/dashboards/Admin/Batchs/Batch';
-import CreateBatch from './components/dashboards/Admin/Batchs/CreateBatch';
-import BatchStudentViewer from './components/dashboards/Admin/Batchs/AllBatchs';
 import AddAdmin from './components/dashboards/Admin/AddAdmin/AddAdmin';
+import EmailVerification from './utils/EmailVerification';
+import CourseList from './components/dashboards/Student/CoursesList';
+import ForgotPassword from './components/Forgotpassword';
+import BatchList from './components/dashboards/Admin/Batchs/AllBatchs';
+import ChangePassword from './components/ChangePassword';
+
+// Create a layout component for pages that need the full App structure
+const AppLayout = () => (
+  <>
+    <Toaster position="top-right" />
+    <NotificationProvider>
+      <Navbar />
+      <Outlet />
+      <LiveChatButton />
+    </NotificationProvider>
+  </>
+);
+
+// Create a minimal layout for auth pages that don't need navbar/chat
+const AuthLayout = () => (
+  <>
+    <Toaster position="top-right" />
+    <Outlet />
+  </>
+);
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <AppLayout />, // Uses navbar, chat, etc.
     children: [
       { path: '/', element: <HomePage /> },
       { path: 'trainings', element: <Trainings /> },
-      { path: 'trainings/:category/:subcategory?', element: <CourseDetail /> },
+      { path: 'trainings/:category/:courseId?', element: <CourseDetail /> },
       { path: 'contact-us', element: <ContactUs /> },
       { path: 'about-us', element: <AboutUs /> },
       { path: 'man-power', element: <ManPower /> },
@@ -58,6 +80,15 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'sign-up', element: <Signup /> },
       { path: '*', element: <ErrorPage /> }
+    ]
+  },
+  {
+    path: '/',
+    element: <AuthLayout />, // No navbar, no chat - just toast
+    children: [
+      { path: 'password-reset', element: <ForgotPassword /> },
+      { path: 'reset-password', element: <ChangePassword /> },
+      { path: 'verify-email', element: <EmailVerification /> },
     ]
   },
   {
@@ -69,7 +100,7 @@ const router = createBrowserRouter([
       { path: 'settings', element: <Setting /> },
       { path: 'syllabus', element: <Syllabus /> },
       { path: 'calendar', element: <Calendar /> },
-      { path: 'enroll', element: <EnrollForm /> },
+      { path: 'allcourses', element: <CourseList /> },
 
       // Admin routes
       { path: 'addadmin', element: <AddAdmin /> },
@@ -84,18 +115,10 @@ const router = createBrowserRouter([
       {
         path: 'courses',
         element: <Courses />,
-        children: [
-          { path: '', element: <CourseTable /> },
-          { path: 'addcourse', element: <AddCourseForm /> }
-        ]
       },
       {
         path: 'batchs',
-        element: <Batch />,
-        children: [
-          { path: '', element: <CreateBatch /> },
-          { path: 'allbatchs', element: <BatchStudentViewer /> }
-        ]
+        element: <BatchList />,
       }
     ]
   }

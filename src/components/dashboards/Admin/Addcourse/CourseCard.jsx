@@ -14,9 +14,9 @@ const CourseCard = ({ course, onEdit, onDelete, onView }) => {
           <strong>Price:</strong> ₹{price}
         </p>
         <div className="d-flex justify-content-end gap-2">
-          <button className="btn btn-primary" onClick={() => onView(course)}>View Details</button>
-          <button className="btn btn-warning" onClick={() => onEdit(course)}>Edit</button>
-          <button className="btn btn-danger" onClick={() => onDelete(course._id)}>Delete</button>
+          <button className=" primary-solid-btn" onClick={() => onView(course)}>View Details</button>
+          <button className="secondary-solid-btn" onClick={() => onEdit(course)}>Edit</button>
+          <button className="accent-solid-btn" onClick={() => onDelete(course._id)}>Delete</button>
         </div>
       </div>
     </div>

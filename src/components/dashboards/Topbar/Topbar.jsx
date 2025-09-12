@@ -7,6 +7,7 @@ import NotificationDropdown from './TopbarSections/Notification';
 import { useSelector } from 'react-redux';
 import FullscreenToggle from './TopbarSections/FullScreen';
 import ThemeToggle from './TopbarSections/ThemeToggle';
+import CartIcon from '../Student/CartIcon';
 
 
 const Topbar = () => {
@@ -36,17 +37,17 @@ const Topbar = () => {
             </li>
 
             <li className="d-none d-lg-block">
-              <h5 className="mb-0 fw-semibold">Welcome back 👋</h5>
+              <h5 className="mb-0 fw-semibold">Dashboard 👋</h5>
             </li>
 
-            <li className="d-none d-md-block">
+            {/* <li className="d-none d-md-block">
               <form className="app-search me-auto">
                 <div className="position-relative topbar-search">
                   <input type="text" className="form-control ms-1 ps-5" placeholder="Search..." />
                   <i data-feather="search" className="fs-5 position-absolute text-muted top-50 translate-middle-y ms-3"></i>
                 </div>
               </form>
-            </li>
+            </li> */}
           </ul>
 
           {/* Right side */}
@@ -57,8 +58,13 @@ const Topbar = () => {
               <FullscreenToggle />
             </li>
 
-            <li className="d-none d-sm-flex">
+            {/* <li className="d-none d-sm-flex">
               <ThemeToggle />
+
+
+            </li> */}
+            <li className="d-none d-sm-flex">
+              <CartIcon />
 
 
             </li>

@@ -1,26 +1,40 @@
-import React from "react";
-import { Carousel } from "react-bootstrap";
-import PendingRequestsCard from "../Extras/PendingRequestsCard";
-import AssignWorkCard from "../Extras/AssignWorkCard";
-import CoursesCard from "../Extras/CoursesCard";
-import UsersCard from "../Extras/UsersCard";
-import QuickActionsCard from "../Extras/QuickActionsCard";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-const AdminDashboardContent = () => {
+import { Carousel } from "react-bootstrap";
+
+import QuickActionsCard from "../Extras/QuickActionsCard";
+import StatCard from "../Extras/StatCard";
+import PaymentsList from "./Payments/TransactionTable";
+import CreateMeetingButton from "./MeetingBtn/CreateMeetingBtn";
+import LiveClassForm from "./LiveClass/LiveClassForm";
+
+import QuickActions from "../Extras/QuickActions";
+import { ModalProvider } from "./Modals/ModalContext";
+
+
+const AdminDashboard = () => {
+    const statsData = [
+    { icon: "👥", label: "Users", count: 120, color: "primary" },
+    { icon: "📚", label: "Courses", count: 15, color: "success" },
+    { icon: "📦", label: "Batches", count: 8, color: "warning" },
+    { icon: "📝", label: "Assignments", count: 42, color: "danger" },
+  ];
+
+ 
+
   return (
     <div className="container my-4">
-
-      {/* --- Text-only Carousel --- */}
-      <Carousel 
+      
+      
+       <ModalProvider>
+         <Carousel 
         className="mb-4"
         controls
         indicators
-        interval={4000}
+        interval={1000}
         fade
       >
         <Carousel.Item>
-          <div className="d-flex flex-column justify-content-center align-items-center" style={{height: '300px', backgroundColor: '#4356e2', color: 'white'}}>
+          <div className="d-flex flex-column justify-content-center align-items-center" style={{height: '300px', backgroundColor: '#06070fff', color: 'white'}}>
             <h3>Welcome to the Admin Panel</h3>
             <p>Manage system tasks, monitor requests, and oversee users efficiently from your all-in-one dashboard.</p>
           </div>
@@ -31,28 +45,38 @@ const AdminDashboardContent = () => {
             <p>Review incoming requests, assign tasks, and keep your workflow organized. Stay responsive to new actions.</p>
           </div>
         </Carousel.Item>
-        <Carousel.Item>
-          <div className="d-flex flex-column justify-content-center align-items-center" style={{height: '300px', backgroundColor: '#198754', color: 'white'}}>
-            <h3>Assign & Track Work</h3>
-            <p>Easily assign tasks to team members, follow progress, and update priorities in real time.</p>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="d-flex flex-column justify-content-center align-items-center" style={{height: '300px', backgroundColor: '#0d6efd', color: 'white'}}>
-            <h3>Courses at a Glance</h3>
-            <p>View, manage, and update your platform’s course offerings. Ensure smooth course administration for all users.</p>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="d-flex flex-column justify-content-center align-items-center" style={{height: '300px', backgroundColor: '#fd7e14', color: 'white'}}>
-            <h3>User Activity Insights</h3>
-            <p>Monitor user stats, activity levels, and engagement trends. Gain insights to improve your platform’s experience.</p>
-          </div>
-        </Carousel.Item>
+     
       </Carousel>
 
-      {/* --- Statistics Row (NEW) --- */}
-      <div className="row g-4 mb-4 text-center">
+     
+       <QuickActions/>
+
+      
+    
+
+      {/* --- Stats Row --- */}
+      <div className="row">
+            <div className="col-md-6">
+        <QuickActionsCard />
+    </div>
+
+      <div className="col-md-6">
+       <div className="row">
+      {statsData.map((stat, idx) => (
+        <div key={idx} className="col-12 col-sm-6 col-lg-6">
+          <StatCard {...stat} />
+        </div>
+      ))}
+    </div>
+
+      </div>
+      {/* <LiveClassForm/> */}
+
+      {/* <CreateMeetingButton/> */}
+
+      </div>
+      {/* <PaymentsList/> */}
+     {/* <div className="row g-4 mb-4 text-center">
         <div className="col-6 col-md-3">
           <div className="card bg-info text-white">
             <div className="card-body">
@@ -85,26 +109,7 @@ const AdminDashboardContent = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* --- Stats Row --- */}
-      <div className="row g-4 mb-4 text-center">
-        <div className="col-6 col-md-3">
-          <PendingRequestsCard count={13} />
-        </div>
-        <div className="col-6 col-md-3">
-          <AssignWorkCard count={8} />
-        </div>
-        <div className="col-6 col-md-3">
-          <CoursesCard count={12} />
-        </div>
-        <div className="col-6 col-md-3">
-          <UsersCard count={240} />
-        </div>
-      </div>
-
-      {/* --- Quick Actions --- */}
-      <QuickActionsCard />
+      </div> */}
 
       {/* --- Recent Activities (NEW) --- */}
       <div className="card mb-4">
@@ -128,6 +133,7 @@ const AdminDashboardContent = () => {
           </ul>
         </div>
       </div>
+        </ModalProvider>
     </div>
   );
 };

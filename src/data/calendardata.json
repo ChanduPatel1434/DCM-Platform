@@ -14,7 +14,7 @@
         "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "time": "19:00"
       },
-      "zoomLink": "https://zoom.us/j/123456789",
+      "zoomLink": "https://us05web.zoom.us/j/83824456593?pwd=Can4bD95D8ioTuC5CjoY7GUoIbXBTU.1",
       "recordingLink": "https://yourplatform.com/recordings/react-basics"
     },
     {
@@ -25,7 +25,7 @@
         "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "time": "08:00"
       },
-      "zoomLink": "https://zoom.us/j/987654321",
+      "zoomLink": "https://us05web.zoom.us/j/83824456593?pwd=Can4bD95D8ioTuC5CjoY7GUoIbXBTU.1",
       "recordingLink": "https://yourplatform.com/recordings/git-workflows"
     },
     {
@@ -36,7 +36,7 @@
         "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "time": "10:00"
       },
-      "zoomLink": "https://zoom.us/j/192837465",
+      "zoomLink": "https://us05web.zoom.us/j/83824456593?pwd=Can4bD95D8ioTuC5CjoY7GUoIbXBTU.1 ",
       "recordingLink": "https://yourplatform.com/recordings/frontend-debugging"
     }
   ]

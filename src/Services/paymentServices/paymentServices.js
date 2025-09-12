@@ -14,10 +14,10 @@ export const paymentsApi = createApi({
             providesTags: ['Payments']
         }),
         createOrder: builder.mutation({
-            query: ({ courseId, userId }) => ({
+            query: ({ courseIds, userId }) => ({
                 url: '/order',
                 method: 'POST',
-                body: { courseId, userId }
+                body: { courseIds, userId }
             }),
             invalidatesTags: ['Payments']
         }),
@@ -28,12 +28,14 @@ export const paymentsApi = createApi({
                 body: payload
             }),
             invalidatesTags: ['Payments']
-        })
+        }),
+        
     })
 });
 
 export const {
     useGetRazorpayConfigQuery,
     useCreateOrderMutation,
-    useVerifyPaymentMutation
+    useVerifyPaymentMutation,
+    
 } = paymentsApi;

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap';
 import Countdown from 'react-countdown';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
+
 import { motion } from 'framer-motion';
 import data from '../../../data/calendardata.json';
 

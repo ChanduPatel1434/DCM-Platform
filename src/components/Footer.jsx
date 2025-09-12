@@ -11,7 +11,7 @@ const Footer = () => {
       {/* Footer Section */}
       <footer className="footer-section">
         {/* Footer Top */}
-        <div className="footer-top gradient-bg">
+        <div className="footer-top bg-footer">
           <div className="container">
             <div className="row">
               <div className="col-md-9">

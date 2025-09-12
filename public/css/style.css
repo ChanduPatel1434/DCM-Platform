@@ -294,7 +294,7 @@ a:hover {
     background: rgba(242, 92, 127, 0.15);
 }
 
-.animated-btn {
+.animated-btn{
     transition: all .25s ease-in-out;
 }
 

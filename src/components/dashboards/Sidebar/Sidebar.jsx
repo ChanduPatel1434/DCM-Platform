@@ -42,6 +42,7 @@ const Sidebar = () => {
     { label: 'Students', icon: 'users', path: 'students' },
     { label: 'Courses', icon: 'book', path: 'courses' },
     { label: 'Batchs', icon: 'book-open', path: 'batchs' },
+    { label: 'Live Class', icon: 'pause', path: 'liveclass' },
     { label: 'Add Admin', icon: 'user', path: 'addadmin' }, // ✅ This was causing the error
   ];
 
@@ -64,9 +65,7 @@ const Sidebar = () => {
       <div className="h-100" data-simplebar>
         {/* Logo */}
         <div className="logo-box text-center">
-          <NavLink to="/dashboard" className="text-decoration-none">
-            <img src="/img/dcmlogotransperent.png" alt="App Logo" height="120" />
-          </NavLink>
+         
         </div>
 
         {/* Navigation */}
