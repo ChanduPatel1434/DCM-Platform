@@ -11,22 +11,22 @@ const features = [
 
 const promoBlocks = [
   {
-    icon: <FaLightbulb className="icon-md accent-color" />,
+    icon: <FaLightbulb className="icon-lg accent-color  " /> ,
     title: "Business Consulting",
     description: "Enthusiastically scale mission-critical imperatives rather than array.",
   },
   {
-    icon: <FaBezierCurve className="icon-md accent-color" />,
+    icon: <FaBezierCurve className="icon-lg accent-color" />,
     title: "Creative Design",
     description: "Compellingly promote collaborative products without synergistic schemas.",
   },
   {
-    icon: <FaLifeRing className="icon-md accent-color" />,
+    icon: <FaLifeRing className="icon-lg accent-color" />,
     title: "Market Strategy",
     description: "Rapidiously create cooperative resources rather than client-based leadership.",
   },
   {
-    icon: <FaBrain className="icon-md accent-color" />,
+    icon: <FaBrain className="icon-lg accent-color" />,
     title: "Valuable Idea",
     description: "Enthusiastically scale mission-critical imperatives rather than array.",
   },
@@ -63,7 +63,7 @@ const AboutUsSection = () => (
             {promoBlocks.map((block, idx) => (
               <div key={idx} className="col-12 col-md-6 col-lg-6">
                 <div className="single-promo-block p-4 text-center rounded border my-md-3 my-lg-3 my-sm-0">
-                  <div className="promo-block-icon mb-3">{block.icon}</div>
+                  <div className="promo-block-icon mb-3 ">{block.icon}</div>
                   <div className="promo-block-content">
                     <h5>{block.title}</h5>
                     <p>{block.description}</p>

@@ -1,36 +1,39 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useVerifyTokenQuery } from '../Services/authService';
+import { useLazyVerifyAuthQuery } from '../Services/authService';
 import { useDispatch } from 'react-redux';
 import { login, logout } from '../features/authSlice';
 
-
-// useAuthCheck.js
 const useAuthCheck = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [isChecking, setIsChecking] = useState(true);
 
-  const { data: tokenData, error: tokenError } = useVerifyTokenQuery();
+  const [triggerVerify, { data: authData, error: authError, isLoading, isFetching }] =
+    useLazyVerifyAuthQuery();
 
   useEffect(() => {
-    if (tokenData?.verified) {
-      dispatch(login({
-        user: tokenData.user,
-        token: tokenData.token
-      }));
+    triggerVerify(); // 🔁 manually trigger verification on mount
+  }, []);
 
-      const redirectPath = location.pathname !== '/' ? location.pathname : '/dashboard';
+  useEffect(() => {
+    if (isLoading || isFetching) return;
+
+    if (authData?.verified) {
+      
+      dispatch(login(authData))
+      const redirectPath =
+        location.pathname && location.pathname !== '/' ? location.pathname : '/dashboard';
+
       navigate(redirectPath, { replace: true });
-      setIsChecking(false);
-    } else if (tokenError) {
-      localStorage.removeItem('authToken');
+    } else if (authError) {
       dispatch(logout());
-      navigate('/login');
-      setIsChecking(false);
+      navigate(`/login`, { replace: true });
     }
-  }, [tokenData, tokenError]);
+
+    setIsChecking(false);
+  }, [authData, authError, isLoading, isFetching]);
 
   return { isChecking };
 };

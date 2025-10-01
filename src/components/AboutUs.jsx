@@ -5,17 +5,17 @@ import Footer from "./Footer";
 
 const promos = [
   {
-    icon: <FaBrain className="icon-md color-primary" />,
+    icon: <FaBrain className="icon-lg color-primary  " />,
     title: "Consultancy",
     description: "Enthusiastically scale mission-critical imperatives rather than an expanded array.",
   },
   {
-    icon: <FaBezierCurve className="icon-md color-primary" />,
+    icon: <FaBezierCurve className="icon-lg color-primary" />,
     title: "Manpower Support",
     description: "Compellingly promote collaborative products without synergistic schemas.",
   },
   {
-    icon: <FaLifeRing className="icon-md color-primary" />,
+    icon: <FaLifeRing className="icon-lg color-primary" />,
     title: "Corporate Trainings",
     description: "Rapidiously create cooperative resources rather than client-based leadership skills.",
   },
@@ -33,7 +33,7 @@ const Aboutus = () => {
           className="hero-bottom-shape-two"
           style={{ background: `url('img/hero-bottom-shape.svg') bottom center no-repeat` }}
         ></div>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-7 text-center pt-sm-5 pt-md-5 pt-lg-0">
               <h1 className="text-white mb-0">About Us</h1>

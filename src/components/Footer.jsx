@@ -4,7 +4,7 @@ const Footer = () => {
     { name: "Facebook", icon: "facebook", url: "https://facebook.com/aslok" },
     { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/design_career_metrics?igsh=angzdzR4Zmcwa25q" },
     { name: "Linkedin", icon: "linkedin", url: "https://www.linkedin.com/company/design-career-metrics-pvt-ltd" },
-    { name: "Google", icon: "google", url: "https://share.google/56SnWlJ1e4J7z5fF4" }
+    { name: "Google", icon: "google", url: "https://share.google/8e69r070lynTkqioy" }
   ];
   return (
     <>
@@ -93,7 +93,7 @@ const Footer = () => {
 function getLinksByCategory(category) {
   const links = {
     "QUICK LINKS": [
-      { label: "Make Appointment", href: "#" },
+      { label: "Make Appointment", href: "/contact-us" },
       { label: "Department Services", href: "#" },
       { label: "Our Case Studies", href: "#" },
       { label: "Our Business Growth", href: "#" },
@@ -111,7 +111,7 @@ function getLinksByCategory(category) {
       { label: "Terms of Service", href: "#" },
     ],
     SUPPORT: [
-      { label: "Contact", href: "#" },
+      { label: "Contact", href: "/contact-us" },
       { label: "Knowledge Base", href: "#" },
       { label: "Forums", href: "#" },
       { label: "System Status", href: "#" },

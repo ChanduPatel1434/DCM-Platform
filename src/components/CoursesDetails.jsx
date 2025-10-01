@@ -35,15 +35,14 @@ const CourseDetail = () => {
         uiuxdevelopment: data.uiuxDevelopment,
         testing: data.testing,
         cybersecurity:data.cyberSecurity,
-        communication:data.Communication,
+        softskills:data.softSkills,
         appdevelopment:data.appDevelopment
     };
     const selectedCourses = categoryMap[normalizedCategory];
     console.log(selectedCourses)
 
     const formatCategory = (str) =>
-        str
-            ?.replace(/-/g, ' ')
+        str?.replace(/-/g, ' ')
             .replace(/\b\w/g, (char) => char.toUpperCase());
     const selectedCourse = courseId
         ? selectedCourses?.find(course => {
@@ -77,7 +76,7 @@ const CourseDetail = () => {
                             background: "url('/img/hero-bottom-shape.svg') no-repeat bottom center",
                         }}
                     ></div>
-                    <div className="container">
+                    <div className="container  mt-5">
                         <div className="row justify-content-center">
                             <div className="col-md-8 col-lg-7">
                                 <div className="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">

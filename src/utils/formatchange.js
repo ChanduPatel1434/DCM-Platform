@@ -1,12 +1,14 @@
  export const transformAssignmentPayload = (rawData) => {
   if (!Array.isArray(rawData) || rawData.length === 0) return null;
 
-  const { courseId, batchId } = rawData[0]; // assuming all rows share same course & batch
+  const { courseId, batchId,courseTitle,batchName } = rawData[0]; // assuming all rows share same course & batch
   const enrollmentIds = rawData.map(item => item.enrollment_id);
 
   return {
     courseId,
     batchId,
+    courseTitle,
+    batchName,
     enrollmentIds
   };
 };
@@ -24,7 +26,7 @@ export  const flattenEnrollments=(arr)=> {
         courseName: courseEntry.course?.name || 'No Course',
         courseId: courseEntry.course?._id || 'N/A', 
         batchName: courseEntry.batch?.batchName || 'Unassigned',
-        availability: courseEntry.availability || 'N/A'
+       
       }));
     });
   }

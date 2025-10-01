@@ -31,7 +31,7 @@ const ContactUs = () => {
             <section class="hero-section ptb-100 gradient-overlay"
                 style={{ background: "url('img/header-bg-5.jpg') no-repeat center center / cover" }}>
                 <div class="hero-bottom-shape-two" style={{ background: "url('img/hero-bottom-shape.svg') no-repeat bottom center" }}></div>
-                <div class="container">
+                <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-8 col-lg-7">
                             <div class="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">
@@ -104,15 +104,19 @@ const ContactUs = () => {
             {/* <!--contact us section end--> */}
 
             {/* <!--google map block start--> */}
-            <div className="google-map">
-                <iframe
-                    src="https://www.google.com/maps/embed/v1/place?q=Capital%20Park%20Capital%20Pk%20Rd%2C%20Ayyappa%20Society%2C%20VIP%20Hills%2C%20Silicon%20Valley%2C%20Madhapur%2C%20Hyderabad%2C%20Telangana%20500081&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-                    height="450"
-                    style={{ border: "0" }}
-                    allowFullScreen
-                    title="Capital Park Location Map - Madhapur, Hyderabad"
-                ></iframe>
-            </div>
+             <div style={{ width: '100%' }}>
+
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.2660901615855!2d78.38363917414267!3d17.44697380108786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb910838be5b35%3A0xfa8c53166a450046!2sDesign%20Career%20Metrics%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1758168750472!5m2!1sen!2sin"
+    width="100%"
+    height="450"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div> 
+
             {/* <!--google map block end--> */}
 
 

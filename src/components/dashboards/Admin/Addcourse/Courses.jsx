@@ -4,8 +4,8 @@ import CourseTable from "./CoursesTable"
 const Courses = () => {
   return <>
 
-    <div className="content-page">
-      <div className="content">  
+    <div className="">
+      <div className="">  
          <CourseTable/>
       </div>
     </div>

@@ -5,7 +5,7 @@ export const batchDetailsApi = createApi({
   ...createApiService({
     reducerPath: "batchDetailsApi",
     baseUrl: "/admin/batchs",
-    tagTypes: ["Batch"],
+    tagTypes: ["Batch", "BatchStudents"], // Add both tag types you need
   }),
   endpoints: (builder) => ({
     getIdAndBatchNames: builder.query({
@@ -13,7 +13,16 @@ export const batchDetailsApi = createApi({
         url: "/allbatchNames",
         method: "GET",
       }),
-      providesTags: ["Batch"],
+      // Provide tags for all batches and individual batches
+      providesTags: (result) =>
+        result
+          ? [
+              // Add tags for each batch
+              ...result.map(({ _id }) => ({ type: "Batch", id: _id })),
+              // Add a general tag for the list
+              { type: "Batch", id: "LIST" },
+            ]
+          : [{ type: "Batch", id: "LIST" }],
       refetchOnMountOrArgChange: true,
     }),
     getBatchstudents: builder.query({
@@ -21,7 +30,12 @@ export const batchDetailsApi = createApi({
         url: `/${id}`,
         method: "GET",
       }),
-      providesTags: (result, error, batchName) => [{ type: "Batch", id: batchName }],
+      // Provide tags for batch students
+      providesTags: (result, error, id) => [
+        { type: "BatchStudents", id },
+        // Also tag with the batch ID for cross-invalidation if needed
+        { type: "Batch", id },
+      ],
       refetchOnMountOrArgChange: true,
     }),
     addBatch: builder.mutation({
@@ -30,7 +44,8 @@ export const batchDetailsApi = createApi({
         method: "POST",
         body: newBatchData,
       }),
-      invalidatesTags: ["Batch"],
+      // Invalidate the batch list when a new batch is added
+      invalidatesTags: [{ type: "Batch", id: "LIST" }],
     }),
     updateBatch: builder.mutation({
       query: ({ batchId, updatedData }) => ({
@@ -38,14 +53,26 @@ export const batchDetailsApi = createApi({
         method: "PUT",
         body: updatedData,
       }),
-      invalidatesTags: (result, error, { batchId }) => [{ type: "Batch", id: batchId }],
+      // Invalidate both the specific batch and the list
+      invalidatesTags: (result, error, { batchId }) => [
+        { type: "Batch", id: batchId },
+        { type: "Batch", id: "LIST" },
+        // Also invalidate the students for this batch
+        { type: "BatchStudents", id: batchId },
+      ],
     }),
     deleteBatch: builder.mutation({
       query: (batchId) => ({
         url: `/deleteBatch/${batchId}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, batchId) => [{ type: "Batch", id: batchId }],
+      // Invalidate both the specific batch and the list
+      invalidatesTags: (result, error, batchId) => [
+        { type: "Batch", id: batchId },
+        { type: "Batch", id: "LIST" },
+        // Also invalidate the students for this batch
+        { type: "BatchStudents", id: batchId },
+      ],
     }),
   }),
 });
@@ -58,5 +85,4 @@ export const {
   useAddBatchMutation,
   useUpdateBatchMutation,
   useDeleteBatchMutation,
-  
 } = batchDetailsApi;

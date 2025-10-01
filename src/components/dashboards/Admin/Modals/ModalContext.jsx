@@ -50,7 +50,7 @@ export const ModalProvider = ({ children }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              zIndex: 1050,
+              zIndex: 1060,
             }}
           >
             <motion.div
@@ -68,10 +68,10 @@ export const ModalProvider = ({ children }) => {
                 <LiveClassForm onSuccess={closeModal} mode="edit" {...modalProps} />
               )}
               {modalType === MODAL_TYPES.ADD_COURSE && (
-                <CourseModal handleClose={closeModal} mode="add" {...modalProps} />
+                <CourseModal onSuccess={closeModal} mode="add" {...modalProps} />
               )}
               {modalType === MODAL_TYPES.EDIT_COURSE && (
-                <CourseModal handleClose={closeModal} mode="edit" {...modalProps} />
+                <CourseModal onSuccess={closeModal} mode="edit" {...modalProps} />
               )}
               {modalType === MODAL_TYPES.CREATE_BATCH && (
                 <BatchModal handleClose={closeModal} {...modalProps} />

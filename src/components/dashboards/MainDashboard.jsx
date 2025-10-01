@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import AdminDashboard from "./Admin/AdminDashboard";
 import StudentDashboard from "./Student/StudentDashboard";
+import Loader from "./common/Loader";
 
 
 const Maindashboard = () => {
@@ -10,24 +11,25 @@ const Maindashboard = () => {
 
   
 return (
-    <div className="content-page p-0 relx ">
-        <div className="content ">
+    
+        <div>
             {
                 loading ? (
-                    <div className="dashboard-loader">
+                    <div>
                         {/* You can style this div or use a spinner component */}
-                        <h2>Loading your dashboard...</h2>
+                      <Loader message={"checking details"}/>
                     </div>
                 ) : (
                     user?.role === 'student' ? (
                         <StudentDashboard />
                     ) : (
                         <AdminDashboard />
+                        
                     )
                 )
             }
         </div>
-    </div>
+  
 ); 
 }
 

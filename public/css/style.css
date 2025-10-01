@@ -726,8 +726,8 @@ select.form-control.has-value{
     font-family: 'Montserrat', sans-serif;
 }
 .menu ul li a:hover, .menu ul li:hover>a {
-    color: #ffffff;
-    background: #162e66;
+    color: #ffffff !important;
+    background: #162e66 !important;
 }
 
 .menu ul.sub-menu li:first-child a:hover,
@@ -910,11 +910,11 @@ select.form-control.has-value{
 
      .menu li a:hover,.menu li:hover>a {
         
-        color: #fff !important;
+        color: #ffff !important;
     } 
      .menu li:hover {
-    background-color: #162e66; /* deep navy blue */
-    color: #fff; /* optional: changes text color to white */
+    background-color: #162e66 ; /* deep navy blue */
+    color: #fff  /* optional: changes text color to white */
 }
     .menu ul {
         visibility: hidden;
@@ -1929,10 +1929,12 @@ select.form-control.has-value{
 @media (min-width: 768px) {
     .switchable .container > .row {
         flex-flow: row-reverse;
+
     }
 
     .switchable.switchable-content .container > .row {
         flex-flow: row;
+        
     }
 }
 

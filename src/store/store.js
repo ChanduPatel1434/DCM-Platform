@@ -3,7 +3,6 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import authSliceReducer from "../features/authSlice";
 
 import { authApi } from "../Services/authService";
-import { batchAssignApi } from "../Services/admin/batchAssignServices";
 import { courseApi } from "../Services/admin/coursesService";
 import { batchDetailsApi } from "../Services/admin/batchdetailsService";
 import { enrollCourseApi } from "../Services/student/enrollFormServices";
@@ -17,12 +16,13 @@ import { cartApi } from "../Services/student/cartServices";
 import cartSliceReducer from "../features/cartSlice"
 import { cartPersistMiddleware } from "../middleware/cartPersistMiddleware";
 import { zoomApi } from "../Services/admin/zoomService";
+import { liveClassesApi } from "../Services/student/liveClassServices";
+import { statsApi } from "../Services/admin/statsService";
 const Store = configureStore({
   reducer: {
     auth: authSliceReducer,
     cart:cartSliceReducer,
     [authApi.reducerPath]: authApi.reducer,
-    [batchAssignApi.reducerPath]: batchAssignApi.reducer,
     [courseApi.reducerPath]: courseApi.reducer,
     [batchDetailsApi.reducerPath]: batchDetailsApi.reducer,
     [enrollCourseApi.reducerPath]: enrollCourseApi.reducer,
@@ -32,11 +32,13 @@ const Store = configureStore({
         [transactionApi.reducerPath]:transactionApi.reducer,
         [cartApi.reducerPath]:cartApi.reducer,
         [zoomApi.reducerPath]:zoomApi.reducer,
+        [liveClassesApi.reducerPath]:liveClassesApi.reducer,
+        [statsApi.reducerPath]:statsApi.reducer,
+        
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       authApi.middleware,
-      batchAssignApi.middleware,
       courseApi.middleware,
       batchDetailsApi.middleware,
       enrollCourseApi.middleware,
@@ -47,6 +49,8 @@ const Store = configureStore({
       cartApi.middleware,
       cartPersistMiddleware,
       zoomApi.middleware,
+      liveClassesApi.middleware,
+      statsApi.middleware,
       rtkLogger // ✅ logs rejected queries
     ),
   devTools: process.env.NODE_ENV !== 'production', // ✅ enables Redux DevTools

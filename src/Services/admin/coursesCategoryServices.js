@@ -5,7 +5,7 @@ export const courseCategoryApi = createApi({
   ...createApiService({
     reducerPath: 'coursesCategoryApi',
     baseUrl: '/api',
-    tagTypes: ['coursesCategory'],
+    tagTypes: ['coursesCategory',"Students"],
   }),
   endpoints: (builder) => ({
     
@@ -16,9 +16,23 @@ export const courseCategoryApi = createApi({
       }),
       providesTags: ['coursesCategory'],
     }),
- 
- 
+      getStudents: builder.query({
+      query: ({ page = 1, limit = 10, search = '' }) => ({
+        url: 'students',
+        params: { page, limit, search },
+      }),
+      providesTags: ['Students'],
+    }),
+    
+    downloadStudentsExcel: builder.mutation({
+      query: (filters = {}) => ({
+        url: 'students/download',
+        params: filters,
+        responseHandler: (response) => response.blob(),
+        cache: 'no-cache',
+      }),
+    }),
   }),
 });
 
-export const {useGetCoursesCategoryQuery } = courseCategoryApi;
+export const {useGetCoursesCategoryQuery,useDownloadStudentsExcelMutation,useGetStudentsQuery} = courseCategoryApi;

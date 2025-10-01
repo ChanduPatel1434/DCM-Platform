@@ -1,10 +1,10 @@
 {
  "courses": [
   {
-    "title": "Communication",
+    "title": "Soft Skills",
     "img": "/img/team-work-svgrepo-com.svg",
     "description": "Develop professional communication skills for workplace success. Master verbal, non-verbal, and written techniques, including active listening, conflict resolution, and presentation delivery.",
-    "path": "communication"
+    "path": "soft-skills"
   },
   {
     "title": "Web Development",
@@ -87,7 +87,7 @@
       "title": "Java Full Stack",
       "img": "/img/java-svgrepo-com.svg",
       "description": "Master front-end and back-end development using Java. Learn Spring Boot, RESTful APIs, JSP, and database integration to build scalable web applications.",
-      "path": "/trainings/web-development/java-fullstack"
+      "path": "/trainings/web-development/java-full-stack"
     },
     {
       "title": "Python Full Stack",
@@ -105,7 +105,7 @@
       "title": "MERN Stack",
       "img": "/img/react-svgrepo-com.svg",
       "description": "Become proficient in MongoDB, Express.js, React, and Node.js. Learn to build full-stack JavaScript applications from the ground up to advance.",
-      "path": "/trainings/web-development/mern-stack"
+      "path": "/trainings/web-development/mern-stack-development"
     },
     {
       "title": "MEAN Stack",
@@ -148,30 +148,30 @@
       "path": "/trainings/uiux-development/interaction-design"
     }
   ],
-  "Communication": [
+  "softSkills": [
     {
       "title": "Group Discussion",
       "description": "Learn techniques to effectively participate in group discussions. Improve clarity, confidence, and critical thinking to stand out in competitive environments.",
       "img": "/img/group-talk-svgrepo-com.svg",
-      "path": "/trainings/communication/group-discussion"
+      "path": "/trainings/soft-skills/group-discussion"
     },
     {
       "title": "Vocabulary Building",
       "description": "Enhance your word power with daily vocabulary, idioms, and phrases. Strengthen your communication and comprehension skills for academic and professional success.",
       "img": "/img/vocabulary-svgrepo-com.svg",
-      "path": "/trainings/communication/vocabulary-building"
+      "path": "/trainings/soft-skills/vocabulary-building"
     },
     {
       "title": "Presentation Skills",
       "description": "Master the art of delivering professional presentations. Learn to use visuals, storytelling, and audience engagement to make your ideas memorable.",
       "img": "/img/data-analytics.svg",
-      "path": "/trainings/communication/presentation-skills"
+      "path": "/trainings/soft-skills/presentation-skills"
     },
     {
       "title": "Interview Techniques",
       "description": "Prepare for job interviews with confidence. Learn body language, mock interview techniques, and strategies to answer technical and HR questions effectively.",
       "img": "/img/reunion-interview-svgrepo-com.svg",
-      "path": "/trainings/communication/interview-techniques"
+      "path": "/trainings/soft-skills/interview-techniques"
     }
   ],
   "cyberSecurity": [
@@ -222,7 +222,7 @@
     {
       "title": "Artificial Intelligence",
       "description": "Create intelligent systems that mimic human cognition and decision-making, covering NLP, robotics, and symbolic reasoning. Understand how AI powers automation in modern industries.",
-      "img": "/img/artificialintelligence.png",
+      "img": "/img/nodebots-svgrepo-com.svg",
       "path": "/trainings/data-science/artificial-intelligence"
     },
     {

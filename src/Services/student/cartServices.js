@@ -1,5 +1,5 @@
 // Services/student/cartServices.js
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import { createApiService } from '../../config/apiConfig';
 
 export const cartApi = createApi({
@@ -9,7 +9,7 @@ export const cartApi = createApi({
     tagTypes: ['Cart'],
   }),
   endpoints: (builder) => ({
-    getCart: builder.query({
+    getCart: builder.query({  
       query: (userId) => `/${userId}`,
       providesTags: ['Cart']
     }),
@@ -29,14 +29,7 @@ export const cartApi = createApi({
       }),
       invalidatesTags: ['Cart']
     }),
-    updateQuantity: builder.mutation({
-      query: ({ userId, courseId, quantity }) => ({
-        url: '/quantity',
-        method: 'PUT',
-        body: { userId, courseId, quantity }
-      }),
-      invalidatesTags: ['Cart']
-    }),
+  
     clearCart: builder.mutation({
       query: (userId) => ({
         url: `/clear/${userId}`,

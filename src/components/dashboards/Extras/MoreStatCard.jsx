@@ -35,7 +35,7 @@ export default function DashboardCards({ enrollments, upcomingMeetings }) {
   initial={{ y: 50, opacity: 0 }}
   animate={{ y: 0, opacity: 1 }}
   transition={{ delay: 0.2, duration: 0.8 }}
-  className=" mb-6 row"
+ 
 >
   {cardData.map((card, index) => {
     const Icon = card.icon;

@@ -17,7 +17,14 @@ const blocks = [
   },
   {
     iconClass: "far fa-handshake",
-    title: "Consultancy",
+    title: "Consulting Services",
+    text: "Conveniently synergize worldwide functionalities via global e-commerce. Distinctively actualize standards compliant experiences before real-time human capital.",
+    btnText: "Learn More",
+    bgClass: "promo-hover-bg-2",
+  },
+  {
+    iconClass: "far fa-handshake",
+    title: "Consulting Services",
     text: "Conveniently synergize worldwide functionalities via global e-commerce. Distinctively actualize standards compliant experiences before real-time human capital.",
     btnText: "Learn More",
     bgClass: "promo-hover-bg-2",

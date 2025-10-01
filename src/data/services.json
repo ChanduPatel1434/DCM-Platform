@@ -1,0 +1,64 @@
+{
+  "services": [
+    {
+      "title": "Manpower & Staffing Solutions",
+      "img": "/img/Manpower-Support.webp",
+      "description": "End-to-end recruitment solutions including permanent, temporary, contract-to-hire, and project-based staffing.",
+      "path": "/services/manpower-and-staffing-solutions"
+    },
+    {
+      "title": "Corporate Trainings",
+      "img": "/img/Corporate Trainings.svg",
+      "description": "Customized training programs for organizations to upskill employees in technology, leadership, and domain-specific areas.",
+      "path": "/services/corporate-trainings"
+    },
+    {
+      "title": "Campus Recruitment Training (CRT)",
+      "img": "/img/Campus Recruitment Training (CRT).svg",
+      "description": "Specialized programs designed to prepare students for placement drives with aptitude, communication, and technical skills.",
+      "path": "/services/campus-recruitment-training"
+    },
+    {
+      "title": "Internships & Certification Programs",
+      "img": "/img/Internships & Certification Programs.svg",
+      "description": "Industry-relevant internships and globally recognized certifications to boost career opportunities.",
+      "path": "/services/internships-and-certification-programs"
+    },
+    {
+      "title": "Data Science & Analytics Services",
+      "img": "/img/data-analytics.svg",
+      "description": "Data-driven solutions including predictive analytics, AI/ML consulting, and business intelligence insights.",
+      "path": "/services/data-science-and-analytics-services"
+    },
+    {
+      "title": "HR Operations & Payroll Management",
+      "img": "/img/hrpayroll.svg",
+      "description": "Comprehensive HR support services including payroll processing, compliance, and workforce management.",
+      "path": "/services/hr-operations-and-payroll-management"
+    },
+    {
+      "title": "Business Development & Consulting (BDE Services)",
+      "img": "/img/Business Development & Consulting.svg",
+      "description": "Strategic consulting and business development solutions to drive growth and expand market presence.",
+      "path": "/services/business-development-and-consulting"
+    },
+    {
+      "title": "CA & Financial Services",
+      "img": "/img/money-svgrepo-com.svg",
+      "description": "Expert chartered accountancy and financial advisory services covering audits, taxation, and compliance.",
+      "path": "/services/ca-and-financial-services"
+    },
+    {
+      "title": "In-House Projects & Consulting",
+      "img": "/img/In-House Projects & Consulting.svg",
+      "description": "Hands-on project development and consulting services to deliver practical business and technical solutions.",
+      "path": "/services/in-house-projects-and-consulting"
+    },
+    {
+      "title": "Soft Skills & Online Training",
+      "img": "/img/Soft Skills & Online Training (1).svg",
+      "description": "Professional development programs focusing on communication, leadership, and online training modules.",
+      "path": "/services/soft-skills-and-online-training"
+    }
+  ]
+}

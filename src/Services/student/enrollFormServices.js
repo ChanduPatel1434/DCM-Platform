@@ -7,21 +7,21 @@ export const enrollCourseApi = createApi({
       tagTypes: ['Enrollments'],
     }),
   endpoints: (builder) => ({
-    enrollInCourse: builder.mutation({
-      query: ({ user,enrolledCourses }) => ({
-        url: `/newenroll/${user}`,
-        method: "POST",
-        body: enrolledCourses,
-      }),
-    }),
+
     getStudentbyId:builder.query({
       query:(id)=>({
         url:`/get/${id}`,
         method:"GET"
+      })
+    }),
+    getStudentEnrolledCourses:builder.query({
+      query:(id)=>({
+        url:`/getcourses/${id}`,
+        method:"GET",
       })
     })
    
   }),
 });
 
-export const { useEnrollInCourseMutation,useGetStudentbyIdQuery,useLazyGetStudentbyIdQuery } = enrollCourseApi;
+export const { useGetStudentbyIdQuery,useGetStudentEnrolledCoursesQuery } = enrollCourseApi;

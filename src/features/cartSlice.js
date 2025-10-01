@@ -63,9 +63,9 @@ export const {
 
 export const selectCartItems = state => state.cart.items;
 export const selectCartTotal = state => 
-  state.cart.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  state.cart.items.reduce((sum, item) => sum + (item.price * 1), 0);
 export const selectCartCount = state => 
-  state.cart.items.reduce((sum, item) => sum + item.quantity, 0);
+  state.cart.items.reduce((sum, item) => sum + 1, 0);
 export const selectCartLoading = state => state.cart.loading;
 export const selectCartError = state => state.cart.error;
 

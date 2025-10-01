@@ -8,7 +8,7 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="col-md-12 col-lg-6">
             <div className="hero-slider-content">
-              <span className="text-uppercase">People First. Solutions Always</span>
+              <span className="text-uppercase ms-1">People First. Solutions Always</span>
               <h1>Expert Training. Reliable Manpower. Proven Consulting</h1>
               <p className="lead">
                 Holistically procrastinate mission-critical convergence with reliable customer service. Assertively

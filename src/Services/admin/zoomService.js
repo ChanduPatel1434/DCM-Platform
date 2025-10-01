@@ -5,7 +5,7 @@ export const zoomApi = createApi({
   ...createApiService({
     reducerPath: 'zoomApi',
     baseUrl: '/api',
-    tagTypes: ['Meeting', 'LiveClass'],
+    tagTypes: ['Meeting'],
   }),
   endpoints: (builder) => ({
    createMeeting: builder.mutation({
@@ -14,12 +14,19 @@ export const zoomApi = createApi({
         method: 'POST',
         body: data
       }),
-      invalidatesTags: ['Meeting', 'LiveClass'],
+      invalidatesTags: ['Meeting'],
     }),
 
     getMeetings: builder.query({
-      query: () => 'zoom/meetings',
+      query: () => 'zoom/get-classes',
       providesTags: ['Meeting'],
+    }),
+    startLiveClass:builder.mutation({
+      query:(id)=>({
+        url:`zoom/start/${id}`,
+        method:"GET"
+      }),
+       providesTags: ['Meeting'],
     }),
      updateMeeting: builder.mutation({
       query: ({ id, ...data }) => ({
@@ -27,13 +34,17 @@ export const zoomApi = createApi({
         method: 'PUT',
         body: data
       }),
-      invalidatesTags: ['Meeting', 'LiveClass'],
+      invalidatesTags: ['Meeting'],
     }),
+    deleteMeeting:builder.mutation({
+      query:(id)=>({
+        url:`/zoom/delete-meeting/${id}`,
+        method:"Delete"
+      }),
+       invalidatesTags: ['Meeting'],
+    })
 
-    getLiveClasses: builder.query({
-      query: () => 'zoom/live-classes',
-      providesTags: ['LiveClass'],
-    }),
+   
   }),
 });
 
@@ -41,5 +52,6 @@ export const {
   useCreateMeetingMutation,
   useGetMeetingsQuery,
   useUpdateMeetingMutation,
-  useGetLiveClassesQuery,
+  useStartLiveClassMutation,
+  useDeleteMeetingMutation,
 } = zoomApi;

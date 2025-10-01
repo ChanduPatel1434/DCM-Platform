@@ -3,11 +3,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useSendVerificationEmailMutation, useSignupMutation } from '../Services/authService';
 import { useLocation, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const SignupForm = () => {
-  const [alertType, setAlertType] = useState(null);
-  const [alertMessage, setAlertMessage] = useState('');
-  const [showAlert, setShowAlert] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [verifyCooldown, setVerifyCooldown] = useState(false);
@@ -17,25 +15,23 @@ const SignupForm = () => {
 
   const { name, email } = location.state || {};
 
-  const [triggerSignup, { isLoading, data }] = useSignupMutation();
+  const [triggerSignup, { isLoading }] = useSignupMutation();
   const [sendVerificationEmail, { isLoading: isVerifying }] = useSendVerificationEmailMutation();
-
-  useEffect(() => {
-    if (data) {
-      console.log('Signup data:', data);
-    }
-  }, [data]);
 
   const formik = useFormik({
     initialValues: {
       name: '',
       email: '',
+      mobile: '',
       password: '',
       role: 'student'
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name is required'),
       email: Yup.string().email('Invalid email format').required('Email is required'),
+      mobile: Yup.string()
+        .matches(/^[0-9]{10}$/, 'Mobile number must be 10 digits')
+        .required('Mobile number is required'),
       password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required')
     }),
     onSubmit: async values => {
@@ -47,13 +43,9 @@ const SignupForm = () => {
 
         if (token) localStorage.setItem('authToken', token);
 
-        setAlertType('success');
-        setAlertMessage(response?.message || 'Signup successful! Redirecting to login...');
-        setShowAlert(true);
-
+        toast.success(response?.message || 'Signup successful! Redirecting to login...');
         setTimeout(() => navigate('/login'), 2000);
       } catch (error) {
-        console.error('Signup failed:', error);
         const fallbackMessage = 'Signup failed. Please try again.';
         const extractedMessage =
           error?.data?.error ||
@@ -61,9 +53,7 @@ const SignupForm = () => {
           error?.message ||
           fallbackMessage;
 
-        setShowAlert(true);
-        setAlertType('danger');
-        setAlertMessage(extractedMessage);
+        toast.error(extractedMessage);
       }
     }
   });
@@ -84,101 +74,109 @@ const SignupForm = () => {
     const { email, name } = formik.values;
 
     if (!email || !name) {
-      setAlertType('danger');
-      setAlertMessage(
-        !email && !name
-          ? 'Please enter your name and email first'
-          : !email
-          ? 'Please enter your email first'
-          : 'Please enter your name first'
-      );
-      setShowAlert(true);
+      const message = !email && !name
+        ? 'Please enter your name and email first'
+        : !email
+        ? 'Please enter your email first'
+        : 'Please enter your name first';
+      
+      toast.error(message);
       return;
     }
 
     try {
       const res = await sendVerificationEmail({ email, name }).unwrap();
-      setAlertType('success');
-      setAlertMessage(res.message || 'Verification email sent! Please check your inbox.');
-      setShowAlert(true);
+      toast.success(res.message || 'Verification email sent! Please check your inbox.');
 
       setVerifyCooldown(true);
-      setTimeout(() => setVerifyCooldown(false), 30000); // 30 sec cooldown
+      setTimeout(() => setVerifyCooldown(false), 30000);
     } catch (err) {
-      setAlertType('danger');
-      setAlertMessage(err?.data?.message || 'Error sending verification email');
-      setShowAlert(true);
+      toast.error(err?.data?.message || 'Error sending verification email');
     }
   };
 
   return (
-    <>
-      {showAlert && (
-        <div className={`alert alert-${alertType} alert-dismissible fade show`} role="alert">
-          {alertMessage}
-          <button type="button" className="btn-close" onClick={() => setShowAlert(false)}></button>
-        </div>
-      )}
-
-      <form className="login-signup-form" onSubmit={formik.handleSubmit}>
-        {/* Name */}
-        <div className="form-group">
-          <label className="pb-1">Your Name</label>
-          <div className="input-group input-group-merge">
-            <div className="input-icon">
-              <span className="ti-user color-primary"></span>
-            </div>
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              placeholder="Enter your name"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.name}
-            />
+    <form className="login-signup-form" onSubmit={formik.handleSubmit}>
+      {/* Name */}
+      <div className="form-group">
+        <label className="pb-1">Your Name</label>
+        <div className="input-group input-group-merge">
+          <div className="input-icon">
+            <span className="ti-user color-primary"></span>
           </div>
-          {formik.touched.name && formik.errors.name && (
-            <div className="text-danger">{formik.errors.name}</div>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            placeholder="Enter your name"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
+          />
+        </div>
+        {formik.touched.name && formik.errors.name && (
+          <div className="text-danger">{formik.errors.name}</div>
+        )}
+      </div>
+
+      {/* Email + Verify */}
+      <div className="form-group">
+        <label className="pb-1">Email Address</label>
+        <div className="input-group input-group-merge">
+          <div className="input-icon">
+            <span className="ti-email color-primary"></span>
+          </div>
+          <input
+            type="email"
+            name="email"
+            className="form-control"
+            placeholder="name@address.com"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+          />
+          {!isVerified ? (
+            <a
+              href=''
+              onClick={handleVerifyEmail}
+              disabled={isVerifying || verifyCooldown}
+            >
+              {isVerifying ? 'Sending...' : verifyCooldown ? 'Wait' : 'Click to Get Verify Mail'}
+            </a>
+          ) : (
+            <span className="badge bg-success ms-2">Verified</span>
           )}
         </div>
+        {formik.touched.email && formik.errors.email && (
+          <div className="text-danger">{formik.errors.email}</div>
+        )}
+      </div>
 
-        {/* Email + Verify */}
-        <div className="form-group">
-          <label className="pb-1">Email Address</label>
-          <div className="input-group input-group-merge">
-            <div className="input-icon">
-              <span className="ti-email color-primary"></span>
+      {/* Mobile Number */}
+      {isVerified && (
+        <>
+          <div className="form-group">
+            <label className="pb-1">Mobile Number</label>
+            <div className="input-group input-group-merge">
+              <div className="input-icon">
+                <span className="ti-mobile color-primary"></span>
+              </div>
+              <input
+                type="text"
+                name="mobile"
+                className="form-control"
+                placeholder="Enter your mobile number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.mobile}
+              />
             </div>
-            <input
-              type="email"
-              name="email"
-              className="form-control"
-              placeholder="name@address.com"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {!isVerified ? (
-              <button
-                type="button"
-                className="btn btn-outline-primary ms-2 btn-sm "
-                onClick={handleVerifyEmail}
-                disabled={isVerifying || verifyCooldown}
-              >
-                {isVerifying ? 'Sending...' : verifyCooldown ? 'Wait' : 'Verify'}
-              </button>
-            ) : (
-              <span className="badge bg-success ms-2">Verified</span>
+            {formik.touched.mobile && formik.errors.mobile && (
+              <div className="text-danger">{formik.errors.mobile}</div>
             )}
           </div>
-          {formik.touched.email && formik.errors.email && (
-            <div className="text-danger">{formik.errors.email}</div>
-          )}
-        </div>
 
-        {/* Password - only show if verified */}
-        {isVerified && (
+          {/* Password */}
           <div className="form-group">
             <label className="pb-1">Password</label>
             <div className="input-group input-group-merge">
@@ -199,33 +197,33 @@ const SignupForm = () => {
               <div className="text-danger">{formik.errors.password}</div>
             )}
           </div>
-        )}
+        </>
+      )}
 
-        {/* Terms Checkbox */}
-        <div className="my-4">
-          <div className="ms-4 custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="check-terms"
-              onChange={e => setTermsAccepted(e.target.checked)}
-            />
-            <label className="custom-control-label" htmlFor="check-terms">
-              I agree to the <a href="https://example.com">terms and conditions</a>
-            </label>
-          </div>
+      {/* Terms Checkbox */}
+      <div className="my-4">
+        <div className="ms-4 custom-checkbox">
+          <input
+            type="checkbox"
+            className="custom-control-input"
+            id="check-terms"
+            onChange={e => setTermsAccepted(e.target.checked)}
+          />
+          <label className="custom-control-label" htmlFor="check-terms">
+            I agree to the <a href="https://example.com">terms and conditions</a>
+          </label>
         </div>
+      </div>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn-block secondary-solid-btn rounded-2 mt-4 mb-3"
-          disabled={!termsAccepted || !formik.isValid || isLoading || !isVerified}
-        >
-          {isLoading ? 'Signing up...' : 'Sign up'}
-        </button>
-      </form>
-    </>
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="btn-block secondary-solid-btn rounded-2 mt-4 mb-3"
+        disabled={!termsAccepted || !formik.isValid || isLoading || !isVerified}
+      >
+        {isLoading ? 'Signing up...' : 'Sign up'}
+      </button>
+    </form>
   );
 };
 

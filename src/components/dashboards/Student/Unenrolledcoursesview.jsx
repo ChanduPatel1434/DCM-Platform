@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUnenrolledCourses } from '../../../hooks/useUnenrolledcourses';
-import { BookOpen, Clock, Users, ShoppingCart, Star, Loader, Eye } from 'lucide-react';
+import { BookOpen, Clock, Users, ShoppingCart,Loader, Eye } from 'lucide-react';
 import { useCoursesCategory } from '../../../hooks/useCourses';
 import { useAddItemMutation } from '../../../Services/student/cartServices';
 import { useSelector } from 'react-redux';
@@ -122,7 +122,7 @@ const UnenrolledCoursesGrid = ({ enrolledCourseIds = [] }) => {
                   <div className="mb-2">
                     <span className="badge bg-primary">{course.category}</span>
                   </div>
-                  <h5 className="card-title">{course.title}</h5>
+                  <h5 className="card-title">{course.name}</h5>
                   <p className="card-text text-muted small flex-grow-1">{course.description}</p>
 
                   <div className="d-flex justify-content-between text-muted small mb-2">
@@ -178,6 +178,7 @@ const UnenrolledCoursesGrid = ({ enrolledCourseIds = [] }) => {
           <p className="text-muted">Try selecting a different category or check back later</p>
         </div>
       )}
+     
     </div>
   );
 };

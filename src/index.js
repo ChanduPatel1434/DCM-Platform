@@ -1,136 +1,153 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css'; // Tailwind here
-import './App.css'
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import Store from './store/store';
-import Navbar from "./components/Navbar";
-import LiveChatButton from "./components/LiveChatButton";
-import { Toaster } from 'react-hot-toast';
-import { NotificationProvider } from './components/dashboards/notifications/notificationContext';
-import { Outlet } from "react-router-dom";
+  import React from 'react';
+  import ReactDOM from 'react-dom/client';
+  import './index.css'; // Tailwind here
 
-// Public Pages
-import HomePage from './components/HomePage';
-import AboutUs from './components/AboutUs';
-import ContactUs from './components/Contact';
-import Trainings from './components/Trainings';
-import ManPower from './components/ManPower';
-import Consultancy from './components/ConsultantService';
-import CourseDetail from './components/CoursesDetails';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import ErrorPage from './components/ErrorPage';
 
-// Dashboard (Student)
-import Dashboard from './components/dashboards/Dashboard';
-import Maindashboard from './components/dashboards/MainDashboard';
-import Mycourses from './components/dashboards/Student/MyCourses';
-import Setting from './components/dashboards/Student/Settings';
-import Syllabus from './components/dashboards/Student/Syllabus';
-import Calendar from './components/dashboards/Student/Calender';
+  import reportWebVitals from './reportWebVitals';
+  import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+  import { Provider } from 'react-redux';
+  import Store from './store/store';
 
-// Dashboard (Admin)
-import AssignStudents from './components/dashboards/Admin/AssignStudents';
-import UnassignedStudents from './components/dashboards/Admin/UnassignedStudents';
-import AssignedStudents from './components/dashboards/Admin/AssignedStudents';
-import Courses from './components/dashboards/Admin/Addcourse/Courses';
-import AddAdmin from './components/dashboards/Admin/AddAdmin/AddAdmin';
-import EmailVerification from './utils/EmailVerification';
-import CourseList from './components/dashboards/Student/CoursesList';
-import ForgotPassword from './components/Forgotpassword';
-import BatchList from './components/dashboards/Admin/Batchs/AllBatchs';
-import ChangePassword from './components/ChangePassword';
+  import { Toaster } from 'react-hot-toast';
 
-// Create a layout component for pages that need the full App structure
-const AppLayout = () => (
-  <>
-    <Toaster position="top-right" />
-    <NotificationProvider>
-      <Navbar />
+  import { Outlet } from "react-router-dom";
+
+  // Public Pages
+  import HomePage from './components/HomePage';
+  import AboutUs from './components/AboutUs';
+  import ContactUs from './components/Contact';
+  import Trainings from './components/Trainings';
+  import ManPower from './components/ManPower';
+  import Consultancy from './components/ConsultantService';
+  import CourseDetail from './components/CoursesDetails';
+  import Login from './components/Login';
+  import Signup from './components/Signup';
+  import ErrorPage from './components/ErrorPage';
+
+  // Dashboard (Student)
+  import Dashboard from './components/dashboards/Dashboard';
+  import Maindashboard from './components/dashboards/MainDashboard';
+
+
+  // Dashboard (Admin)
+  import AssignStudents from './components/dashboards/Admin/StudentsManagement';
+  import UnassignedStudents from './components/dashboards/Admin/UnassignedStudents';
+  import AssignedStudents from './components/dashboards/Admin/AssignedStudents';
+  import Courses from './components/dashboards/Admin/Addcourse/Courses';
+  import AddAdmin from './components/dashboards/Admin/AddAdmin/AddAdmin';
+  import EmailVerification from './utils/EmailVerification';
+  import CourseList from './components/dashboards/Student/CoursesList';
+  import ForgotPassword from './components/Forgotpassword';
+  import BatchList from './components/dashboards/Admin/Batchs/AllBatchs';
+  import ChangePassword from './components/ChangePassword';
+  import CourseDetails from './components/dashboards/Student/CourseCatelogDetails';
+  import BookOneOnOne from './components/dashboards/Student/BookOneToOneSession';
+  import ClassResources from './components/dashboards/Student/ClassResources';
+  import MyCertificates from './components/dashboards/Student/Certifications';
+  import AskQuestions from './components/dashboards/Student/AskQuestions';
+
+  import SettingsPage from './components/dashboards/Student/Settings';
+  import LiveClasses, { SchedulePage } from './components/dashboards/Student/Schedule';
+  import CourseCatalog from './components/dashboards/Student/CourseCatelog';
+  import AdminLiveClasses from './components/dashboards/Admin/LiveClass/LiveClassManagement';
+  import useAuthCheck from './hooks/useAuthCheck';
+  import AppLayout from './App';
+  import GetApp from './components/Get_App';
+  import Services from './components/Services';
+  import ServiceDetails from './components/ServicesDetails';
+  import ScrollToTop from './utils/ScrollToTop';
+import StudentsTable from './components/dashboards/Admin/UserCreation/AllStudentTable';
+
+  // Create a layout component for pages that need the full App structure
+
+
+  // Create a minimal layout for auth pages that don't need navbar/chat
+  const AuthLayout = () => (
+    <>
+    <ScrollToTop/>
       <Outlet />
-      <LiveChatButton />
-    </NotificationProvider>
-  </>
-);
+    </>
+  );
 
-// Create a minimal layout for auth pages that don't need navbar/chat
-const AuthLayout = () => (
-  <>
-    <Toaster position="top-right" />
-    <Outlet />
-  </>
-);
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <AppLayout />, // Uses navbar, chat, etc.
+      children: [
+        { path: '/', element: <HomePage /> },
+        { path: 'trainings', element: <Trainings /> },
+        { path: 'trainings/:category/:courseId?', element: <CourseDetail /> },
+        {path:'services',element:<Services/>},
+        {path:'services/:serviceName',element:<ServiceDetails/>},
+        { path: 'contact-us', element: <ContactUs /> },
+        { path: 'about-us', element: <AboutUs /> },
+        { path: 'man-power', element: <ManPower /> },
+        { path: 'Consultancy', element: <Consultancy /> },
+        { path: 'login', element: <Login /> },
+        { path: 'sign-up', element: <Signup /> },
+        { path: 'get-app', element: <GetApp /> },
+        { path: '*', element: <ErrorPage /> }
+      ]
+    },
+    {
+      path: '/',
+      element: <AuthLayout />, // No navbar, no chat - just toast
+      children: [
+        { path: 'password-reset', element: <ForgotPassword /> },
+        { path: 'reset-password', element: <ChangePassword /> },
+        { path: 'verify-email', element: <EmailVerification /> },
+      ]
+    },
+    {
+      path: '/dashboard',
+      element: <Dashboard />,
+      children: [
+        { path: '', element: <Maindashboard /> },
+      {path:"browsercourses",element:<CourseCatalog/>},
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <AppLayout />, // Uses navbar, chat, etc.
-    children: [
-      { path: '/', element: <HomePage /> },
-      { path: 'trainings', element: <Trainings /> },
-      { path: 'trainings/:category/:courseId?', element: <CourseDetail /> },
-      { path: 'contact-us', element: <ContactUs /> },
-      { path: 'about-us', element: <AboutUs /> },
-      { path: 'man-power', element: <ManPower /> },
-      { path: 'Consultancy', element: <Consultancy /> },
-      { path: 'login', element: <Login /> },
-      { path: 'sign-up', element: <Signup /> },
-      { path: '*', element: <ErrorPage /> }
-    ]
-  },
-  {
-    path: '/',
-    element: <AuthLayout />, // No navbar, no chat - just toast
-    children: [
-      { path: 'password-reset', element: <ForgotPassword /> },
-      { path: 'reset-password', element: <ChangePassword /> },
-      { path: 'verify-email', element: <EmailVerification /> },
-    ]
-  },
-  {
-    path: '/dashboard',
-    element: <Dashboard />,
-    children: [
-      { path: '', element: <Maindashboard /> },
-      { path: 'mycourses', element: <Mycourses /> },
-      { path: 'settings', element: <Setting /> },
-      { path: 'syllabus', element: <Syllabus /> },
-      { path: 'calendar', element: <Calendar /> },
-      { path: 'allcourses', element: <CourseList /> },
+        { path: 'settings', element: <SettingsPage /> },
+        { path: 'live-session', element: <LiveClasses /> },
+        { path: 'my-certificates', element: <MyCertificates /> },
+        { path: 'ask-questions', element: <AskQuestions /> },
+        { path: 'class-resources', element: <ClassResources /> },
+        { path: 'allcourses', element: <CourseList /> },
+        { path: 'book-session', element: <BookOneOnOne /> },
+        { path: 'course/details', element: <CourseDetails /> },
 
-      // Admin routes
-      { path: 'addadmin', element: <AddAdmin /> },
-      {
-        path: 'students',
-        element: <AssignStudents />,
-        children: [
-          { path: '', element: <UnassignedStudents /> },
-          { path: 'assigned', element: <AssignedStudents /> }
-        ]
-      },
-      {
-        path: 'courses',
-        element: <Courses />,
-      },
-      {
-        path: 'batchs',
-        element: <BatchList />,
-      }
-    ]
-  }
-]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Provider store={Store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
-);
+        // Admin routes
+        { path: 'addadmin', element: <AddAdmin /> },
+        {
+          path: 'students',
+          element: <AssignStudents />,
+          children: [
+            { path: '', element: <StudentsTable /> },
+            { path: 'unassigned', element: <UnassignedStudents /> },
+            { path: 'assigned', element: <AssignedStudents /> }
+          ]
+        },
+        {
+          path: 'courses',
+          element: <Courses />,
+        },
+        {path:'zoom',element:<AdminLiveClasses/>},
+        {
+          path: 'batchs',
+          element: <BatchList />,
+        }
+      ]
+    }
+  ]);
 
-reportWebVitals();
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(
+    <React.StrictMode>
+      <Provider store={Store}>
+                <Toaster />
+
+        <RouterProvider router={router} />
+      </Provider>
+    </React.StrictMode>
+  );
+
+  reportWebVitals();

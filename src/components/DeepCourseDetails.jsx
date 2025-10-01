@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { coursesData, allCoursesList } from '../data/coursesData';
 
 const CourseDetails = () => {
-  const { courseId } = useParams();
+  const { courseId, category } = useParams();
+
+
 
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
-
+console.log(course)
   useEffect(() => {
     const fetchCourseData = () => {
       try {
         // Get course data based on URL parameter
-        const courseKey = courseId || 'java-fullstack';
+        console.log(courseId,"iamcoid")
+        const courseKey = courseId || 'java-full-stack';
         const courseData = coursesData[courseKey];
 
         if (courseData) {
@@ -32,10 +35,11 @@ const CourseDetails = () => {
     fetchCourseData();
   }, [courseId, navigate]);
 
-  const handleCourseChange = (courseTitle) => {
+  const handleCourseChange = (slug) => {
+    console.log(slug)
     // Convert course title to URL-friendly format
-    const coursePath = courseTitle.toLowerCase().replace(/\s+/g, '-');
-    navigate(`${coursePath}`);
+
+    navigate(`/trainings/${slug}`);
   };
 
   if (loading) {
@@ -47,16 +51,16 @@ const CourseDetails = () => {
   }
 
   return (
-    <div className="main">
+    <div className="main ">
       {/* Header Section */}
       <section className="hero-section ptb-100 gradient-overlay "
         style={{ background: "url('/img/header-bg-5.jpg') no-repeat top center / cover " }}>
         <div className="hero-bottom-shape-two" style={{ background: "url('/img/hero-bottom-shape.svg') no-repeat bottom center" }}></div>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row justify-content-center">
             <div className="col-md-8 col-lg-7">
               <div className="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">
-                <h1 className="text-white mb-0">{course.title}</h1>
+                <h1 className="text-white mb-0">{course?.title}</h1>
 
               </div>
             </div>
@@ -112,17 +116,17 @@ const CourseDetails = () => {
                     <h5>The Best Courses</h5>
                   </div>
                   <ul className="all-service-list">
-                    {allCoursesList.map((courseName, index) => (
+                    {allCoursesList.map((c, index) => (
                       <li key={index}>
                         <a
                           href="#"
                           onClick={(e) => {
                             e.preventDefault();
-                            handleCourseChange(courseName);
+                            handleCourseChange(c.slug);
                           }}
-                          className={courseName === course.title ? "active" : ""}
+                          className={c.title === course?.title ? "active" : ""}
                         >
-                          {courseName}
+                          {c.title}
                         </a>
                       </li>
                     ))}
@@ -146,8 +150,13 @@ const CourseDetails = () => {
                         <span className="ti-video-camera mr-2"></span>
                         {course.mode}
                       </p>
-                      <button className="btn btn-primary btn-block mt-3">Join Live Classes</button>
-                      <button className="btn btn-outline-primary btn-block mt-2">Enroll</button>
+                     <Link className='mb-3' to={'/sign-up'}>
+                      <button className="btn outline-btn btn-block ">Only Live Classes</button></Link>
+                      <Link to={'/sign-up'}>
+                      <button className="accent-solid-btn btn btn-block">Enroll</button>
+                      
+                      </Link>
+                      
                     </div>
                   </div>
                 </aside>
@@ -160,8 +169,8 @@ const CourseDetails = () => {
                   <p>We are available 24/7 for dedicated support</p>
                   <ul className="primary-list mt-25">
                     <li><span className="ti-location-pin mr-2 color-primary"></span> Madhapur, Hyderabad, Telangana, India - 500081</li>
-                    <li><span className="ti-mobile mr-2 color-primary"></span> (+123) 456-789-012</li>
-                    <li><span className="ti-email mr-2 color-primary"></span> info@designcareermetrics.com</li>
+                    <li><span className="ti-mobile mr-2 color-primary"></span>+91 7337572543</li>
+                    <li><span className="ti-email mr-2 color-primary"></span> hr@designcareermetrics.com</li>
                   </ul>
                 </aside>
               </div>

@@ -1,5 +1,4 @@
-// coursesData.js
-// coursesData.js
+
 export const coursesData = {
   "manual-testing": {
     id: 1,
@@ -35,7 +34,7 @@ export const coursesData = {
         answer: "Yes, the course includes hands-on exercises and real-world testing scenarios."
       }
     ],
-    price: "₹10,000",
+    price: "₹15,000",
     duration: "3 months",
     mode: "Online Live Classes"
   },
@@ -74,7 +73,7 @@ export const coursesData = {
       }
     ],
     price: "₹15,000",
-    duration: "4 months",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "api-testing": {
@@ -111,7 +110,7 @@ export const coursesData = {
         answer: "The course focuses on RESTful APIs with JSON payloads."
       }
     ],
-    price: "₹12,000",
+    price: "₹15,000",
     duration: "3 months",
     mode: "Online Live Classes"
   },
@@ -149,8 +148,8 @@ export const coursesData = {
         answer: "Basic programming knowledge is helpful for the automation sections."
       }
     ],
-    price: "₹14,000",
-    duration: "4 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "performance-testing": {
@@ -187,8 +186,8 @@ export const coursesData = {
         answer: "Yes, you'll learn to interpret performance test results and identify bottlenecks."
       }
     ],
-    price: "₹16,000",
-    duration: "4 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "automation-framework": {
@@ -225,11 +224,11 @@ export const coursesData = {
         answer: "Yes, you'll build a complete automation framework from scratch."
       }
     ],
-    price: "₹18,000",
-    duration: "5 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
-  "java-fullstack": {
+  "java-full-stack": {
     id: 7,
     title: "Java Full Stack",
     image: "/img/java-svgrepo-com.svg",
@@ -263,8 +262,8 @@ export const coursesData = {
         answer: "Yes, you'll build multiple projects including a capstone project."
       }
     ],
-    price: "₹20,000",
-    duration: "6 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "python-development": {
@@ -301,8 +300,8 @@ export const coursesData = {
         answer: "Yes, the course includes Python for data analysis and visualization."
       }
     ],
-    price: "₹18,000",
-    duration: "5 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "dotnet": {
@@ -339,11 +338,11 @@ export const coursesData = {
         answer: "Yes, we cover deployment to Microsoft Azure cloud platform."
       }
     ],
-    price: "₹19,000",
-    duration: "6 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
-  "mern-stack": {
+  "mern-stack-development": {
     id: 10,
     title: "MERN Stack",
     image: "/img/react-svgrepo-com.svg",
@@ -377,8 +376,8 @@ export const coursesData = {
         answer: "Yes, we cover modern React with hooks and functional components."
       }
     ],
-    price: "₹18,000",
-    duration: "5 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "mean": {
@@ -453,8 +452,8 @@ export const coursesData = {
         answer: "Yes, we cover API integration and Firebase backend services."
       }
     ],
-    price: "₹16,000",
-    duration: "4 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
   "react-native": {
@@ -491,17 +490,908 @@ export const coursesData = {
         answer: "Yes, we cover camera, GPS, storage, and other device APIs."
       }
     ],
-    price: "₹17,000",
-    duration: "5 months",
+    price: "₹15,000",
+    duration: "3 months",
     mode: "Online Live Classes"
   },
+  
+  "graphic-design": {
+    "id": 1,
+    "title": "Graphic Design",
+    "image": "/img/arrange-graphic-design-graphic-tool-svgrepo-com.svg",
+    "description": "Master the visual side of design with tools like Photoshop, Illustrator, and Canva. Learn color theory, typography, branding, and layout skills.",
+    "fullDescription": [
+      "Master graphic design principles and visual communication techniques",
+      "Learn industry-standard tools like Photoshop, Illustrator, and Canva",
+      "Develop skills in color theory, typography, and branding",
+      "Create compelling layouts and visual compositions for various media"
+    ],
+    "features": [
+      "Photoshop & Illustrator Mastery",
+      "Color Theory & Typography",
+      "Brand Identity Design",
+      "Layout & Composition",
+      "Print vs Digital Design",
+      "Canva for Quick Designs",
+      "Vector Graphics Creation",
+      "Design Portfolio Development"
+    ],
+    "faqs": [
+      {
+        "question": "Do I need prior design experience?",
+        "answer": "No, this course starts from fundamentals and builds up to advanced techniques."
+      },
+      {
+        "question": "Which software will I learn?",
+        "answer": "You'll master Adobe Photoshop, Illustrator, and Canva for professional design work."
+      },
+      {
+        "question": "Will I build a portfolio?",
+        "answer": "Yes, you'll complete multiple projects for a professional design portfolio."
+      }
+    ],
+    "price": "₹12,000",
+    "duration": "2 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/uiux-development/graphic-design"
+  },
+  
+  "design-tools-mastery": {
+    "id": 2,
+    "title": "Design Tools Mastery",
+    "image": "/img/web-design-svgrepo-com.svg",
+    "description": "Get hands-on experience with tools like Figma, Adobe XD, and Sketch. Learn to design high-fidelity prototypes and collaborate with developers.",
+    "fullDescription": [
+      "Master industry-standard UI/UX design tools including Figma, Adobe XD, and Sketch",
+      "Learn to create high-fidelity prototypes and design systems",
+      "Develop collaboration skills for working with developers and stakeholders",
+      "Understand design handoff processes and developer collaboration"
+    ],
+    "features": [
+      "Figma Mastery",
+      "Adobe XD Proficiency",
+      "Sketch Fundamentals",
+      "Prototyping & Interactions",
+      "Design Systems Creation",
+      "Developer Handoff",
+      "Collaboration Tools",
+      "Component Libraries"
+    ],
+    "faqs": [
+      {
+        "question": "Which tool is most important to learn?",
+        "answer": "Figma is currently the industry standard, but we cover all major tools for versatility."
+      },
+      {
+        "question": "Do I need design experience?",
+        "answer": "Basic design understanding helps, but we cover everything from fundamentals."
+      },
+      {
+        "question": "Will I learn prototyping?",
+        "answer": "Yes, we cover interactive prototyping and animation within these tools."
+      }
+    ],
+    "price": "₹10,000",
+    "duration": "6 weeks",
+    "mode": "Online Live Classes",
+    "path": "/trainings/uiux-development/design-tools-mastery"
+  },
+  
+  "interaction-design": {
+    "id": 3,
+    "title": "Interaction Design",
+    "image": "/img/touch-svgrepo-com.svg",
+    "description": "Understand how users interact with interfaces. Focus on animations, transitions, microinteractions, and behavior-based design patterns and layouts skills.",
+    "fullDescription": [
+      "Master the principles of interaction design and user experience",
+      "Learn to create intuitive, engaging user interfaces with smooth animations",
+      "Understand user psychology and behavior patterns in digital interfaces",
+      "Develop skills in microinteractions, transitions, and responsive design"
+    ],
+    "features": [
+      "Interaction Principles",
+      "Animation & Transitions",
+      "Microinteractions Design",
+      "User Behavior Patterns",
+      "Gesture-Based Interfaces",
+      "Feedback Systems",
+      "Usability Testing",
+      "Prototyping Interactions"
+    ],
+    "faqs": [
+      {
+        "question": "What is interaction design?",
+        "answer": "It focuses on creating engaging interfaces with logical and thought-out behaviors and actions."
+      },
+      {
+        "question": "Do I need coding knowledge?",
+        "answer": "No, this course focuses on design principles rather than implementation."
+      },
+      {
+        "question": "Will I learn animation tools?",
+        "answer": "Yes, we cover tools for creating and prototyping animations and interactions."
+      }
+    ],
+    "price": "₹14,000",
+    "duration": "2.5 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/uiux-development/interaction-design"
+  },
+  
+  "machine-learning": {
+    "id": 1,
+    "title": "Machine Learning",
+    "image": "/img/machine learning.png",
+    "description": "Learn to build predictive models that forecast outcomes using supervised, unsupervised, and reinforcement learning techniques. Gain hands-on experience with algorithms like decision trees.",
+    "fullDescription": [
+      "Master machine learning algorithms for predictive modeling and data analysis",
+      "Learn supervised, unsupervised, and reinforcement learning techniques",
+      "Gain hands-on experience with decision trees, regression, and clustering algorithms",
+      "Build and evaluate ML models for real-world applications"
+    ],
+    "features": [
+      "Supervised Learning Algorithms",
+      "Unsupervised Learning Techniques",
+      "Model Evaluation & Validation",
+      "Feature Engineering",
+      "Decision Trees & Random Forests",
+      "Regression Analysis",
+      "Clustering Methods",
+      "Real-world Project Implementation"
+    ],
+    "faqs": [
+      {
+        "question": "What prerequisites are needed?",
+        "answer": "Basic Python programming and statistics knowledge is recommended."
+      },
+      {
+        "question": "Will I work on real projects?",
+        "answer": "Yes, you'll complete multiple hands-on projects with real datasets."
+      },
+      {
+        "question": "Which algorithms will I learn?",
+        "answer": "You'll master decision trees, regression, clustering, and ensemble methods."
+      }
+    ],
+    "price": "₹18,000",
+    "duration": "3 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/machine-learning"
+  },
+  
+  "artificial-intelligence": {
+    "id": 2,
+    "title": "Artificial Intelligence",
+    "image": "/img/nodebots-svgrepo-com.svg",
+    "description": "Create intelligent systems that mimic human cognition and decision-making, covering NLP, robotics, and symbolic reasoning. Understand how AI powers automation in modern industries.",
+    "fullDescription": [
+      "Build intelligent systems that simulate human cognition and decision-making",
+      "Explore natural language processing, robotics, and symbolic reasoning",
+      "Understand how AI drives automation across various industries",
+      "Develop practical AI solutions for real-world problems"
+    ],
+    "features": [
+      "AI Fundamentals & History",
+      "Natural Language Processing",
+      "Robotics & Automation",
+      "Symbolic Reasoning Systems",
+      "Expert Systems Development",
+      "AI Ethics & Governance",
+      "Industry Applications",
+      "Cognitive Computing"
+    ],
+    "faqs": [
+      {
+        "question": "How is AI different from ML?",
+        "answer": "AI is broader, encompassing machines that mimic human intelligence, while ML is a subset focused on learning from data."
+      },
+      {
+        "question": "What industries use AI?",
+        "answer": "Healthcare, finance, automotive, retail, and many others leverage AI technologies."
+      },
+      {
+        "question": "Will I learn about AI ethics?",
+        "answer": "Yes, we cover ethical considerations and responsible AI development."
+      }
+    ],
+    "price": "₹20,000",
+    "duration": "3.5 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/artificial-intelligence"
+  },
+  
+  "generative-ai": {
+    "id": 3,
+    "title": "Generative AI",
+    "image": "/img/ai-ai-svgrepo-com.svg",
+    "description": "Learn to build and apply generative models that create text, images, code, and more. Explore LLMs, diffusion models, prompt engineering, and ethical deployment strategies.",
+    "fullDescription": [
+      "Master generative AI models for creating text, images, code, and multimedia content",
+      "Explore large language models, diffusion models, and GANs",
+      "Learn advanced prompt engineering techniques and fine-tuning strategies",
+      "Understand ethical considerations and responsible deployment of generative AI"
+    ],
+    "features": [
+      "Large Language Models (LLMs)",
+      "Diffusion Models & GANs",
+      "Prompt Engineering Mastery",
+      "Text & Image Generation",
+      "Code Generation Techniques",
+      "Model Fine-tuning",
+      "Ethical AI Deployment",
+      "Real-world Applications"
+    ],
+    "faqs": [
+      {
+        "question": "What is prompt engineering?",
+        "answer": "The skill of crafting effective inputs to get desired outputs from generative AI models."
+      },
+      {
+        "question": "Do I need ML experience?",
+        "answer": "Basic ML knowledge is helpful but we cover fundamentals as needed."
+      },
+      {
+        "question": "What tools will I use?",
+        "answer": "You'll work with OpenAI API, Hugging Face, and other popular generative AI platforms."
+      }
+    ],
+    "price": "₹22,000",
+    "duration": "2.5 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/generative-ai"
+  },
+  "data-visualization": {
+    "id": 4,
+    "title": "Data Visualization",
+    "image": "/img/datavisualization.png",
+    "description": "Turn raw data into compelling visual insights using tools like Tableau, Power BI, and D3.js. Learn to design dashboards, interactive charts, and storytelling visuals that drive decision-making and patterns.",
+    "fullDescription": [
+      "Transform raw data into compelling visual stories and insights",
+      "Master visualization tools like Tableau, Power BI, and D3.js",
+      "Design interactive dashboards and charts for effective communication",
+      "Learn data storytelling techniques that drive business decisions"
+    ],
+    "features": [
+      "Tableau & Power BI Mastery",
+      "D3.js for Custom Visualizations",
+      "Interactive Dashboard Design",
+      "Data Storytelling Techniques",
+      "Chart Selection & Best Practices",
+      "Color Theory & Visual Design",
+      "Geospatial Visualization",
+      "Real-time Data Dashboards"
+    ],
+    "faqs": [
+      {
+        "question": "Which tool is most popular?",
+        "answer": "Tableau and Power BI are industry standards, but we cover multiple tools for versatility."
+      },
+      {
+        "question": "Do I need design skills?",
+        "answer": "No, we teach visual design principles as part of the course."
+      },
+      {
+        "question": "Will I build portfolios?",
+        "answer": "Yes, you'll create multiple dashboard projects for your portfolio."
+      }
+    ],
+    "price": "₹15,000",
+    "duration": "2 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/data-visualization"
+  },
+  
+  "big-data": {
+    "id": 5,
+    "title": "Big Data",
+    "image": "/img/bigdata.png",
+    "description": "Handle massive, complex datasets with Hadoop and Spark to uncover patterns, trends, and anomalies. Real-time analytics, and scalable architecture design for enterprise-grade data solutions.",
+    "fullDescription": [
+      "Manage and process massive, complex datasets using big data technologies",
+      "Work with Hadoop ecosystem and Spark for distributed computing",
+      "Uncover patterns, trends, and anomalies in large-scale data",
+      "Design scalable architecture for enterprise-grade data solutions"
+    ],
+    "features": [
+      "Hadoop Ecosystem Mastery",
+      "Apache Spark Programming",
+      "Distributed Computing",
+      "Real-time Data Processing",
+      "Scalable Architecture Design",
+      "Data Pipeline Development",
+      "Cloud Big Data Solutions",
+      "Performance Optimization"
+    ],
+    "faqs": [
+      {
+        "question": "What is Hadoop?",
+        "answer": "An open-source framework for distributed storage and processing of large datasets."
+      },
+      {
+        "question": "Do I need programming experience?",
+        "answer": "Yes, Java or Python knowledge is required for big data processing."
+      },
+      {
+        "question": "Will I learn cloud platforms?",
+        "answer": "Yes, we cover AWS, Azure, and GCP big data services."
+      }
+    ],
+    "price": "₹25,000",
+    "duration": "4 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/big-data"
+  },
+
+  "deep-learning": {
+    "id": 6,
+    "title": "Deep Learning",
+    "image": "/img/deeplearning.png",
+    "description": "Use advanced neural networks like CNNs, RNNs, and transformers to solve tasks in image recognition, and generative modeling. Build and deploy models using TensorFlow and PyTorch with real-world datasets.",
+    "fullDescription": [
+      "Master advanced neural network architectures for complex AI tasks",
+      "Work with CNNs for image recognition, RNNs for sequence data, and transformers for NLP",
+      "Build and deploy models using TensorFlow and PyTorch frameworks",
+      "Apply deep learning to real-world problems across various domains"
+    ],
+    "features": [
+      "Neural Network Fundamentals",
+      "CNN for Computer Vision",
+      "RNN & LSTM for Sequences",
+      "Transformer Architectures",
+      "TensorFlow & PyTorch Mastery",
+      "Model Deployment Strategies",
+      "Transfer Learning Techniques",
+      "Real-world Project Implementation"
+    ],
+    "faqs": [
+      {
+        "question": "What prerequisites are needed?",
+        "answer": "Strong Python and machine learning fundamentals are required."
+      },
+      {
+        "question": "Which framework is better?",
+        "answer": "We cover both TensorFlow and PyTorch as both have industry adoption."
+      },
+      {
+        "question": "Will I work on image recognition?",
+        "answer": "Yes, computer vision with CNNs is a significant part of the curriculum."
+      }
+    ],
+    "price": "₹23,000",
+    "duration": "3.5 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/deep-learning"
+  },
+  
+  "data-analytics": {
+    "id": 7,
+    "title": "Data Analytics",
+    "image": "/img/dataanalytics.png",
+    "description": "Analyze structured and unstructured business data using statistical methods, BI tools. Learn to extract actionable insights, visualize trends, and support strategic decision-making across industries.",
+    "fullDescription": [
+      "Analyze both structured and unstructured business data using statistical methods",
+      "Master BI tools and techniques for extracting actionable insights",
+      "Learn to visualize trends and patterns that support strategic decision-making",
+      "Apply analytics skills across various industries and business domains"
+    ],
+    "features": [
+      "Statistical Analysis Methods",
+      "Business Intelligence Tools",
+      "SQL for Data Querying",
+      "Predictive Analytics",
+      "Data Cleaning & Preparation",
+      "Trend Analysis & Forecasting",
+      "Industry-specific Applications",
+      "Decision Support Systems"
+    ],
+    "faqs": [
+      {
+        "question": "What tools will I learn?",
+        "answer": "SQL, Excel, Python, R, and popular BI tools like Tableau and Power BI."
+      },
+      {
+        "question": "Is coding required?",
+        "answer": "Basic programming knowledge helps, but we cover necessary technical skills."
+      },
+      {
+        "question": "What industries need data analysts?",
+        "answer": "Virtually all industries including finance, healthcare, retail, and technology."
+      }
+    ],
+    "price": "₹16,000",
+    "duration": "2.5 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/data-science/data-analytics"
+  },
+  
+    "ethical-hacking": {
+      "id": 1,
+      "title": "Ethical Hacking Fundamentals",
+      "image": "/img/application-security-svgrepo-com.svg",
+      "description": "Learn the basics of ethical hacking, penetration testing, and vulnerability assessment techniques.",
+      "fullDescription": [
+        "Master the fundamentals of ethical hacking and penetration testing methodologies",
+        "Learn vulnerability assessment techniques and security testing approaches",
+        "Understand legal and ethical considerations in security testing",
+        "Develop hands-on skills in identifying and mitigating security vulnerabilities"
+      ],
+      "features": [
+        "Penetration Testing Fundamentals",
+        "Vulnerability Assessment",
+        "Security Scanning Tools",
+        "Ethical Hacking Methodologies",
+        "Legal & Compliance Aspects",
+        "Security Reporting",
+        "Hands-on Lab Exercises",
+        "Certification Preparation"
+      ],
+      "faqs": [
+        {
+          "question": "Is this course legal?",
+          "answer": "Yes, we teach ethical hacking for defensive security purposes with proper legal guidance."
+        },
+        {
+          "question": "What tools will I learn?",
+          "answer": "Kali Linux, Metasploit, Nmap, Wireshark, and other industry-standard security tools."
+        },
+        {
+          "question": "Do I need programming knowledge?",
+          "answer": "Basic scripting knowledge is helpful but we cover the necessary fundamentals."
+        }
+      ],
+      "price": "₹20,000",
+      "duration": "3 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/ethical-hacking"
+    },
+    "network-security": {
+      "id": 2,
+      "title": "Network Security",
+      "image": "/img/networking-monitor-svgrepo-com.svg",
+      "description": "Master network security protocols, firewalls, VPNs, and intrusion detection systems.",
+      "fullDescription": [
+        "Master network security protocols and infrastructure protection techniques",
+        "Learn to configure and manage firewalls, VPNs, and intrusion detection systems",
+        "Understand network architecture security and segmentation strategies",
+        "Develop skills in monitoring and defending network infrastructure"
+      ],
+      "features": [
+        "Firewall Configuration & Management",
+        "VPN Implementation",
+        "Intrusion Detection Systems",
+        "Network Protocol Security",
+        "Network Segmentation",
+        "Traffic Analysis",
+        "Wireless Security",
+        "Network Monitoring"
+      ],
+      "faqs": [
+        {
+          "question": "What networking knowledge is required?",
+          "answer": "Basic understanding of networking concepts like TCP/IP, DNS, and routing is recommended."
+        },
+        {
+          "question": "Will I work with real firewalls?",
+          "answer": "Yes, we provide virtual lab environments with enterprise firewall solutions."
+        },
+        {
+          "question": "Is this course vendor-specific?",
+          "answer": "We cover concepts applicable to all vendors, with hands-on on multiple platforms."
+        }
+      ],
+      "price": "₹18,000",
+      "duration": "2.5 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/network-security"
+    },
+    "incident-response": {
+      "id": 3,
+      "title": "Incident Response & Forensics",
+      "image": "/img/incident-maintenance-svgrepo-com.svg",
+      "description": "Learn digital forensics, incident response procedures, and cyber crime investigation techniques.",
+      "fullDescription": [
+        "Master digital forensics techniques and incident response procedures",
+        "Learn cyber crime investigation methodologies and evidence handling",
+        "Understand incident response lifecycle and crisis management",
+        "Develop skills in evidence preservation and forensic analysis"
+      ],
+      "features": [
+        "Digital Forensics Techniques",
+        "Incident Response Lifecycle",
+        "Evidence Collection & Preservation",
+        "Memory & Disk Forensics",
+        "Malware Analysis Basics",
+        "Legal Evidence Handling",
+        "Crisis Management",
+        "Reporting & Documentation"
+      ],
+      "faqs": [
+        {
+          "question": "What tools will I use?",
+          "answer": "FTK, Autopsy, Volatility, Wireshark, and other digital forensics tools."
+        },
+        {
+          "question": "Is this course technical?",
+          "answer": "Yes, it involves hands-on technical work with forensic tools and techniques."
+        },
+        {
+          "question": "Will I learn about legal aspects?",
+          "answer": "Yes, we cover legal considerations for evidence handling and courtroom testimony."
+        }
+      ],
+      "price": "₹22,000",
+      "duration": "3 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/incident-response"
+    },
+    "risk-assessment": {
+      "id": 4,
+      "title": "Security Risk Assessment",
+      "image": "/img/security-shield-svgrepo-com.svg",
+      "description": "Understand risk assessment methodologies, compliance frameworks, and security auditing practices.",
+      "fullDescription": [
+        "Master security risk assessment methodologies and frameworks",
+        "Learn compliance requirements and regulatory frameworks",
+        "Understand security auditing practices and control validation",
+        "Develop skills in risk quantification and treatment planning"
+      ],
+      "features": [
+        "Risk Assessment Methodologies",
+        "Compliance Frameworks",
+        "Security Auditing Techniques",
+        "Control Validation",
+        "Risk Treatment Planning",
+        "Policy Development",
+        "Regulatory Requirements",
+        "Reporting & Documentation"
+      ],
+      "faqs": [
+        {
+          "question": "Is this course technical or managerial?",
+          "answer": "It's a blend of both - technical risk assessment and managerial decision-making."
+        },
+        {
+          "question": "Which frameworks will I learn?",
+          "answer": "NIST, ISO 27001, SOC 2, and other industry-standard risk frameworks."
+        },
+        {
+          "question": "Do I need prior security knowledge?",
+          "answer": "Basic security understanding is helpful but we cover necessary fundamentals."
+        }
+      ],
+      "price": "₹16,000",
+      "duration": "2 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/risk-assessment"
+    },
+    "malware-analysis": {
+      "id": 5,
+      "title": "Malware Analysis",
+      "image": "/img/virus-svgrepo-com.svg",
+      "description": "Analyze malware behavior, reverse engineering techniques, and threat intelligence gathering.",
+      "fullDescription": [
+        "Master malware analysis techniques and reverse engineering methodologies",
+        "Learn to analyze malware behavior and characteristics",
+        "Understand threat intelligence gathering and analysis",
+        "Develop skills in malware detection and mitigation strategies"
+      ],
+      "features": [
+        "Malware Behavior Analysis",
+        "Reverse Engineering Techniques",
+        "Static & Dynamic Analysis",
+        "Threat Intelligence",
+        "Sandbox Environments",
+        "Malware Detection",
+        "Incident Response Integration",
+        "Advanced Analysis Tools"
+      ],
+      "faqs": [
+        {
+          "question": "What programming knowledge is needed?",
+          "answer": "Assembly language and C/C++ knowledge is highly recommended for reverse engineering."
+        },
+        {
+          "question": "Is this course advanced?",
+          "answer": "Yes, it's designed for security professionals with prior experience."
+        },
+        {
+          "question": "What tools will I use?",
+          "answer": "IDA Pro, Ghidra, OllyDbg, and other malware analysis tools."
+        }
+      ],
+      "price": "₹25,000",
+      "duration": "3.5 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/malware-analysis"
+    },
+    "cloud-security": {
+      "id": 6,
+      "title": "Cloud Security",
+      "image": "/img/cloud-computing-cloud-security-network-password-network-security-privacy-code-svgrepo-com.svg",
+      "description": "Secure cloud infrastructure, implement cloud security best practices, and manage cloud compliance.",
+      "fullDescription": [
+        "Master cloud security principles and infrastructure protection",
+        "Learn to implement cloud security best practices and controls",
+        "Understand cloud compliance requirements and governance",
+        "Develop skills in securing multi-cloud and hybrid environments"
+      ],
+      "features": [
+        "Cloud Security Architecture",
+        "Identity & Access Management",
+        "Data Protection in Cloud",
+        "Cloud Compliance Frameworks",
+        "Multi-cloud Security",
+        "Container & Serverless Security",
+        "Cloud Monitoring & Logging",
+        "Incident Response in Cloud"
+      ],
+      "faqs": [
+        {
+          "question": "Which cloud platforms are covered?",
+          "answer": "AWS, Azure, and GCP security concepts and implementations."
+        },
+        {
+          "question": "Do I need cloud experience?",
+          "answer": "Basic cloud computing knowledge is recommended but we cover fundamentals."
+        },
+        {
+          "question": "Will I get cloud certifications?",
+          "answer": "We prepare you for cloud security certifications but don't include exam fees."
+        }
+      ],
+      "price": "₹23,000",
+      "duration": "3 months",
+      "mode": "Online Live Classes",
+      "path": "/trainings/cybersecurity/cloud-security"
+    },
+    
+  "group-discussion": {
+    "id": 1,
+    "title": "Group Discussion",
+    "image": "/img/group-talk-svgrepo-com.svg",
+    "description": "Learn techniques to effectively participate in group discussions. Improve clarity, confidence, and critical thinking to stand out in competitive environments.",
+    "fullDescription": [
+      "Master techniques for effective participation in group discussions",
+      "Develop clarity, confidence, and critical thinking skills",
+      "Learn strategies to stand out in competitive environments",
+      "Understand group dynamics and communication patterns"
+    ],
+    "features": [
+      "Discussion Framework & Structure",
+      "Argument Formation & Presentation",
+      "Body Language & Non-verbal Communication",
+      "Active Listening Techniques",
+      "Conflict Resolution in Discussions",
+      "Time Management in GD",
+      "Topic Analysis & Perspective Building",
+      "Confidence Building Exercises"
+    ],
+    "faqs": [
+      {
+        "question": "What types of group discussions are covered?",
+        "answer": "We cover academic, competitive exam, and professional group discussion scenarios."
+      },
+      {
+        "question": "Do I need prior experience?",
+        "answer": "No prior experience needed - we start with fundamentals and build up to advanced techniques."
+      },
+      {
+        "question": "Will I get practice opportunities?",
+        "answer": "Yes, regular practice sessions with feedback are integral to the program."
+      }
+    ],
+    "price": "₹15,000",
+    "duration": "6 weeks",
+    "mode": "Online Live Classes",
+    "path": "/trainings/soft-skills/group-discussion"
+  },
+  "vocabulary-building": {
+    "id": 2,
+    "title": "Vocabulary Building",
+    "image": "/img/vocabulary-svgrepo-com.svg",
+    "description": "Enhance your word power with daily vocabulary, idioms, and phrases. Strengthen your communication and comprehension skills for academic and professional success.",
+    "fullDescription": [
+      "Systematically expand your vocabulary with effective techniques",
+      "Learn idioms, phrases, and expressions for natural communication",
+      "Improve reading comprehension through vocabulary enhancement",
+      "Develop strategies for long-term vocabulary retention"
+    ],
+    "features": [
+      "Daily Vocabulary Sessions",
+      "Contextual Learning Approach",
+      "Idioms & Phrases Mastery",
+      "Word Root & Etymology Studies",
+      "Vocabulary Retention Techniques",
+      "Application in Speaking & Writing",
+      "Specialized Terminology",
+      "Progress Tracking & Assessments"
+    ],
+    "faqs": [
+      {
+        "question": "How many words will I learn?",
+        "answer": "You'll learn 500+ essential words with practical application exercises."
+      },
+      {
+        "question": "Is this suitable for competitive exams?",
+        "answer": "Yes, the program is designed to help with academic and competitive exam preparation."
+      },
+      {
+        "question": "What learning materials are provided?",
+        "answer": "You'll receive vocabulary books, flashcards, and access to our learning app."
+      }
+    ],
+    "price": "₹15,000",
+    "duration": "2 months",
+    "mode": "Online Live Classes",
+    "path": "/trainings/communication/vocabulary-building"
+  },
+  "presentation-skills": {
+    "id": 3,
+    "title": "Presentation Skills",
+    "image": "/img/data-analytics.svg",
+    "description": "Master the art of delivering professional presentations. Learn to use visuals, storytelling, and audience engagement to make your ideas memorable.",
+    "fullDescription": [
+      "Develop confident and compelling presentation delivery",
+      "Learn to create effective visual aids and supporting materials",
+      "Master storytelling techniques for audience engagement",
+      "Understand how to handle Q&A sessions and audience interactions"
+    ],
+    "features": [
+      "Presentation Structure & Design",
+      "Visual Aid Creation",
+      "Storytelling Techniques",
+      "Audience Engagement Strategies",
+      "Body Language & Voice Modulation",
+      "Handling Nerves & Anxiety",
+      "Q&A Session Management",
+      "Feedback & Improvement Planning"
+    ],
+    "faqs": [
+      {
+        "question": "What presentation tools are covered?",
+        "answer": "We cover PowerPoint, Google Slides, and basic principles of effective slide design."
+      },
+      {
+        "question": "Will I get to practice presentations?",
+        "answer": "Yes, you'll deliver multiple presentations with personalized feedback."
+      },
+      {
+        "question": "Is this suitable for virtual presentations?",
+        "answer": "Yes, we cover both in-person and virtual presentation techniques."
+      }
+    ],
+    "price": "₹15,000",
+    "duration": "8 weeks",
+    "mode": "Online Live Classes",
+    "path": "/trainings/communication/presentation-skills"
+  },
+  "interview-techniques": {
+    "id": 4,
+    "title": "Interview Techniques",
+    "image": "/img/reunion-interview-svgrepo-com.svg",
+    "description": "Prepare for job interviews with confidence. Learn body language, mock interview techniques, and strategies to answer technical and HR questions effectively.",
+    "fullDescription": [
+      "Comprehensive preparation for various interview formats and stages",
+      "Develop effective responses to common and challenging questions",
+      "Master non-verbal communication and professional presentation",
+      "Build confidence through practice and personalized feedback"
+    ],
+    "features": [
+      "Interview Format Preparation",
+      "Technical Question Strategies",
+      "HR & Behavioral Questions",
+      "Body Language & Professional Presence",
+      "Salary Negotiation Techniques",
+      "Mock Interview Sessions",
+      "Resume Presentation Skills",
+      "Follow-up & Thank You Protocols"
+    ],
+    "faqs": [
+      {
+        "question": "What types of interviews are covered?",
+        "answer": "We cover technical, HR, behavioral, panel, and virtual interview formats."
+      },
+      {
+        "question": "Will I get personalized feedback?",
+        "answer": "Yes, each participant receives individualized feedback and improvement plans."
+      },
+      {
+        "question": "Do you cover industry-specific interviews?",
+        "answer": "We provide general techniques and can customize for specific industries upon request."
+      }
+    ],
+    "price": "₹15,000",
+    "duration": "6 weeks",
+    "mode": "Online Live Classes",
+    "path": "/trainings/communication/interview-techniques"
+  }
+
+
+
+
+
+
+
+  
 }
 export const allCoursesList = [
-  "Java Fullstack Development",
-  "Python Development",
-  "MERN Stack Development",
-  "Web Development Fundamentals",
-  "Cloud Computing with AWS",
-  "Mobile App Development with Flutter",
-  "DevOps Engineering"
-];
+  { title: "Java Full Stack", slug: "web-development/java-full-stack" },
+  { title: "Python Development", slug: "web-development/python-development" },
+  { title: "MERN Stack Development", slug: "web-development/mern-stack-development" },
+  { title: "Generative AI", slug: "data-science/generative-ai" },
+  { title: "Machine Learning", slug: "data-science/machine-learning" },
+  { title: "React-Native", slug: "app-development/react-native" },
+  { title: "Flutter", slug: "app-development/flutter" }
+]
+
+
+// for courses catalog
+ // Sample course data based on your schema
+  // const courses = [
+  //   {
+  //     _id: '1',
+  //     name: "Advanced JavaScript Live Course",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%238e44ad' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>JavaScript</text></svg>",
+  //     description: "Master modern JavaScript with advanced patterns, async programming, and complex concepts in live sessions.",
+  //     instructor: "Sarah Johnson",
+  //     category: "Development",
+  //     duration: "8 weeks",
+  //     price: 89.99,
+  //     totalLessons: 24
+  //   },
+  //   {
+  //     _id: '2',
+  //     name: "Machine Learning Fundamentals",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%2327ae60' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>ML Fundamentals</text></svg>",
+  //     description: "Learn the core concepts of machine learning and build your first predictive models with expert guidance.",
+  //     instructor: "Michael Chen",
+  //     category: "Data Science",
+  //     duration: "10 weeks",
+  //     price: 94.99,
+  //     totalLessons: 32
+  //   },
+  //   {
+  //     _id: '3',
+  //     name: "UI/UX Design Masterclass",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%23e67e22' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>UI/UX Design</text></svg>",
+  //     description: "Create stunning user interfaces and experiences with professional design techniques in interactive sessions.",
+  //     instructor: "Emma Wilson",
+  //     category: "Design",
+  //     duration: "6 weeks",
+  //     price: 79.99,
+  //     totalLessons: 28
+  //   },
+  //   {
+  //     _id: '4',
+  //     name: "Digital Marketing Live Workshop",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%233498db' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>Marketing</text></svg>",
+  //     description: "Learn SEO, social media marketing, email campaigns, and analytics to grow any business with live guidance.",
+  //     instructor: "David Miller",
+  //     category: "Marketing",
+  //     duration: "8 weeks",
+  //     price: 84.99,
+  //     totalLessons: 36
+  //   },
+  //   {
+  //     _id: '5',
+  //     name: "Business Strategy & Leadership",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%232c3e50' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>Business</text></svg>",
+  //     description: "Develop strategic thinking and leadership skills to advance your career and business with expert mentors.",
+  //     instructor: "Jennifer Lee",
+  //     category: "Business",
+  //     duration: "7 weeks",
+  //     price: 99.99,
+  //     totalLessons: 26
+  //   },
+  //   {
+  //     _id: '6',
+  //     name: "React Native Mobile Development",
+  //     thumbnail: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'><rect fill='%239b59b6' width='400' height='200'/><text fill='%23ffffff' font-family='Arial' font-size='20' x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'>React Native</text></svg>",
+  //     description: "Build cross-platform mobile applications using React Native and modern development tools in live coding sessions.",
+  //     instructor: "Alex Rodriguez",
+  //     category: "Development",
+  //     duration: "9 weeks",
+  //     price: 109.99,
+  //     totalLessons: 38
+  //   }
+  // ];

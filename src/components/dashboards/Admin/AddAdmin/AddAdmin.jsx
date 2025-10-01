@@ -2,7 +2,7 @@ import CreateAdminForm from './CreateAdminForm';
 
 const AddAdmin = () => {
   return (
-    <div className="content-page">
+    <div>
       <div className="content">
         <div className="container-fluid">
           <div className="row">

@@ -26,9 +26,7 @@ const LoginPage = () => {
                                     <p className="text-muted mb-0">Sign in to your account to continue.</p>
                                 </div>
 
-                               <LoginForm onSubmit={(values) => {
-                                    console.log("Form Submitted", values);
-                                }} />   
+                               <LoginForm  />   
                             </div>
 
                             {/* Footer */}

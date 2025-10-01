@@ -1,12 +1,13 @@
-
+// features/auth/authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: null,
   token: null,
-  batchList: null, // Optional: only for admin
+  stats: null,
   loading: false,
   error: null,
+  lastRefreshed: null, // 👈 Track token refresh time
 };
 
 const authSlice = createSlice({
@@ -15,30 +16,36 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       console.log('Login action payload:', action.payload);
-
-      const { user, token, batchLists,courses ,enrolledCourses} = action.payload;
-     
-      console.log("batches list from authSLice",batchLists)
-console.log(enrolledCourses,"enrolledData")
+      const { user } = action.payload;
       state.user = user;
-      state.token = token;
       state.loading = false;
       state.error = null;
-      
-      state.enrolledData=enrolledCourses
-      
-      if (user.role === 'admin') {
-        state.batchList = batchLists;
-      } else {
-        return
-      }
+      state.lastRefreshed = Date.now();
     },
 
     logout: (state) => {
       state.user = null;
       state.token = null;
-      state.batchList = null;
+      state.stats = null;
       state.loading = false;
+      state.error = null;
+      state.lastRefreshed = null;
+    },
+
+    // 👇 ADD THIS ACTION for token refresh
+    tokenRefreshed: (state) => {
+      state.lastRefreshed = Date.now();
+      state.error = null; // Clear any previous errors
+    },
+
+    // Optional: Add token update action if needed
+    updateToken: (state, action) => {
+      state.token = action.payload;
+      state.lastRefreshed = Date.now();
+    },
+
+    // Optional: Clear auth errors
+    clearError: (state) => {
       state.error = null;
     },
   },
@@ -50,23 +57,32 @@ console.log(enrolledCourses,"enrolledData")
         state.error = null;
       })
       .addCase('auth/login/fulfilled', (state, action) => {
-        const { user, token, batchList } = action.payload;
-
+        const { user, token, stats } = action.payload;
         state.user = user;
         state.token = token;
+        state.stats = user?.role === 'admin' ? stats || null : null;
         state.loading = false;
         state.error = null;
-        state.batchList = user.role === 'admin' ? batchList || [] : null;
+        state.lastRefreshed = Date.now();
       })
       .addCase('auth/login/rejected', (state, action) => {
         state.loading = false;
         state.user = null;
         state.token = null;
-        state.batchList = null;
+        state.stats = null;
+        state.lastRefreshed = null;
         state.error = action.error?.message || 'Login failed';
       });
   },
 });
 
-export const { login, logout } = authSlice.actions;
+// 👇 UPDATE EXPORTS to include the new actions
+export const { 
+  login, 
+  logout, 
+  tokenRefreshed, // 👈 Add this
+  updateToken,    // 👈 Optional
+  clearError      // 👈 Optional
+} = authSlice.actions;
+
 export default authSlice.reducer;

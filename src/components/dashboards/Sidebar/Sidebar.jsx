@@ -1,116 +1,187 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useModal } from '../Admin/Modals/ModalContext';
 import {
   Home,
   BookOpen,
-  Book,
-  Calendar,
-  Settings,
+  Video,
+  MessageSquare,
   Users,
-  LogOut,
-  User, // ✅ Added missing icon
-} from 'react-feather';
-import { useEffect, useState } from 'react';
-import { logout } from '../../../features/authSlice';
+  Layers,
+  UserPlus,
+  Settings,
+  FileText
+} from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, currentPath }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
-  const [menuItems, setMenuItems] = useState([]);
+  const { modalType } = useModal();
 
-  const iconMap = {
-    home: Home,
-    'book-open': BookOpen,
-    book: Book,
-    calendar: Calendar,
-    settings: Settings,
-    users: Users,
-    'log-out': LogOut,
-    user: User, // ✅ Added to iconMap
+  const userRole = user?.role || 'student';
+
+  // Common menu items for all roles
+  const commonMenuItems = [
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: 'home',
+      path: '/dashboard',
+      roles: ['student', 'admin', 'instructor']
+    }
+  ];
+
+  // Student-specific menu items
+  const studentMenuItems = [
+    {
+      id: 'courses',
+      label: 'Courses',
+      icon: 'book',
+      path: '/dashboard/browsercourses',
+      roles: ['student']
+    },
+    {
+      id: 'live-sessions',
+      label: 'Live Sessions',
+      icon: 'video',
+      path: '/dashboard/live-session',
+      roles: ['student']
+    },
+    {
+      id: 'questions',
+      label: 'Q&A Forum',
+      icon: 'message',
+      path: '/dashboard/ask-questions',
+      roles: ['student']
+    }
+  ];
+
+  // Admin-specific menu items
+  const adminMenuItems = [
+    {
+      id: 'students',
+      label: 'Student Management',
+      icon: 'users',
+      path: '/dashboard/students',
+      roles: ['admin']
+    },
+    {
+      id: 'courses-admin',
+      label: 'Course Management',
+      icon: 'book',
+      path: '/dashboard/courses',
+      roles: ['admin']
+    },
+    {
+      id: 'live-sessions',
+      label: 'Live Sessions',
+      icon: 'video',
+      path: '/dashboard/zoom',
+      roles: ['admin']
+    },
+    {
+      id: 'batches',
+      label: 'Batch Management',
+      icon: 'layers',
+      path: '/dashboard/batchs',
+      roles: ['admin']
+    },
+    {
+      id: 'add-admin',
+      label: 'Add Admin',
+      icon: 'user-plus',
+      path: '/dashboard/addadmin',
+      roles: ['admin']
+    }
+  ];
+
+  // Instructor-specific menu items
+  const instructorMenuItems = [
+    {
+      id: 'instructor-courses',
+      label: 'My Courses',
+      icon: 'book',
+      path: '/dashboard/instructor-courses',
+      roles: ['instructor']
+    },
+    {
+      id: 'instructor-sessions',
+      label: 'My Sessions',
+      icon: 'video',
+      path: '/dashboard/instructor-sessions',
+      roles: ['instructor']
+    }
+  ];
+
+  // Combine all menu items based on user role
+  const allMenuItems = [
+    ...commonMenuItems,
+    ...studentMenuItems,
+    ...adminMenuItems,
+    ...instructorMenuItems
+  ];
+
+  // Filter menu items based on user role
+  const menuItems = allMenuItems.filter(item => 
+    item.roles.includes(userRole)
+  );
+
+  const isActive = (path) => {
+    return currentPath === path;
   };
 
-  const userMenu = [
-    { label: 'Dashboard', icon: 'home', path: '/dashboard', exact: true },
-    { label: 'Enrolled Courses', icon: 'book-open', path: 'mycourses' },
-    { label: 'Syllabus', icon: 'book', path: 'syllabus' },
-    { label: 'Classes', icon: 'calendar', path: 'calendar' },
-    { label: 'Settings', icon: 'settings', path: 'settings' },
-  ];
+  // Don't render sidebar if any modal is open
+  if (modalType) {
+    return null;
+  }
 
-  const adminMenu = [
-    { label: 'Dashboard', icon: 'home', path: '/dashboard', exact: true },
-    { label: 'Students', icon: 'users', path: 'students' },
-    { label: 'Courses', icon: 'book', path: 'courses' },
-    { label: 'Batchs', icon: 'book-open', path: 'batchs' },
-    { label: 'Live Class', icon: 'pause', path: 'liveclass' },
-    { label: 'Add Admin', icon: 'user', path: 'addadmin' }, // ✅ This was causing the error
-  ];
-
-  useEffect(() => {
-    if (user?.role === 'admin') {
-      setMenuItems(adminMenu);
-    } else {
-      setMenuItems(userMenu);
+  const getIconComponent = (iconName) => {
+    const iconProps = { size: 20 };
+    
+    switch (iconName) {
+      case 'home':
+        return <Home {...iconProps} />;
+      case 'book':
+        return <BookOpen {...iconProps} />;
+      case 'video':
+        return <Video {...iconProps} />;
+      case 'file':
+        return <FileText {...iconProps} />;
+      case 'message':
+        return <MessageSquare {...iconProps} />;
+      case 'users':
+        return <Users {...iconProps} />;
+      case 'layers':
+        return <Layers {...iconProps} />;
+      case 'user-plus':
+        return <UserPlus {...iconProps} />;
+      default:
+        return <Home {...iconProps} />;
     }
-  }, [user?.role]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    dispatch(logout());
-    window.location.href = '/login';
   };
 
   return (
-    <aside className="app-sidebar-menu shadow-sm">
-      <div className="h-100" data-simplebar>
-        {/* Logo */}
-        <div className="logo-box text-center">
-         
-        </div>
-
-        {/* Navigation */}
-        <nav id="sidebar-menu">
-          <ul className="list-unstyled" id="side-menu">
-            <li className="menu-title text-muted px-3 fw-bold small mb-2">
-              <span className="mx-1 text-capitalize">{user?.role}</span> Menu
-            </li>
-
-            {menuItems.map(({ label, icon, path, exact }, index) => {
-              const Icon = iconMap[icon] || (() => <span className="me-2">🔹</span>); // ✅ Fallback
-              return (
-                <li key={index} className="ms-3 mb-2">
-                  <NavLink
-                    to={path}
-                    end={exact}
-                    className={({ isActive }) =>
-                      `tp-link text-decoration-none d-flex align-items-center px-3 py-2 rounded ${
-                        isActive
-                          ? 'menuitem-active active bg-primary text-white fw-semibold'
-                          : 'text-dark'
-                      }`
-                    }
-                  >
-                    <Icon size={16} className="me-2" />
-                    <span>{label}</span>
-                  </NavLink>
-                </li>
-              );
-            })}
-
-            <li className="menu-title text-muted px-3 fw-bold small mt-4 mb-2">Account</li>
-            <li className="ms-3 mb-2">
-              <button
-                className="text-decoration-none d-flex align-items-center px-3 py-2 text-danger bg-transparent border-0"
-                onClick={handleLogout}
-              >
-                <LogOut size={16} className="me-2" />
-                <span>Logout</span>
-              </button>
-            </li>
-          </ul>
+    <div className="dashboard-app-container">
+      <div className={`sidebar ${isOpen ? 'open' : 'closed'} `}>
+        <nav className="sidebar-nav">
+          {menuItems.map(item => (
+            <button
+              key={item.id}
+              className={`nav-item ${isActive(item.path) ? 'active' : ''} btn `}
+              onClick={() => navigate(item.path)}
+              type="button"
+            >
+              <div className="nav-icon">
+                {getIconComponent(item.icon)}
+              </div>
+              <span className="nav-label">{item.label}</span>
+            </button>
+          ))}
         </nav>
       </div>
-    </aside>
+    </div>
   );
 };
 
