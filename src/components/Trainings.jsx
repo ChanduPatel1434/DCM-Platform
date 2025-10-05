@@ -7,7 +7,7 @@ import Footer from "./Footer";
 const Trainings = () => {
   return (
     <>
-      <div className="main">
+      <div className="main pt-100">
         {/* Header Section */}
         <section
           className="hero-section ptb-100 gradient-overlay"

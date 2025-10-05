@@ -11,7 +11,8 @@ import {
   Layers,
   UserPlus,
   Settings,
-  FileText
+  FileText,
+  Award
 } from 'lucide-react';
 
 const Sidebar = ({ isOpen, currentPath }) => {
@@ -50,8 +51,15 @@ const Sidebar = ({ isOpen, currentPath }) => {
       roles: ['student']
     },
     {
+      id: 'certificates',
+      label: 'MyCertificates',
+      icon: 'Award',
+      path: '/dashboard/my-certificates',
+      roles: ['student']
+    },
+    {
       id: 'questions',
-      label: 'Q&A Forum',
+      label: 'Feedback',
       icon: 'message',
       path: '/dashboard/ask-questions',
       roles: ['student']
@@ -141,6 +149,9 @@ const Sidebar = ({ isOpen, currentPath }) => {
     const iconProps = { size: 20 };
     
     switch (iconName) {
+     
+      case 'award':
+        return <Award {...iconProps} />;
       case 'home':
         return <Home {...iconProps} />;
       case 'book':

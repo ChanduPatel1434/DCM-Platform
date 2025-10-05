@@ -7,10 +7,11 @@ import ServiceDetails from "./ServicesDetails"
 
 const Services=()=>{
   const {serviceName}=useParams()
+  console.log(serviceName,"iam")
   
 
     return <>
-     <div className="main">
+     <div className="main pt-100">
         {/* Header Section */}
         <section
           className="hero-section ptb-100 gradient-overlay"
@@ -66,7 +67,7 @@ const Services=()=>{
             </div>
           </div>
         </section>
-       { serviceName && (<ServiceDetails/>)}
+       
 
         
       </div>

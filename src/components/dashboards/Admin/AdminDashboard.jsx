@@ -52,14 +52,14 @@ const AdminDashboard = () => {
 
       {/* --- Stats Row --- */}
       <div className="row">
-        <div className="col-md-5">
+        <div className="col-md-5 my-5">
           <QuickActionsCard />
         </div>
 
         <div className="col-md-6">
           <div className="row">
             {statsData.map((stat, idx) => (
-              <div key={idx} className="col-12 col-sm-6 col-lg-6">
+              <div key={idx} className="col-12 col-sm-6 col-lg-6 my-5">
                 <StatCard {...stat} />
               </div>
             ))}
@@ -67,12 +67,11 @@ const AdminDashboard = () => {
         </div>
       </div>
       <div className="my-5">
-{/* <h4 className="text-center">Quick Access to Create A New User</h4> */}
-      {/* <UserCreationForm /> */}
+<h4 className="text-center">Quick Access to Create A New User</h4>
+      <UserCreationForm />
       </div>
      
-        {/* --- Tasks & Reminders --- */}
-    
+        
             
     </div>
   );

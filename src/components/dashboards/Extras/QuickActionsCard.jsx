@@ -21,10 +21,10 @@ const buttonVariants = {
 const QuickActionCard = () => {
   const navigate=useNavigate()
   const actions = [
-  { label: 'Create New Batch', icon: '📦', color: '#4facfe', onClick: () => {navigate('batch/allbatchs')} },
-  { label: 'Create New Course', icon: '📚', color: '#43e97b', onClick: () => {} },
-  { label: 'See Payments', icon: '💳', color: '#b817e9ff', onClick: () => {} },
-  { label: 'Assign Batch', icon: '🧑‍🏫', color: '#290ad8ff', onClick: () => {} },
+  { label: 'Create New Batch', icon: '📦', color: '#4facfe', onClick: () => {navigate('batchs')} },
+  { label: 'Create New Course', icon: '📚', color: '#43e97b', onClick: () => {navigate('courses')} },
+  { label: 'See Payments', icon: '💳', color: '#b817e9ff', onClick: () => {navigate('payments')} },
+  { label: 'Assign Batch', icon: '🧑‍🏫', color: '#290ad8ff', onClick: () => {navigate('students/unassigned')} },
 ];
   const cardStyle = {
   maxWidth: '360px',

@@ -1270,14 +1270,15 @@ background: var(--sidebar-bg);
   border: 1px solid var(--border-color);
   overflow: hidden;
 }
-/* 
-.dashboard-app-container .card-header {
+
+.dashboard-app-container .glass-card .card-header {
   display: flex;
+
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 1.5rem 1rem;
   border-bottom: 1px solid var(--border-color);
-} */
+}
 
 .dashboard-app-container .header-content {
   display: flex;
@@ -4339,3 +4340,581 @@ background: var(--sidebar-bg);
           background: var(--hover-bg);
           color: var(--text-color);
         }
+        /* ===== FEEDBACK FORM STYLES ===== */
+.dashboard-app-container .feedback-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dashboard-app-container .feedback-form {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-app-container .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-app-container .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-app-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.dashboard-app-container .form-group input,
+.dashboard-app-container .form-group select,
+.dashboard-app-container .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.dashboard-app-container .form-group input:focus,
+.dashboard-app-container .form-group select:focus,
+.dashboard-app-container .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(110, 138, 250, 0.1);
+}
+
+.dashboard-app-container .form-group input.error,
+.dashboard-app-container .form-group select.error,
+.dashboard-app-container .form-group textarea.error {
+  border-color: var(--error-color);
+}
+
+.dashboard-app-container .error-message {
+  color: var(--error-color);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.dashboard-app-container .char-count {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.dashboard-app-container .submit-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: var(--transition);
+}
+
+.dashboard-app-container .submit-btn:hover:not(:disabled) {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.dashboard-app-container .submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  .dashboard-app-container .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .dashboard-app-container .feedback-form {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-app-container .feedback-form {
+    padding: 1rem;
+  }
+}
+
+/* ===== MY CERTIFICATES STYLES ===== */
+.dashboard-app-container .certificates-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-app-container .search-box {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.dashboard-app-container .search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .search-input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.dashboard-app-container .search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(110, 138, 250, 0.1);
+}
+
+.dashboard-app-container .filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 0 0.75rem;
+}
+
+.dashboard-app-container .filter-icon {
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .filter-select {
+  border: none;
+  background: transparent;
+  color: var(--text-color);
+  padding: 0.75rem 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.dashboard-app-container .certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-app-container .certificate-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard-app-container .certificate-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.dashboard-app-container .certificate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.dashboard-app-container .certificate-title h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.dashboard-app-container .status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dashboard-app-container .status-completed {
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--success-color);
+}
+
+.dashboard-app-container .status-progress {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--warning-color);
+}
+
+.dashboard-app-container .status-expired {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--error-color);
+}
+
+.dashboard-app-container .grade-badge {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.dashboard-app-container .grade-excellent {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.dashboard-app-container .grade-good {
+  background: rgba(52, 211, 153, 0.2);
+  color: var(--success-color);
+}
+
+.dashboard-app-container .grade-average {
+  background: rgba(251, 191, 36, 0.2);
+  color: var(--warning-color);
+}
+
+.dashboard-app-container .certificate-info {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-app-container .course-name {
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+.dashboard-app-container .certificate-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-app-container .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .meta-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.dashboard-app-container .instructor,
+.dashboard-app-container .verification {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-app-container .instructor-label,
+.dashboard-app-container .verification-label {
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .instructor-name {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.dashboard-app-container .verification-code {
+  background: var(--hover-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--border-radius-sm);
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.dashboard-app-container .progress-section {
+  margin-top: 1rem;
+}
+
+.dashboard-app-container .progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-app-container .progress-fill {
+  height: 100%;
+  background: var(--primary-color);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.dashboard-app-container .progress-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .certificate-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-app-container .certificate-actions .btn {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.dashboard-app-container .btn-progress {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Header Stats */
+.dashboard-app-container .header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-app-container .header-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboard-app-container .stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.dashboard-app-container .stat-icon {
+  color: var(--primary-color);
+}
+
+.dashboard-app-container .stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.dashboard-app-container .stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Empty State */
+.dashboard-app-container .empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  color: var(--border-color);
+}
+
+.dashboard-app-container .empty-state h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text-color);
+}
+
+/* Modal Styles */
+.dashboard-app-container .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.dashboard-app-container .modal-content {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.dashboard-app-container .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-app-container .modal-header h2 {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.dashboard-app-container .modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-app-container .modal-body {
+  padding: 1.5rem;
+}
+
+.dashboard-app-container .certificate-preview {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-app-container .preview-placeholder {
+  color: var(--text-muted);
+}
+
+.dashboard-app-container .preview-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  color: var(--border-color);
+}
+
+.dashboard-app-container .certificate-details {
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-app-container .certificate-details h4 {
+  margin: 0 0 1rem;
+  color: var(--text-color);
+}
+
+.dashboard-app-container .detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-app-container .detail-item:last-child {
+  border-bottom: none;
+}
+
+.dashboard-app-container .modal-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.dashboard-app-container .modal-actions .btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-app-container .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-app-container .header-content {
+    flex-direction: column;
+  }
+  
+  .dashboard-app-container .header-stats {
+    width: 100%;
+  }
+  
+  .dashboard-app-container .stat-card {
+    flex: 1;
+  }
+  
+  .dashboard-app-container .certificate-actions {
+    flex-direction: column;
+  }
+  
+  .dashboard-app-container .modal-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-app-container .certificates-controls {
+    flex-direction: column;
+  }
+  
+  .dashboard-app-container .search-box {
+    min-width: auto;
+  }
+  
+  .dashboard-app-container .certificate-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}

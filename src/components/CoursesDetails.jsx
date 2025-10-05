@@ -7,19 +7,7 @@ import CourseDetails from "./DeepCourseDetails";
 
 const CourseDetail = () => {
 
-    const [activeIndex, setActiveIndex] = useState(null);
-
-
-
-
-    const toggleAccordion = (idx) => {
-        setActiveIndex(activeIndex === idx ? null : idx);
-    };
-
-
-
-
-
+    
 
 
 
@@ -60,11 +48,10 @@ const CourseDetail = () => {
     // If only category is present
     return (
         <>
-            <div className="main">
-
-          {!selectedCourse && (    
+            <div className="main pt-100">
+                  {!selectedCourse && (    
           <>
-                <section
+             <section
                     className="hero-section ptb-100 gradient-overlay"
                     style={{
                         background: "url('/img/header-bg-5.jpg') no-repeat center center / cover",
@@ -85,12 +72,8 @@ const CourseDetail = () => {
                             </div>
                         </div>
                     </div>
-                </section>
-              
-
-
-
-                    <section className="services-section ptb-100 gray-light-bg">
+             </section>
+             <section className="services-section ptb-100 gray-light-bg">
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div className="col-md-8">
@@ -119,63 +102,11 @@ const CourseDetail = () => {
                                 ))}
                             </div>
                         </div>
-                    </section></>
-
-                )}
-
-                {selectedCourse && (
-                    // Show syllabus or detailed view
-                    <>
-                    <CourseDetails/>
-                        {/* <div className="container py-5">
-                            <h6 className="text-center mb-4">{selectedCourse.description}</h6>
-                            <h4 className="text-center mb-5">Syllabus Roadmap</h4>
-
-                            <div className="accordion" id="roadmapAccordion">
-                                {selectedCourse?.syllabus?.map((topic, idx) => (
-                                    <div className="card mb-3" key={idx}>
-                                        <div
-                                            className="card-header d-flex justify-content-between align-items-center"
-                                            style={{ cursor: 'pointer', backgroundColor: '#f8f9fa' }}
-                                            onClick={() => toggleAccordion(idx)}
-                                        >
-                                            <div
-                                                style={{
-                                                    width: '40px',
-                                                    height: '40px',
-                                                    borderRadius: '50%',
-                                                    backgroundColor: '#6c63ff',
-                                                    color: '#fff',
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    fontWeight: 'bold',
-                                                    marginRight: '10px'
-                                                }}
-                                            >
-                                                {idx + 1}
-                                            </div>
-                                            <h5 className="mb-0 flex-grow-1">{topic}</h5>
-                                            <span>{activeIndex === idx ? '−' : '+'}</span>
-                                        </div>
-
-                                        {activeIndex === idx && (
-                                            <div
-                                                className="card-body"
-                                                style={{ backgroundColor: '#fff', borderTop: '1px solid #ddd' }}
-                                            >
-                                                <p className="mb-0 text-muted">
-                                                    {selectedCourse?.overview[idx] || "Overview coming soon..."}
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div> */}
-
-                    </>
-
+             </section>
+          </>
+           )}
+             {selectedCourse && (
+                    <> <CourseDetails/></>
                 )}
             </div>
 

@@ -23,6 +23,7 @@ const CourseModal = ({ onSuccess, mode = 'add', course = {} }) => {
         duration: course.duration || '',
         price: course.price || '',
         category: course.category || '',
+        thumbnail: course.thumbnail || '',
       }
     : {
         name: '',
@@ -31,6 +32,7 @@ const CourseModal = ({ onSuccess, mode = 'add', course = {} }) => {
         duration: '',
         price: '',
         category: '',
+        thumbnail: '',
       };
 
   const onSubmitFn = isEdit ? handleUpdateCourseSubmit : handleAddCourseSubmit;
@@ -45,11 +47,10 @@ const CourseModal = ({ onSuccess, mode = 'add', course = {} }) => {
       .positive('Price must be positive')
       .required('Price is required'),
     category: Yup.string().required('Category is required'),
+    thumbnail: Yup.string().url('Must be a valid URL').required('Image URL is required'),
   });
 
-  const modalTitle = isEdit ? 'Edit Course' : 'Add New Course';
-  const submitLabel = isEdit ? 'Update Course' : 'Add Course';
-
+ 
   return (
     <AnimatePresence>
       <motion.div
@@ -128,6 +129,19 @@ const CourseModal = ({ onSuccess, mode = 'add', course = {} }) => {
                         placeholder="Enter course description"
                       />
                       <ErrorMessage name="description" component="div" className="text-error fs-sm mt-1" />
+                    </div>
+
+                    {/* Image URL */}
+                    <div className="form-group mb-3">
+                      <label htmlFor="thumbnail" className="form-label fw-medium text-dark mb-2">
+                        Image URL
+                      </label>
+                      <Field 
+                        name="thumbnail" 
+                        className="form-control rounded-lg p-3 border"
+                        placeholder="Enter image URL"
+                      />
+                      <ErrorMessage name="thumbnail" component="div" className="text-error fs-sm mt-1" />
                     </div>
 
                     {/* Category Dropdown */}

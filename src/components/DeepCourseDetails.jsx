@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { coursesData, allCoursesList } from '../data/coursesData';
+import Footer from './Footer';
 
 const CourseDetails = () => {
   const { courseId, category } = useParams();
+   
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+
 
 
 
@@ -37,8 +46,7 @@ console.log(course)
 
   const handleCourseChange = (slug) => {
     console.log(slug)
-    // Convert course title to URL-friendly format
-
+    
     navigate(`/trainings/${slug}`);
   };
 
@@ -50,8 +58,8 @@ console.log(course)
     return <div className="container text-center py-5">Course not found.</div>;
   }
 
-  return (
-    <div className="main ">
+  return (<>
+    <div className="main">
       {/* Header Section */}
       <section className="hero-section ptb-100 gradient-overlay "
         style={{ background: "url('/img/header-bg-5.jpg') no-repeat top center / cover " }}>
@@ -168,7 +176,7 @@ console.log(course)
                   </div>
                   <p>We are available 24/7 for dedicated support</p>
                   <ul className="primary-list mt-25">
-                    <li><span className="ti-location-pin mr-2 color-primary"></span> Madhapur, Hyderabad, Telangana, India - 500081</li>
+                    <li><span className="ti-location-pin mr-2 color-primary"></span> Office #407 &409 4th Floor, Jain Sadguru Image's Capital Park, Madhapur,Hyderabad</li>
                     <li><span className="ti-mobile mr-2 color-primary"></span>+91 7337572543</li>
                     <li><span className="ti-email mr-2 color-primary"></span> hr@designcareermetrics.com</li>
                   </ul>
@@ -178,29 +186,42 @@ console.log(course)
           </div>
         </div>
       
-        <div id="accordion-1" className="accordion accordion-faq  w-50" style={{ margin: "auto" }}>
-          {course.faqs.map((faq, index) => (
-            <div key={index} className="card">
-              <div className="card-header py-3 collapsed" id={`heading-1-${index}`}
-                data-toggle="collapse" role="button"
-                data-target={`#collapse-1-${index}`}
-                aria-expanded="false"
-                aria-controls={`collapse-1-${index}`}>
-                <h6 className="mb-0">
-                  <span className={index === 0 ? "ti-receipt mr-3" : index === 1 ? "ti-gallery mr-3" : "ti-wallet mr-3"}></span>
-                  {faq.question}
-                </h6>
-              </div>
-              <div id={`collapse-1-${index}`} className="collapse"
-                aria-labelledby={`heading-1-${index}`}
-                data-parent="#accordion-1">
-                <div className="card-body">
-                  <p>{faq.answer}</p>
-                </div>
-              </div>
+  
+
+    <div id="accordion-1" className="accordion accordion-faq w-75" style={{ margin: "auto" }}>
+      {course.faqs.map((faq, index) => (
+        <div key={index} className="card">
+          <div 
+            className={`card-header py-3 ${openIndex === index ? '' : 'collapsed'}`}
+            id={`heading-1-${index}`}
+            onClick={() => toggleFAQ(index)}
+            style={{ cursor: "pointer" }}
+            role="button"
+            aria-expanded={openIndex === index}
+            aria-controls={`collapse-1-${index}`}
+          >
+            <h6 className="mb-0">
+              <span className={
+                index === 0 ? "ti-receipt mr-3" : 
+                index === 1 ? "ti-gallery mr-3" : "ti-wallet mr-3"
+              }></span>
+              {faq.question}
+            </h6>
+          </div>
+          <div 
+            id={`collapse-1-${index}`} 
+            className={`collapse ${openIndex === index ? 'show' : ''}`}
+            aria-labelledby={`heading-1-${index}`}
+            data-parent="#accordion-1"
+          >
+            <div className="card-body">
+              <p>{faq.answer}</p>
             </div>
-          ))}
+          </div>
         </div>
+      ))}
+    </div>
+  );
            <section className="call-to-action py-5 ">
         <div className="container">
           <div className="row justify-content-around align-items-center">
@@ -224,6 +245,8 @@ console.log(course)
      
 
     </div>
+ 
+    </>
   );
 };
 

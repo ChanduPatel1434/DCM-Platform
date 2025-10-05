@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './blog.css';
+import './CoursesCarouselInHome.css';
 import { Link } from 'react-router-dom';
 
-const BlogCarousel = () => {
+const CoursesCarouselInHome = () => {
   // Sample dynamic blog data
- const [blogData, setBlogData] = useState([
+ const [CoursesData, setBlogData] = useState([
   {
     id: 1,
     category: "Web Development",
@@ -67,14 +67,14 @@ const BlogCarousel = () => {
   // Function to go to next slide
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === blogData.length - 1 ? 0 : prevIndex + 1
+      prevIndex === CoursesData.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   // Function to go to previous slide
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? blogData.length - 1 : prevIndex - 1
+      prevIndex === 0 ? CoursesData.length - 1 : prevIndex - 1
     );
   };
 
@@ -121,14 +121,14 @@ const BlogCarousel = () => {
             </button>
             
             <div className="carousel">
-              {blogData.map((blog, index) => {
+              {CoursesData.map((blog, index) => {
                 // Calculate position class for each card
                 let position = 'right';
                 if (index === currentIndex) {
                   position = 'center';
                 } else if (
                   index === currentIndex - 1 || 
-                  (currentIndex === 0 && index === blogData.length - 1)
+                  (currentIndex === 0 && index === CoursesData.length - 1)
                 ) {
                   position = 'left';
                 }
@@ -166,7 +166,7 @@ const BlogCarousel = () => {
           </div>
           
           <div className="carousel-indicators ">
-            {blogData.map((_, index) => (
+            {CoursesData.map((_, index) => (
               <button
                 key={index}
                 className={`indicator ${index === currentIndex ? 'active' : ''}`}
@@ -186,4 +186,4 @@ const BlogCarousel = () => {
   );
 };
 
-export default BlogCarousel;
+export default CoursesCarouselInHome;

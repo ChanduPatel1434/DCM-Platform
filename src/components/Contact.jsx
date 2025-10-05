@@ -25,7 +25,7 @@ const ContactUs = () => {
         },
     ];
     return <>
-        <div class="main">
+        <div className="main pt-100">
 
             {/* <!--header section start--> */}
             <section class="hero-section ptb-100 gradient-overlay"
