@@ -801,7 +801,7 @@ select.form-control.has-value{
         background: #ffffff;
     } 
       .logo-img {
-        height: 30px !important;
+   
   }
     .navbar.custom-nav .navbar-toggler{
         color: #162e66 !important;
@@ -881,10 +881,23 @@ select.form-control.has-value{
 }
 
 @media (max-width: 768px) {
+   
   .logo-img {
     height: 40px !important ;
     
   }
+  
+  .navbar-brand {
+
+    display: flex;
+    height: 90px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+   
+  }
+
+
 }
 @media (max-width: 767px) {
     .responsive-menu{
