@@ -308,6 +308,7 @@ const StudentTableSection = ({ batchId, batchName, onClose }) => {
 
   const downloadExcel = () => {
     const students = data?.students || data?.enrollments || data || [];
+    console.log(students)
     
     if (students.length === 0) {
       toast.error("No students data to download");

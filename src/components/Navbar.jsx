@@ -25,7 +25,7 @@ const Navbar = () => {
               aria-expanded={isNavOpen}
               aria-label="Toggle navigation"
             >
-              <span className="ti-menu"></span>
+              <span className="ti-menu" style={{fontSize: "25px"}}></span>
             </button>
 
             <div className={`navbar-collapse collapse ${isNavOpen ? "show  bg-white" : ""}`}>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </Link>
             
           
-                <Link to="/get-app" className="text-dark" onClick={() => setIsNavOpen(false)}>
+                <Link to="/dcm-app" className="text-dark" onClick={() => setIsNavOpen(false)}>
                   <button className="btn accent-outline-btn mx-2">Download App</button>
                 </Link>
             

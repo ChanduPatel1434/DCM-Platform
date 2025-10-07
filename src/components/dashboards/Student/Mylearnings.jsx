@@ -32,14 +32,17 @@ export default function MyLearnings() {
                   <p>Continue your learning journey</p>
                 </div>
               </div>
+              <div>
+                
               {enrollments?.length > 0 && (
                 <button
-                  className="view-all-btn"
+                  className="view-all-btn btn "
                   onClick={() => navigate("mycourses")}
                 >
                   View All
                 </button>
               )}
+              </div>
             </div>
 
             <div className="enrollments-container">

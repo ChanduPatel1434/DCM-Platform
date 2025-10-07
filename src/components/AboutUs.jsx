@@ -24,7 +24,8 @@ const promos = [
 const Aboutus = () => {
   return (
     <>
-      {/* Hero Section */}
+    <div className="pt-100">
+        {/* Hero Section */}
       <section
         className="hero-section ptb-100 gradient-overlay"
         style={{ background: "url('img/header-bg-5.jpg') center center / cover no-repeat" }}
@@ -84,6 +85,7 @@ const Aboutus = () => {
         </div>
       </section>
       <TestimonialSection/>
+    </div>
       <Footer />
 
     </>

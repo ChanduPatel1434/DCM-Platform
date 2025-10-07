@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const socialLinks = [
@@ -23,7 +24,7 @@ const Footer = () => {
                         <ul className="nav flex-column">
                           {getLinksByCategory(category).map((link, i) => (
                             <li className="nav-item" key={i}>
-                              <a className="nav-link" href={link.href}>{link.label}</a>
+                              <Link className="nav-link" to={link.href}>{link.label}</Link>
                             </li>
                           ))}
                         </ul>
@@ -36,14 +37,14 @@ const Footer = () => {
                 <div className="footer-nav-wrap text-white">
                   <h4 className="text-white">GET IN TOUCH</h4>
                   <ul className="get-in-touch-list">
-                    <li className="d-flex align-items-start  py-2">
-                      <span className="fas fa-map-marker-alt mr-2 mt-2"></span>Office #407 &409 4th Floor, Jain Sadguru Image's Capital Park, Madhapur,Hyderabad
+                    <li className="d-flex align-items-start  py-1">
+                      <span className="ti-map-alt mr-2 mt-2" style={{fontSize: "15px"}}></span>Office #407 &409 4th Floor, <br/> Jain Sadguru Image's Capital Park, Madhapur,Hyderabad.
                     </li>
-                    <li className="d-flex align-items-center py-2">
-                      <span className="fas fa-envelope mr-2"></span> hr@designcareermetrics.com
+                    <li className="d-flex align-items-center py-1">
+                      <span className="ti-email mr-2" style={{fontSize: "15px"}} ></span> hr@designcareermetrics.com
                     </li>
-                    <li className="d-flex align-items-center py-2">
-                      <span className="fas fa-phone-alt mr-2"></span> +91  7337572543
+                    <li className="d-flex align-items-center py-1">
+                      <span className="ti-mobile mr-2" style={{fontSize: "15px"}}></span> +91  7337572543
                     </li>
                   </ul>
                 </div>
@@ -94,27 +95,26 @@ function getLinksByCategory(category) {
   const links = {
     "QUICK LINKS": [
       { label: "Make Appointment", href: "/contact-us" },
-      { label: "Department Services", href: "#" },
-      { label: "Our Case Studies", href: "#" },
-      { label: "Our Business Growth", href: "#" },
+      { label: "Department Services", href: "/services" },
+   
+    
     ],
     COMPANY: [
-      { label: "About Our Services", href: "#" },
-      { label: "Our Affiliates Program", href: "#" },
-      { label: "View Our Blog", href: "#" },
-      { label: "Check Our Careers", href: "#" },
+      { label: "About Our Services", href: "/about-us" },
+      { label: "Our Affiliates Program", href: "/#" },
+     
     ],
     LEGAL: [
-      { label: "Legal Information", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Report Abuse", href: "#" },
-      { label: "Terms of Service", href: "#" },
+      
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Refund & Concelation policy", href: "/refund" },
+      { label: "Terms and Conditions", href: "/terms" },
     ],
     SUPPORT: [
       { label: "Contact", href: "/contact-us" },
-      { label: "Knowledge Base", href: "#" },
-      { label: "Forums", href: "#" },
-      { label: "System Status", href: "#" },
+      { label: "Knowledge Base", href: "/knowledge-base" },
+      { label: "Forums", href: "/forums" },
+     
     ],
   };
   return links[category] || [];

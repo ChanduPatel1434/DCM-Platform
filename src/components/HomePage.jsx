@@ -6,7 +6,7 @@ import ManpowerSection from "./Sections/ManPowerSection";
 import ConsultingCTA from "./Sections/CallToActionSection";
 import TeamSection from "./TeamSection";
 import ProductsSection from "./Sections/ProductSection";
-import BlogSection from "./Sections/blog";
+import BlogSection from "./Sections/CoursesCarouselInHome";
 import CommentsSection from "./Sections/comment";
 import ProductsShowcase from "./Sections/ProductSection";
 import ServicesSection from "./Sections/Servicesection";

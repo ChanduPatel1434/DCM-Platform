@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { allServices, contactInfo, servicesData } from '../data/servicesData';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Footer from './Footer';
 
 const ServiceDetails = () => {
   const { serviceName } = useParams();
   const [service, setService] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   useEffect(() => {
     const fetchServiceData = () => {
@@ -55,8 +61,8 @@ const ServiceDetails = () => {
     return <div className="container text-center py-5">Service not found.</div>;
   }
 
-  return (
-    <div className="main">
+  return (<>
+    <div className="main pt-100">
       {/* Header Section */}
       <section className="hero-section ptb-100 gradient-overlay"
         style={{ background: "url('/img/header-bg-5.jpg') no-repeat top center / cover " }}>
@@ -125,28 +131,40 @@ const ServiceDetails = () => {
                       </div>
                     </div>
                   </div>
+    <>
+      <h5 className="mt-5">Frequently Asked Questions</h5>
+      <div id="accordion-1" className="accordion accordion-faq mt-4">
+        {service.faqs.map((faq, index) => (
+          <div key={index} className="card">
+            <div 
+              className={`card-header py-3 ${openIndex === index ? '' : 'collapsed'}`}
+              id={`heading-1-${index+1}`}
+              onClick={() => toggleFAQ(index)}
+              style={{ cursor: "pointer" }}
+              role="button"
+              aria-expanded={openIndex === index}
+              aria-controls={`collapse-1-${index+1}`}
+            >
+              <h6 className="mb-0">
+                <span className={`ti-${index === 0 ? 'help-alt' : index === 1 ? 'search' : index === 2 ? 'time' : 'shield'} mr-3`}></span>
+                {faq.question}
+              </h6>
+            </div>
+            <div 
+              id={`collapse-1-${index+1}`} 
+              className={`collapse ${openIndex === index ? 'show' : ''}`}
+              aria-labelledby={`heading-1-${index+1}`}
+              data-parent="#accordion-1"
+            >
+              <div className="card-body">
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
 
-                  <h5 className="mt-5">Frequently Asked Questions</h5>
-                  <div id="accordion-1" className="accordion accordion-faq mt-4">
-                    {service.faqs.map((faq, index) => (
-                      <div key={index} className="card">
-                        <div className="card-header py-3 collapsed" id={`heading-1-${index+1}`} 
-                             data-toggle="collapse" role="button" data-target={`#collapse-1-${index+1}`} 
-                             aria-expanded="false" aria-controls={`collapse-1-${index+1}`}>
-                          <h6 className="mb-0">
-                            <span className={`ti-${index === 0 ? 'help-alt' : index === 1 ? 'search' : index === 2 ? 'time' : 'shield'} mr-3`}></span>
-                            {faq.question}
-                          </h6>
-                        </div>
-                        <div id={`collapse-1-${index+1}`} className="collapse" 
-                             aria-labelledby={`heading-1-${index+1}`} data-parent="#accordion-1">
-                          <div className="card-body">
-                            <p>{faq.answer}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
@@ -208,13 +226,15 @@ const ServiceDetails = () => {
             </div>
             <div className="col-md-4">
               <div className="action-btn text-lg-right text-sm-left">
-                <a href="#" className="btn secondary-solid-btn">Request a Consultation</a>
+                <Link  to={"/contact-us"} className="btn secondary-solid-btn">Request a Consultation</Link>
               </div>
             </div>
           </div>
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -189,7 +189,7 @@ strong, b {
 }
 
 .pt-100 {
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 .pt-165 {
@@ -801,10 +801,14 @@ select.form-control.has-value{
         background: #ffffff;
     } 
       .logo-img {
-        height: 80px !important;
+        height: 30px !important;
   }
     .navbar.custom-nav .navbar-toggler{
         color: #162e66 !important;
+        height: 40px !important;
+    }
+    .navbar.custom-nav .navbar-toggler .ti-menu{
+        width: 60px !important;
     }
     .navbar.custom-nav .navbar-toggler:focus{
         outline: none;
@@ -873,12 +877,12 @@ select.form-control.has-value{
     }
 }
 .logo-img {
-  height: 135px;
+  height: 45px;
 }
 
 @media (max-width: 768px) {
   .logo-img {
-    height: 85px !important ;
+    height: 40px !important ;
     
   }
 }

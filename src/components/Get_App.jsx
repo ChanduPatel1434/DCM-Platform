@@ -96,7 +96,7 @@ function AppDownloadButtons() {
 // Simply include <AppDownloadButtons /> in your React component tree
 const GetApp=()=>{
     return<>
-    <div class="main">
+    <div class="main pt-100">
 
     <section class="hero-section ptb-100 gradient-overlay"
              style={{background: "url('img/header-bg-5.jpg')no-repeat center center / cover"}}>

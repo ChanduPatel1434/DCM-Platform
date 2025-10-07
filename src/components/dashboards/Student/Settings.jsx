@@ -228,6 +228,7 @@ const SecurityTab = ({ user }) => {
     }),
     onSubmit: (values, { setSubmitting, resetForm }) => {
       setTimeout(() => {
+        console.log(values)
         alert('Password changed successfully!');
         setSubmitting(false);
         resetForm();
